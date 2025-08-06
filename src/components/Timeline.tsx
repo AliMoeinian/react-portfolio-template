@@ -1,258 +1,106 @@
-import React from "react";
-import '@fortawesome/free-regular-svg-icons';
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBriefcase,
+  faChalkboardTeacher,
+  faFlask,
+  faCode,
+  faRunning,
+  faPenNib,
+  faUsers,
+  faUserGraduate,
+  faBook
+} from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss';
+import experienceData from '../data/experienceData.json';
+
+const iconMap: { [key: string]: any } = {
+  faBriefcase,
+  faChalkboardTeacher,
+  faFlask,
+  faCode,
+  faRunning,
+  faPenNib,
+  faUsers,
+  faUserGraduate,
+  faBook
+};
 
 function Timeline() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const mainContainer = document.querySelector('.main-container');
+      const darkMode = mainContainer?.classList.contains('dark-mode') ?? true;
+      setIsDarkMode(darkMode);
+    };
+
+    checkTheme();
+
+    const observer = new MutationObserver(checkTheme);
+    const mainContainer = document.querySelector('.main-container');
+    if (mainContainer) {
+      observer.observe(mainContainer, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleDetails = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
-    <div id="history">
+    <div id="history" className={isDarkMode ? 'dark-mode' : 'light-mode'}>
       <div className="items-container">
         <h1>Career History</h1>
         <VerticalTimeline>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
-            contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="Jul 2025 – Present"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Teaching Assistant – Natural Language Processing (Dr. Reza Ramezani)
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              University of Isfahan
-            </h4>
-            <h5 className="vertical-timeline-element-subtitle">
-              Isfahan Province, Iran
-            </h5>
-            <p>
-              Assisted in course preparation including syllabus design, resource compilation (GitHub, Kaggle, academic courses, books).
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Jun 2025 – Present"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Co-Developer & AI Agent Engineer
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Isfahan University of Medical Sciences
-            </h4>
-            <h5 className="vertical-timeline-element-subtitle">
-              Isfahan, Iran (Remote)
-            </h5>
-            <p>
-              Co-developing a conversational AI assistant for a digital maternal care platform, designing long-term user memory, ensuring ethical AI use, and building initial frontend components.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Jun 2025 – Present"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Admin & Content Creator
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Dunijet | دانیجت
-            </h4>
-            <p>
-              Tracking LLM/NLP/AGI research, writing summaries and explainers, and creating educational posts for a broad audience.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Apr 2025 – Present"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Marathon Trainee – Personal Challenge
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Self-Directed
-            </h4>
-            <p>
-              Embracing balance beyond code: endurance training, personal growth, and pushing limits outside the tech world.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Apr 2025 – Jun 2025"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Teaching Assistant – Semantic Web & Knowledge Graph (Dr. Reza Ramezani)
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              University of Isfahan
-            </h4>
-            <h5 className="vertical-timeline-element-subtitle">
-              Isfahan Province, Iran
-            </h5>
-            <p>
-              Led the “Association Rules” module, delivered interactive sessions, designed practical assignments, and conducted practical exams.
-            </p>
-          </VerticalTimelineElement>
-
-          {/* New conference booth entry */}
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Feb 24 – Feb 26, 2025"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Booth Lead – Big Data Group,<br/>
-              1st National Biennial Conference on AI in Traffic Control
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              University of Isfahan
-            </h4>
-            <h5 className="vertical-timeline-element-subtitle">
-              Isfahan, Iran
-            </h5>
-            <p>
-              Presented the Big Data group’s achievements and facilitated discussions on urban and road management solutions at the conference.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Dec 2024 – May 2025"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              AI Workshop Mentor
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Esfahan’s Mobarakeh Steel Company
-            </h4>
-            <h5 className="vertical-timeline-element-subtitle">
-              Isfahan Province, Iran
-            </h5>
-            <p>
-              Co-facilitated 9 hands-on GenAI sessions for 400+ executives, covering tools like ChatGPT, Grok, Gemini, DeepSeek, Qwen, Krea, and more.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Nov 2024 – Present"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              RAG Branch Member
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              University of Isfahan
-            </h4>
-            <p>
-              Contributing to Retrieval-Augmented Generation research, developing agentic systems, and collaborating in weekly research meetings.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Oct 2024 – Present"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Big Data Branch Member
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              University of Isfahan
-            </h4>
-            <p>
-              Collaborating on big data research with faculty and graduate students, innovating in data science and scalable infrastructure.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Nov 2023 – Nov 2024"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Researcher & Elite Club Member
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Islamic Azad University
-            </h4>
-            <p>
-              Authored books on Python, Git, and GitHub, and engaged in high-impact academic research with the elite club.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Apr 2023 – Mar 2024"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Teaching Assistant – Programming Fundamentals
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Islamic Azad University
-            </h4>
-            <p>
-              Guided students in C++ fundamentals, real-world examples, clean code practices, and soft skills development.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Feb 2023 – May 2023"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Intern – IT Department
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              SnappCarFix
-            </h4>
-            <p>
-              Learned system architectures, collaborated on problem-solving, and honed teamwork and communication skills.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Aug 2022 – Nov 2022"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Research Assistant
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Islamic Azad University
-            </h4>
-            <p>
-              Collaborated on a historical research book about Cyrus the Great, analyzed primary sources, and contributed to scholarly publication.
-            </p>
-          </VerticalTimelineElement>
-
+          {experienceData.map((item, index) => (
+            <VerticalTimelineElement
+              key={index}
+              className="vertical-timeline-element--work"
+              date={item.date}
+              iconStyle={{
+                background: isDarkMode ? '#facc15' : '#3b82f6',
+                color: 'white',
+                boxShadow: isDarkMode ?
+                  '0 0 20px rgba(250, 204, 21, 0.4)' :
+                  '0 0 20px rgba(59, 130, 246, 0.4)'
+              }}
+              icon={<FontAwesomeIcon icon={iconMap[item.icon]} />}
+              contentStyle={{
+                background: isDarkMode ?
+                  'linear-gradient(135deg, rgba(51, 65, 85, 0.4), rgba(30, 41, 59, 0.25))' :
+                  'linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(248, 250, 252, 0.25))',
+                border: isDarkMode ? '1px solid #facc15' : '1px solid #3b82f6',
+                borderRadius: '16px',
+                backdropFilter: 'blur(12px)',
+                boxShadow: isDarkMode ?
+                  '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)' :
+                  '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+              }}
+              contentArrowStyle={{
+                borderRight: isDarkMode ?
+                  '7px solid rgba(250, 204, 21, 0.8)' :
+                  '7px solid rgba(59, 130, 246, 0.8)'
+              }}
+            >
+              <h3 className="vertical-timeline-element-title">{item.title}</h3>
+              <h4 className="vertical-timeline-element-subtitle">{item.subtitle}</h4>
+              {item.location && <h5 className="vertical-timeline-element-location">{item.location}</h5>}
+              <p>{item.description}</p>
+              {expandedIndex === index && <p className="expanded-description">{item.fullDescription}</p>}
+              <button className="see-more-btn" onClick={() => toggleDetails(index)}>
+                {expandedIndex === index ? 'See less ▲' : 'See more ▼'}
+              </button>
+            </VerticalTimelineElement>
+          ))}
         </VerticalTimeline>
       </div>
     </div>

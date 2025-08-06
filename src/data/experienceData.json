@@ -1,0 +1,119 @@
+[
+    {
+      "title": "Teaching Assistant – Natural Language Processing",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Jul 2025 – Present",
+      "icon": "faChalkboardTeacher",
+      "description": "Assisted in course design and resource compilation for NLP.",
+      "fullDescription": "Supported course preparation including syllabus design and resource compilation (GitHub, Kaggle, academic courses, books) under Dr. Reza Ramezani, enhancing student engagement and learning outcomes."
+    },
+    {
+      "title": "RAG Research Branch Member",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Nov 2024 – Present",
+      "icon": "faFlask",
+      "description": "Contributed to cutting-edge RAG and LLM research.",
+      "fullDescription": "As an active member of the RAG research branch, I contribute to advancements in Retrieval-Augmented Generation (RAG) and Large Language Models (LLMs) under esteemed professors. My role involves: staying at the forefront of AI research (LLM, RAG, Agents, LCM, SLM), exploring innovative LLM applications, collaborating in weekly meetings, and developing Agentic Systems, enhancing my expertise in transformative AI solutions."
+    },
+    {
+      "title": "Big Data Branch Member",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Oct 2024 – Present",
+      "icon": "faUsers",
+      "description": "Collaborated on innovative big data research projects.",
+      "fullDescription": "As a member of the Big Data Research Group (est. 2017), comprising 6 faculty members, 30 PhD candidates, and 30 master’s students, I contribute to cutting-edge research in data science and big data technologies, fostering collaborative innovation."
+    },
+    {
+      "title": "Teaching Assistant – Semantic Web and Knowledge Graph",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Apr 2025 – Jun 2025",
+      "icon": "faChalkboardTeacher",
+      "description": "Led 'Association Rules' module and designed projects.",
+      "fullDescription": "Collaborated with a team of TAs under Dr. Reza Ramezani to support the Semantic Web and Knowledge Graph course. Took ownership of the 'Association Rules' module, delivering in-person sessions, designing practical projects, and conducting exams to enhance student understanding."
+    },
+    {
+      "title": "Co-Developer & AI Agent Engineer",
+      "subtitle": "Isfahan University of Medical Sciences",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Jun 2025 – Present",
+      "icon": "faCode",
+      "description": "Developed AI-driven maternal healthcare platform.",
+      "fullDescription": "Co-developed a conversational AI assistant for a digital maternal care platform. Responsibilities included: designing a conversational agent, implementing long-term user memory, building frontend components for onboarding, and ensuring ethical AI use in healthcare."
+    },
+    {
+      "title": "Admin & Content Creator",
+      "subtitle": "Dunijet | دانیجت",
+      "location": "",
+      "date": "Jun 2025 – Present",
+      "icon": "faPenNib",
+      "description": "Created educational AI content for broad audiences.",
+      "fullDescription": "Tracked latest developments in LLMs, NLP, and AGI, writing summaries, commentaries, and explainers on cutting-edge tools, and creating educational posts for beginners and practitioners."
+    },
+    {
+      "title": "Marathon Trainee – Personal Challenge",
+      "subtitle": "Self-Directed",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Apr 2025 – Present",
+      "icon": "faRunning",
+      "description": "Pursued endurance training for personal growth.",
+      "fullDescription": "Embraced endurance training to push personal limits, focusing on balance, personal growth, and living fully beyond code and careers."
+    },
+    {
+      "title": "AI Workshop Mentor",
+      "subtitle": "Esfahan's Mobarakeh Steel Company",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Dec 2024 – May 2025",
+      "icon": "faUsers",
+      "description": "Mentored executives in generative AI workshops.",
+      "fullDescription": "Co-facilitated practical workshops for over 400 managers and executives, focusing on generative AI tools (ChatGPT, Grok, Gemini, DeepSeek, Qwen, Krea, Julius AI, Sider AI, Gamma) to foster innovation and data-driven decision-making. Designed and delivered 9 tailored sessions, leading interactive demos and real-case discussions."
+    },
+    {
+      "title": "Booth Lead – Big Data Group",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Feb 24 – Feb 26, 2025",
+      "icon": "faUsers",
+      "description": "Led Big Data group booth at national AI conference.",
+      "fullDescription": "Served as Booth Lead at the 1st National Biennial Conference on AI Applications in Traffic Control (Feb 24–26, 2025), presenting Big Data group achievements and facilitating discussions on urban and road management solutions."
+    },
+    {
+      "title": "Researcher – Researchers and Elite Club",
+      "subtitle": "Islamic Azad University",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Nov 2023 – Nov 2024",
+      "icon": "faBook",
+      "description": "Authored books on Python, Git, and GitHub.",
+      "fullDescription": "As a member of the Researchers and Elite Club, authored books on Python, Git, and GitHub, sharing computer science knowledge with the community to support learning and development."
+    },
+    {
+      "title": "Teaching Assistant – Programming Fundamentals",
+      "subtitle": "Islamic Azad University",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Apr 2023 – Mar 2024",
+      "icon": "faChalkboardTeacher",
+      "description": "Taught C++ programming and soft skills.",
+      "fullDescription": "Supported students in learning C++ programming through real-world examples and project-based learning, emphasizing clean code practices. Introduced software engineering fields and taught soft skills like communication and problem-solving to prepare students for careers."
+    },
+    {
+      "title": "Research Assistant",
+      "subtitle": "Islamic Azad University",
+      "location": "Isfahan Province, Iran",
+      "date": "Aug 2022 – Nov 2022",
+      "icon": "faBook",
+      "description": "Contributed to historical research on Cyrus the Great.",
+      "fullDescription": "Collaborated with Dr. Koorosh Hadian on a research book about Cyrus the Great, analyzing primary sources and contributing to scholarly work, enhancing my passion for academic research and writing."
+    },
+    {
+      "title": "Intern – IT Department",
+      "subtitle": "SnappCarFix",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Feb 2023 – May 2023",
+      "icon": "faUserGraduate",
+      "description": "Developed IT and soft skills in business environment.",
+      "fullDescription": "Collaborated on IT projects, gained familiarity with business systems and technologies, and improved soft skills such as teamwork, problem-solving, and communication in a dynamic business setting."
+    }
+]

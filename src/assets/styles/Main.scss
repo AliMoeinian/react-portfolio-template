@@ -1,170 +1,110 @@
-// --- src/assets/styles/Main.scss ---
+.about-section {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 100px 15% 0;
+  min-height: 700px;
+  background-image: url("../images/bg-dark.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 
-/* Lighten up dark mode overlay and boost brightness */
-.dark-mode .about-section {
-    background-color: rgba(0, 0, 0, 0.1) !important;
-    background-blend-mode: lighten;
-    filter: brightness(1.1);
+  .image-wrapper {
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
   }
-  
-  .about-section {
-    display: flex;
-    gap: 30px;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    padding: 0 15%;
-    min-height: 700px;
-    background-image: url("../images/bg-dark.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-  
-    .content {
-      text-align: left;
-      z-index: 2;
-  
-      .social_icons {
-        display: flex;
-        gap: 10px;
-        color: white;
-  
-        svg {
-          font-size: 1.8em;
-        }
-      }
-  
-      .mobile_social_icons {
-        display: none;
-      }
-  
-      p {
-        font-size: 1.5em;
-        margin: 0;
-        line-height: 1.4;
-      }
-  
-      h1 {
-        font-size: 5em;
-        margin: 0;
-        position: relative;
-        display: inline-block;
-        padding-bottom: 0.25rem;
-  
-        /* Accent underline */
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 50%;
-          height: 4px;
-          background: #facc15;
-          border-radius: 2px;
-        }
+
+  .content {
+    text-align: left;
+    z-index: 2;
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #facc15;
+
+      .light-mode & {
+        color: #3b82f6;
       }
     }
-  
+
+    .description {
+      font-size: 1rem;
+      max-width: 600px;
+      margin-top: 12px;
+      color: #cbd5e1;
+
+      .light-mode & {
+        color: #1e293b;
+      }
+    }
+
+    .social_icons {
+      display: flex;
+      gap: 10px;
+      color: white;
+
+      svg {
+        font-size: 1.8em;
+      }
+    }
+
+    .mobile_social_icons {
+      display: none;
+    }
+  }
+}
+
+// 📱 Mobile Style
+@media screen and (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px 40px;
+
     .image-wrapper {
-      z-index: 2;
-  
       img {
         width: 150px;
+        height: 150px;
+        object-fit: cover;
         border-radius: 50%;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
     }
-  }
-  
-  .about p {
-    text-align: center;
-    padding: 30% 0;
-  }
-  
-  @media screen {
-    @media (max-width: 567px) {
-      .nav-left {
-        padding-top: 20px;
-        float: left;
-  
-        img {
-          height: 35px;
-        }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center; // 👈 این خط معجزه می‌کنه
+      text-align: center;
+
+      h1 {
+        font-size: 2rem;
       }
-  
-      .nav-right {
-        float: right;
-  
-        li {
-          padding: 10px 15px;
-          list-style: none;
-          font-size: 13px;
-          color: white;
-          width: 10%;
-        }
-  
-        ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
+
+      .title {
+        font-size: 1.2rem;
       }
-  
-      body {
-        width: 100%;
+
+      .description {
+        font-size: 0.95rem;
       }
-  
-      .about {
-        padding: 0 5%;
-        font-size: 12px;
-      }
-    }
-  
-    @media (max-width: 768px) {
-      .about-section {
-        padding-top: 150px;
-        display: block;
-        padding: 0;
-  
-        h1 {
-          font-size: 4em !important;
-          text-align: left;
-        }
-  
-        p {
-          text-align: left;
-        }
-  
-        .content {
-          width: 90%;
-          padding: 0 5% 5%;
-        }
-  
-        .image-wrapper {
-          padding-left: 5%;
-          width: 100%;
-        }
-      }
-  
-      .container {
-        display: initial;
-      }
-  
+
       .social_icons {
-        display: none !important;
-      }
-  
-      .mobile_social_icons {
-        padding-top: 10px;
-        display: flex !important;
-        gap: 10px;
-        color: white;
-  
-        svg {
-          font-size: 1.8em;
-        }
+        justify-content: center;
       }
     }
   }
-  
+}

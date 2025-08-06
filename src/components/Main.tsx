@@ -16,8 +16,13 @@ function Main() {
             <a href="https://github.com/AliMoeinian" target="_blank" rel="noreferrer"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/alimoeinian1/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
           </div>
+
           <h1>Ali Moeinian</h1>
-          <p>Data Scientist</p>
+          <p className="title">AI Agent Developer & Applied AI Engineer</p>
+
+          <p className="description">
+            Designing intelligent systems with LLMs, RAG, and real-time data — blending AI engineering with hands-on research.
+          </p>
 
           <div className="mobile_social_icons">
             <a href="https://github.com/AliMoeinian" target="_blank" rel="noreferrer"><GitHubIcon/></a>
