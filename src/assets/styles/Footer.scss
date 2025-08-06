@@ -1,15 +1,94 @@
-footer {
+// src/assets/styles/Footer.scss
+
+.footer {
+    background: #f9fafb;
+    border-top: 4px solid #5b6374;
+    padding: 2rem 1rem;
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-
-    svg {
-        width: 1.1em !important;
-        height: 1.1em !important;
-        margin-right: 10px;
+    color: #374151;
+  
+    &__social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+  
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: #374151;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        transition: border-color 0.3s ease, background 0.3s ease;
+  
+        &:hover {
+          border-color: #3f5ceb;
+          background: rgba(250, 204, 21, 0.15);
+          color: #2563eb;
+        }
+      }
     }
-
-    p {
-        font-size: 0.8em;
+  
+    &__copyright {
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
-}
+  
+    &__back-to-top {
+      margin-top: 1rem;
+      background: none;
+      border: 2px solid #2563eb;
+      border-radius: 9999px;
+      padding: 0.5rem 1rem;
+      color: #2563eb;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.3s ease, color 0.3s ease;
+  
+      &:hover {
+        background: #2563eb;
+        color: #fff;
+      }
+  
+      .footer__back-icon {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  /* Dark mode overrides */
+  .dark-mode {
+    .footer {
+      background: #1f2937;
+      color: #e5e7eb;
+      border-top-color: #94a3b8;
+  
+      &__social a {
+        color: #e5e7eb;
+  
+        &:hover {
+          border-color: #3f5ceb;
+          background: rgba(250, 204, 21, 0.15);
+          color: #2563eb;
+        }
+      }
+  
+      &__back-to-top {
+        border-color: #94a3b8;
+        color: #94a3b8;
+  
+        &:hover {
+          background: #94a3b8;
+          color: #1f2937;
+        }
+      }
+    }
+  }
+  

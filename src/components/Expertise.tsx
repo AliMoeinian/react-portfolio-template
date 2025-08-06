@@ -25,7 +25,9 @@ const labelsSecond = [
   "Prompt Engineering",
   "LangChain",
   "Agent Development",
-  "Retrieval-Augmented Generation"
+  "Retrieval-Augmented Generation",
+  "Large Language Models",
+  "Small Language Models"
 ];
 
 const labelsThird = [

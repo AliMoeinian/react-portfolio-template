@@ -13,7 +13,7 @@ function Footer() {
         <a href="https://www.linkedin.com/in/alimoeinian1/" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
       </div>
       <p className="footer__copyright">
-        © {currentYear} Ali Moeinian. All rights reserved.
+        © {currentYear} Ali Moeinian | This Template is Customized for myslef, Original Repo is : <a href=""> GitHub </a>
       </p>
     </footer>
   );

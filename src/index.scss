@@ -1,3 +1,5 @@
+// src/index.scss
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -15,8 +17,7 @@ code {
 
 .main-container {
   position: relative;
-  background-color: #0d1116;
-
+  background-color: #22272e;
 }
 
 a {
@@ -25,7 +26,7 @@ a {
 
 a:hover {
   color: #5000ca;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 p, a, h1, h2, h3, h4, h5, label, button {
@@ -33,19 +34,45 @@ p, a, h1, h2, h3, h4, h5, label, button {
   font-family: "Lato", sans-serif;
 }
 
+/* ========== HEADER / NAVIGATION BAR ========== */
 .navigation-bar {
+  background-color: #0d1116; /* dark-gray fallback */
+  border-bottom: 4px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   justify-content: space-between;
-  background-color: #0d1116;
 
   button {
     font-size: 1.1rem;
     font-family: "Lato", sans-serif;
-    text-transform: initial;
+    text-transform: none;
     padding: 6px 10px;
+    position: relative;
+    color: #fff;
+
+    &:hover {
+      color: #facc15;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        width: 80%;
+        height: 2px;
+        background: #facc15;
+        border-radius: 1px;
+      }
+    }
   }
 
   svg {
     cursor: pointer;
+    color: #e5e7eb;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #facc15;
+    }
   }
 }
 
@@ -56,6 +83,42 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 }
 
+/* ========== DARK MODE HEADER OVERRIDES ========== */
+.dark-mode {
+  .navigation-bar {
+    background-color: #2b3545; /* softer navy-blue */
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+
+    button {
+      color: #e5e7eb;
+
+      &:hover {
+        color: #facc15;
+      }
+      &::after {
+        background: #facc15;
+      }
+    }
+
+    svg {
+      color: #e5e7eb;
+
+      &:hover {
+        color: #facc15;
+      }
+    }
+  }
+
+  .navigation-bar-responsive {
+    background-color: #1e293b;
+
+    p, span {
+      color: #e5e7eb;
+    }
+  }
+}
+
+/* ========== GLOBAL LAYOUT ========== */
 .container {
   margin-top: 64px;
   width: 100%;
@@ -92,6 +155,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
   justify-content: center;
 }
 
+/* ========== LIGHT MODE ========== */
 .light-mode {
   background-color: #f8f9fa;
 
@@ -105,7 +169,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   a:hover {
     color: #5000ca;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
   }
 
   .navigation-bar svg {
@@ -122,7 +186,9 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   .chip {
     background-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+                0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
   .vertical-timeline::before {
@@ -130,7 +196,9 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 
   .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+                0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
   .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
