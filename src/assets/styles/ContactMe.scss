@@ -1,0 +1,46 @@
+.contactme-container {
+    padding: 80px 20px;
+    text-align: center;
+  
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-family: "Lato", sans-serif;
+    }
+  
+    p {
+      margin-bottom: 30px;
+    }
+  
+    .contact-button {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+  }
+  
+  .light-mode {
+    .contact-button {
+      background-color: #3b82f6;
+      color: #fff;
+    }
+  
+    .contact-button:hover {
+      background-color: #2563eb;
+    }
+  }
+  
+  .dark-mode {
+    .contact-button {
+      background-color: #facc15;
+      color: #1f2937;
+    }
+  
+    .contact-button:hover {
+      background-color: #eab308;
+    }
+  }
+  

@@ -1,0 +1,84 @@
+.education-container {
+    padding: 80px 20px;
+  
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      font-family: "Lato", sans-serif;
+    }
+  
+    .education-list {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      max-width: 800px;
+  
+      .education-item {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        border: 1px solid transparent;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+  
+        img {
+          width: 60px;
+          height: 60px;
+          object-fit: contain;
+          border-radius: 8px;
+        }
+  
+        h3 {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+  
+        p {
+          margin: 5px 0;
+        }
+  
+        .period {
+          font-size: 0.9rem;
+        }
+  
+        .details {
+          margin-top: 10px;
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+  
+  .dark-mode {
+    .education-container h1 {
+      color: #facc15;
+    }
+  
+    .education-item {
+      background-color: rgba(30, 41, 59, 0.6);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+    }
+  }
+  
+  .light-mode {
+    .education-container h1 {
+      color: #3b82f6;
+    }
+  
+    .education-item {
+      background-color: rgba(255, 255, 255, 0.6);
+      border-color: rgba(0, 0, 0, 0.05);
+      color: #1f2937;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .education-container {
+      padding: 40px 20px;
+    }
+  }
+  

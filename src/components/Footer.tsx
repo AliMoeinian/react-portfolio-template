@@ -14,7 +14,7 @@ function Footer() {
       </div>
 
       <p className="footer__quote">
-        Built with ❤️, caffeine ☕, and ChatGPT !
+        Built with ❤️ + ChatGPT
       </p>
 
       <p className="footer__copyright">
