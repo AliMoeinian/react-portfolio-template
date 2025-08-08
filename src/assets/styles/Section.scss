@@ -1,23 +1,46 @@
+// ==============================
+// Section.scss (final)
+// - unified spacing & dividers
+// - decorative underline on titles
+// - light/dark theme aware
+// ==============================
+
 .section {
   padding: 80px 20px;
   scroll-margin-top: 80px;
 }
 
+<<<<<<< HEAD
+=======
+/* subtle divider between consecutive sections */
+>>>>>>> 61ed1f6 (Twin LLM added and some UI bugs fixed)
 .section + .section {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+<<<<<<< HEAD
+=======
+/* darker divider in dark mode for better contrast */
+>>>>>>> 61ed1f6 (Twin LLM added and some UI bugs fixed)
 .dark-mode .section + .section {
   border-top-color: rgba(255, 255, 255, 0.08);
 }
 
+<<<<<<< HEAD
+=======
+/* section title with decorative underline */
+>>>>>>> 61ed1f6 (Twin LLM added and some UI bugs fixed)
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 40px;
   font-family: "Lato", sans-serif;
   font-weight: 700;
+<<<<<<< HEAD
   text-shadow: 0 2px 4px rgba(8, 6, 125, 0.4);
+=======
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+>>>>>>> 61ed1f6 (Twin LLM added and some UI bugs fixed)
   position: relative;
 
   // ✨ decorative underline
@@ -34,6 +57,10 @@
   }
 }
 
+<<<<<<< HEAD
+=======
+/* theme colors */
+>>>>>>> 61ed1f6 (Twin LLM added and some UI bugs fixed)
 .light-mode .section-title {
   color: #111;
 }
@@ -42,8 +69,16 @@
   color: #fff;
 }
 
+<<<<<<< HEAD
+=======
+/* responsive spacing */
+>>>>>>> 61ed1f6 (Twin LLM added and some UI bugs fixed)
 @media screen and (max-width: 768px) {
   .section {
     padding: 40px 20px;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 61ed1f6 (Twin LLM added and some UI bugs fixed)

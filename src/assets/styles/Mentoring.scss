@@ -1,5 +1,59 @@
+/* ===========================
+   Mentoring.scss (final + neon hover border)
+   =========================== */
+
+/* ---------- Theme tokens ---------- */
+.light-mode {
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+  --card-hover-bg: rgba(255, 255, 255, 0.9);
+  --card-hover-border: #3b82f6; /* neon blue border */
+  --card-hover-glow: rgba(59, 130, 246, 0.4);
+
+  --text-color: #0f172a;
+  --muted-color: #475569;
+
+  --btn-bg: #3b82f6;
+  --btn-bg-hover: #2563eb;
+  --btn-text: #fff;
+  --btn-ring: rgba(59, 130, 246, 0.35);
+}
+
+.dark-mode {
+  --card-bg: rgba(17, 24, 39, 0.55);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  --card-hover-bg: rgba(31, 41, 55, 0.7);
+  --card-hover-border: #facc15; /* neon yellow border */
+  --card-hover-glow: rgba(250, 204, 21, 0.4);
+
+  --text-color: #e5e7eb;
+  --muted-color: #94a3b8;
+
+  --btn-bg: #facc15;
+  --btn-bg-hover: #eab308;
+  --btn-text: #1f2937;
+  --btn-ring: rgba(250, 204, 21, 0.35);
+}
+
+/* ---------- Reusable card surface ---------- */
+@mixin surface-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  color: var(--text-color);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* ---------- Mentoring Section ---------- */
 .mentoring-container {
   text-align: center;
+  color: var(--text-color);
 
   .services-list {
     display: grid;
@@ -10,104 +64,112 @@
   }
 
   @keyframes slideFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .service-card {
+    @include surface-card();
+    position: relative;
     padding: 30px;
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    border: 1px solid transparent;
     text-align: center;
     animation: slideFadeIn 0.6s ease forwards;
     opacity: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      pointer-events: none;
+      background: radial-gradient(
+        1200px 200px at 50% -10%,
+        rgba(255,255,255,0.12),
+        transparent 60%
+      );
+      mix-blend-mode: overlay;
+    }
 
     h3 {
       margin-bottom: 10px;
       color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
+    .service-icon {
+      font-size: 1.5rem;
+      color: inherit;
+      flex: 0 0 auto;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted-color);
+    }
+
+    /* hover lift + neon border glow */
     &:hover {
       transform: translateY(-10px) scale(1.03);
+      background: var(--card-hover-bg);
+      border-color: var(--card-hover-border);
+      box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.12),
+        0 0 20px var(--card-hover-glow),
+        0 0 40px var(--card-hover-glow);
     }
   }
 
+  /* stagger entrance */
+  .service-card:nth-child(1) { animation-delay: 0.00s; }
+  .service-card:nth-child(2) { animation-delay: 0.06s; }
+  .service-card:nth-child(3) { animation-delay: 0.12s; }
+  .service-card:nth-child(4) { animation-delay: 0.18s; }
+
   .mentoring-contact {
-    display: inline-block;
-    padding: 12px 32px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: transform 0.3s ease, box-shadow 0.3s ease,
-      background-color 0.3s ease, border-color 0.3s ease;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background-color: var(--btn-bg);
+  color: var(--btn-text); /* متن طبق تم */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.03);
+    background-color: var(--btn-bg-hover);
+    box-shadow: 0 0 25px var(--btn-ring);
+    border-color: transparent;
+    color: var(--btn-text);
+    }
   }
 }
 
-.dark-mode {
-  .mentoring-contact {
-    background-color: #facc15;
-    color: #1f2937;
-
-    &:hover {
-      background-color: #eab308;    /* glow */
-      color: #1f2937;               /* keep text visible */
-      border-color: #facc15;
-      box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
-    }
-  }
-
-  .mentoring-contact {
-    background-color: #facc15;
-    color: #1f2937;
-
-    &:hover {
-      border-color: #facc15;
-      box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
-      transform: translateY(-3px) scale(1.03);
-    }
-  }
-}
-
-.light-mode {
-  .mentoring-contact {
-    background-color: #3b82f6;
-    color: #fff;
-
-    &:hover {
-      background-color: #2563eb;   /* glow */
-      color: #fff;                  /* keep text visible */
-      border-color: #3b82f6;
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
-    }
-  }
-
-  .mentoring-contact {
-    background-color: #3b82f6;
-    color: #fff;
-
-    &:hover {
-      border-color: #3b82f6;
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
-      transform: translateY(-3px) scale(1.03);
-    }
+@media (prefers-reduced-motion: reduce) {
+  .mentoring-container .service-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
 @media screen and (max-width: 768px) {
   .mentoring-container {
     padding: 40px 20px;
-  }
 
-  .service-card {
-    padding: 20px;
+    .service-card {
+      padding: 20px;
+    }
   }
 }
