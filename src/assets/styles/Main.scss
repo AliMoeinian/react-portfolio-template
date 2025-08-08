@@ -11,42 +11,97 @@
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  position: relative;
+  
+
 
   .image-wrapper {
+    position: relative;
+    z-index: 2;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, 
+        #3b82f6, #8b5cf6, #06b6d4, #10b981);
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotate 3s linear infinite;
+    }
+    
     img {
       width: 250px;
       height: 250px;
       object-fit: cover;
       border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       animation: fadeInUp 0.8s ease-out;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
   .content {
     text-align: left;
     z-index: 2;
-    padding: 20px;
+    padding: 30px;
     background-color: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(6px);
     border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-out;
+    position: relative;
+    overflow: hidden;
+    
+    // ✨ اضافه کردن شاین افکت
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+      transition: left 0.5s;
+    }
+    
+    &:hover::before {
+      left: 100%;
+    }
 
-    /* اسم */
+    /* نام - پالت رنگی جدید */
     h1 {
-      font-size: 6rem;
+      font-size: 4rem;
       margin: 0;
       font-weight: 700;
       color: #072e55; // آبی واضح
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-      animation: slideUp 0.8s ease-out;
+      animation: slideUp 0.8s ease-out, glow 2s ease-in-out infinite alternate;
+      position: relative;
 
       .light-mode & {
-        color: #072e55;
-        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, 
+          #1e40af 0%, 
+          #3730a3 50%, 
+          #581c87 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
       }
     }
 
-    /* عنوان شغلی با Spoiler */
+    /* عنوان شغلی با رنگ‌های جدید */
     .title {
       font-size: 1.4rem;
       font-weight: 600;
@@ -56,9 +111,12 @@
       filter: blur(6px);
       transition: filter 0.4s ease;
       cursor: pointer;
+      margin: 10px 0;
+      text-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
 
       &:hover {
         filter: blur(0px);
+        text-shadow: 0 4px 16px rgba(245, 158, 11, 0.5);
       }
 
       .light-mode & {
@@ -68,21 +126,22 @@
       }
     }
 
-    /* توضیح کوتاه */
+    /* توضیح با رنگ‌های بهتر */
     .description {
       font-size: 1rem;
       max-width: 600px;
-      margin-top: 12px;
+      margin-top: 15px;
       color: #cbd5e1;
       letter-spacing: 0.3px;
+      line-height: 1.6;
       animation: fadeIn 1.2s ease-out;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 
       .light-mode & {
         color: #1e293b;
       }
     }
 
-    /* آیکون‌ها */
     .social_icons {
       display: flex;
       gap: 10px;
@@ -106,57 +165,101 @@
   }
 }
 
-/* 📱 Mobile Style */
+/* 📱 Mobile Responsive */
 @media screen and (max-width: 768px) {
   .about-section {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 100px 20px 40px;
+    padding: 80px 20px 40px;
 
     .image-wrapper {
       img {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
+      }
+      
+      &::before {
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
       }
     }
 
     .content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
+      padding: 25px;
+      margin-top: 20px;
+      
       h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
 
       .title {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
 
       .description {
         font-size: 0.95rem;
+        line-height: 1.5;
       }
 
       .social_icons {
         justify-content: center;
+        margin-top: 25px;
       }
     }
   }
 }
 
-/* 🌟 Animations */
+/* 🌟 انیمیشن‌های جدید */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(40px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+  to {
+    text-shadow: 0 4px 20px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
