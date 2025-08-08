@@ -1,0 +1,36 @@
+.section {
+    padding: 80px 20px;
+    scroll-margin-top: 80px;
+  }
+  
+  .section + .section {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark-mode .section + .section {
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .light-mode .section-title {
+    color: #111;
+  }
+  
+  .dark-mode .section-title {
+    color: #fff;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .section {
+      padding: 40px 20px;
+    }
+  }
+  

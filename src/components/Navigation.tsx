@@ -83,16 +83,6 @@ function Navigation({ parentToChild, modeChange }: any) {
         className={`navbar-fixed-top${scrolled ? " scrolled" : ""}`}
       >
         <Toolbar className="navigation-bar">
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: "none" } }}  // show hamburger below md
-          >
-            <MenuIcon />
-          </IconButton>
-
           {mode === "dark" ? (
             <LightModeIcon
               onClick={modeChange}
@@ -105,6 +95,8 @@ function Navigation({ parentToChild, modeChange }: any) {
             />
           )}
 
+          <Box sx={{ flexGrow: 1 }} />
+
           <Box sx={{ display: { xs: "none", md: "block" } }}>
             {navItems.map(([label, id]) => (
               <Button
@@ -116,6 +108,16 @@ function Navigation({ parentToChild, modeChange }: any) {
               </Button>
             ))}
           </Box>
+
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="end"
+            onClick={handleDrawerToggle}
+            sx={{ display: { md: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
 
@@ -126,11 +128,11 @@ function Navigation({ parentToChild, modeChange }: any) {
           onClose={handleDrawerToggle}
           ModalProps={{ keepMounted: true }}
           sx={{
-            display: { xs: "block", md: "none" }, // drawer below md
+            display: { xs: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
-            },
+              width: drawerWidth
+            }
           }}
         >
           {drawer}

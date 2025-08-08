@@ -15,8 +15,8 @@ const mentoringServices = [
 
 function Mentoring() {
   return (
-    <div className="mentoring-container" id="mentoring">
-      <h1>Mentoring</h1>
+    <div className="mentoring-container section" id="mentoring">
+      <h1 className="section-title">Mentoring</h1>
       <div className="services-list">
         {mentoringServices.map((service, idx) => (
           <div key={idx} className="service-card">
@@ -27,11 +27,7 @@ function Mentoring() {
       </div>
       <a
         className="mentoring-contact"
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          window.location.href = "mailto:alimoeinianDev@gmail.com";
-        }}
+        href="mailto:alimoeinianDev@gmail.com"
       >
         Request Mentoring
       </a>

@@ -1,46 +1,43 @@
 .contactme-container {
-    padding: 80px 20px;
-    text-align: center;
-  
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      font-family: "Lato", sans-serif;
-    }
-  
-    p {
-      margin-bottom: 30px;
-    }
-  
-    .contact-button {
-      display: inline-block;
-      padding: 12px 32px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
+  text-align: center;
+
+  .contact-button {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+      background-color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+.light-mode {
+  .contact-button {
+    background-color: #3b82f6;
+    color: #fff;
+
+    &:hover {
+      background-color: #2563eb;    /* glow */
+      color: #fff;                  /* keep text visible */
+      border-color: #3b82f6;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
     }
   }
-  
-  .light-mode {
-    .contact-button {
-      background-color: #3b82f6;
-      color: #fff;
-    }
-  
-    .contact-button:hover {
-      background-color: #2563eb;
-    }
-  }
-  
-  .dark-mode {
-    .contact-button {
-      background-color: #facc15;
-      color: #1f2937;
-    }
-  
-    .contact-button:hover {
-      background-color: #eab308;
+}
+
+.dark-mode {
+  .contact-button {
+    background-color: #facc15;
+    color: #1f2937;
+
+    &:hover {
+      background-color: #eab308;    /* glow */
+      color: #1f2937;               /* keep text visible */
+      border-color: #facc15;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
     }
   }
-  
+}
+

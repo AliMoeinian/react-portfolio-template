@@ -17,7 +17,7 @@ const educationData = [
   {
     institution: "Islamic Azad University of Isfahan (Khorasgan Branch)",
     degree: "Bachelor's degree, Computer Software Engineering",
-    period: "2020 – 2024",
+    period: "2018 – 2023",
     details: [
       "Top performing student: Highest GPA and first rank of the university",
       "Exceptional Talent recognition"
@@ -27,9 +27,9 @@ const educationData = [
   {
     institution: "Imam Sadegh Highschool",
     degree: "High school diploma",
-    period: "2016 – 2019",
+    period: "2014 – 2018",
     details: [
-      "An ordinary human trying to live a normal life, but curiosity wouldn't let him"
+      "Just a curious kid who couldn't resist poking at the universe's mysteries"
     ],
     logo: highschoolLogo,
   }
@@ -37,8 +37,8 @@ const educationData = [
 
 function Education() {
   return (
-    <div className="education-container" id="education">
-      <h1>Education</h1>
+    <div className="education-container section" id="education">
+      <h1 className="section-title">Education</h1>
       <ul className="education-list">
         {educationData.map((edu, idx) => (
           <li key={idx} className="education-item">

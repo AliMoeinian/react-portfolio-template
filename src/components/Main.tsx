@@ -8,9 +8,12 @@ function Main() {
   return (
     <div className="container">
       <div className="about-section">
+        {/* عکس پروفایل */}
         <div className="image-wrapper">
           <img src={profilePic} alt="Ali Moeinian" />
         </div>
+
+        {/* متن و لینک‌ها */}
         <div className="content">
           <div className="social_icons">
             <a href="https://github.com/AliMoeinian" target="_blank" rel="noreferrer"><GitHubIcon/></a>
@@ -18,10 +21,11 @@ function Main() {
           </div>
 
           <h1>Ali Moeinian</h1>
-          <p className="title">AI Agent Developer & Applied AI Engineer</p>
+          {/* Spoiler Title */}
+          <p className="title"><u>AI Agent Developer & Applied AI Engineer</u></p>
 
           <p className="description">
-            Designing intelligent systems with LLMs, RAG, and real-time data — blending AI engineering with hands-on research.
+            <b>Designing intelligent systems with LLMs, RAG, and real-time data — blending AI engineering with hands-on research.</b>
           </p>
 
           <div className="mobile_social_icons">

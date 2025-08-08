@@ -17,8 +17,8 @@ const achievements = [
 
 function Achievements() {
   return (
-    <div className="achievements-container" id="achievements">
-      <h1>Achievements & Accolades</h1>
+    <div className="achievements-container section" id="achievements">
+      <h1 className="section-title">Achievements & Accolades</h1>
       <div className="achievements-grid">
         {achievements.map((item, idx) => (
           <div key={idx} className="achievement-card">

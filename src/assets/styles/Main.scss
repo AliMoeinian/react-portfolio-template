@@ -18,46 +18,85 @@
       height: 250px;
       object-fit: cover;
       border-radius: 50%;
+      animation: fadeInUp 0.8s ease-out;
     }
   }
 
   .content {
     text-align: left;
     z-index: 2;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    animation: fadeIn 1s ease-out;
 
+    /* اسم */
     h1 {
-      font-size: 3rem;
+      font-size: 6rem;
       margin: 0;
-    }
-
-    .title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #facc15;
+      font-weight: 700;
+      color: #072e55; // آبی واضح
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      animation: slideUp 0.8s ease-out;
 
       .light-mode & {
-        color: #3b82f6;
+        color: #072e55;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       }
     }
 
+    /* عنوان شغلی با Spoiler */
+    .title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #facc15, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: blur(6px);
+      transition: filter 0.4s ease;
+      cursor: pointer;
+
+      &:hover {
+        filter: blur(0px);
+      }
+
+      .light-mode & {
+        background: linear-gradient(90deg, #000000, #555555);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    /* توضیح کوتاه */
     .description {
       font-size: 1rem;
       max-width: 600px;
       margin-top: 12px;
       color: #cbd5e1;
+      letter-spacing: 0.3px;
+      animation: fadeIn 1.2s ease-out;
 
       .light-mode & {
         color: #1e293b;
       }
     }
 
+    /* آیکون‌ها */
     .social_icons {
       display: flex;
       gap: 10px;
       color: white;
+      margin-bottom: 10px;
+      animation: fadeIn 1.4s ease-out;
 
       svg {
         font-size: 1.8em;
+        transition: transform 0.3s ease;
+      }
+
+      a:hover svg {
+        transform: scale(1.2);
       }
     }
 
@@ -67,7 +106,7 @@
   }
 }
 
-// 📱 Mobile Style
+/* 📱 Mobile Style */
 @media screen and (max-width: 768px) {
   .about-section {
     flex-direction: column;
@@ -79,16 +118,13 @@
       img {
         width: 150px;
         height: 150px;
-        object-fit: cover;
-        border-radius: 50%;
       }
     }
 
     .content {
       display: flex;
       flex-direction: column;
-      align-items: center; // 👈 این خط معجزه می‌کنه
-      text-align: center;
+      align-items: center;
 
       h1 {
         font-size: 2rem;
@@ -107,4 +143,20 @@
       }
     }
   }
+}
+
+/* 🌟 Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
