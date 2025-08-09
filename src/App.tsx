@@ -4,6 +4,7 @@ import {
   Timeline,
   Expertise,
   Project,
+  Publications,
   Achievements,
   Mentoring,
   Education,
@@ -33,6 +34,7 @@ function App() {
         <Expertise />
         <Timeline />
         <Project />
+        <Publications />
         <Achievements />
         <Mentoring />
         <Education />

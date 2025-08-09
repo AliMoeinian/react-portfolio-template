@@ -21,6 +21,7 @@ const navItems: [string, string][] = [
   ["Expertise", "expertise"],
   ["History", "history"],
   ["Projects", "projects"],
+  ["Publications", "publications"],
   ["Achievements", "achievements"],
   ["Mentoring", "mentoring"],
   ["Education", "education"],
@@ -84,15 +85,9 @@ function Navigation({ parentToChild, modeChange }: any) {
       >
         <Toolbar className="navigation-bar">
           {mode === "dark" ? (
-            <LightModeIcon
-              onClick={modeChange}
-              sx={{ cursor: "pointer", mr: 2 }}
-            />
+            <LightModeIcon onClick={modeChange} sx={{ cursor: "pointer", mr: 2 }} />
           ) : (
-            <DarkModeIcon
-              onClick={modeChange}
-              sx={{ cursor: "pointer", mr: 2 }}
-            />
+            <DarkModeIcon onClick={modeChange} sx={{ cursor: "pointer", mr: 2 }} />
           )}
 
           <Box sx={{ flexGrow: 1 }} />

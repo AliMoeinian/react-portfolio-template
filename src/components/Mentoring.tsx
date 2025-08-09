@@ -199,7 +199,7 @@ export default function Mentoring() {
         {/* Slide Counter */}
         <div className="slide-counter">
           {index + 1} of {mentoringItems.length}
-        </div>
+        </div>s
       </div>
 
       <a
