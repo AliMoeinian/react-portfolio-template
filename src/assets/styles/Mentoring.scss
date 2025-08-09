@@ -1,23 +1,20 @@
-/* ===========================
-   Mentoring.scss (final + neon hover border)
-   =========================== */
+/* Enhanced Carousel-based mentoring section */
 
-/* ---------- Theme tokens ---------- */
 .light-mode {
   --card-bg: rgba(255, 255, 255, 0.7);
   --card-border: rgba(0, 0, 0, 0.08);
   --card-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
   --card-hover-bg: rgba(255, 255, 255, 0.9);
-  --card-hover-border: #3b82f6; /* neon blue border */
-  --card-hover-glow: rgba(59, 130, 246, 0.4);
-
   --text-color: #0f172a;
   --muted-color: #475569;
-
   --btn-bg: #3b82f6;
   --btn-bg-hover: #2563eb;
   --btn-text: #fff;
   --btn-ring: rgba(59, 130, 246, 0.35);
+  --dot-inactive: rgba(0, 0, 0, 0.2);
+  --dot-active: #3b82f6;
+  --control-bg: rgba(255, 255, 255, 0.8);
+  --control-text: #475569;
 }
 
 .dark-mode {
@@ -25,151 +22,391 @@
   --card-border: rgba(255, 255, 255, 0.12);
   --card-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
   --card-hover-bg: rgba(31, 41, 55, 0.7);
-  --card-hover-border: #facc15; /* neon yellow border */
-  --card-hover-glow: rgba(250, 204, 21, 0.4);
-
   --text-color: #e5e7eb;
   --muted-color: #94a3b8;
-
   --btn-bg: #facc15;
   --btn-bg-hover: #eab308;
   --btn-text: #1f2937;
   --btn-ring: rgba(250, 204, 21, 0.35);
+  --dot-inactive: rgba(255, 255, 255, 0.3);
+  --dot-active: #facc15;
+  --control-bg: rgba(17, 24, 39, 0.8);
+  --control-text: #94a3b8;
 }
 
-/* ---------- Reusable card surface ---------- */
 @mixin surface-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
   color: var(--text-color);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background-color 0.3s ease,
-    border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* ---------- Mentoring Section ---------- */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 .mentoring-container {
   text-align: center;
   color: var(--text-color);
 
-  .services-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    max-width: 1000px;
+  .carousel-wrapper {
+    max-width: 800px;
     margin: 0 auto 40px;
   }
 
-  @keyframes slideFadeIn {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    margin-bottom: 24px;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &:focus {
+      outline: 2px solid var(--btn-bg);
+      outline-offset: 4px;
+    }
   }
 
-  .service-card {
-    @include surface-card();
-    position: relative;
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    text-align: center;
-    animation: slideFadeIn 0.6s ease forwards;
-    opacity: 0;
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    user-select: none;
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 20px;
-      pointer-events: none;
-      background: radial-gradient(
-        1200px 200px at 50% -10%,
-        rgba(255,255,255,0.12),
-        transparent 60%
-      );
-      mix-blend-mode: overlay;
+    &.dragging {
+      transition: none;
+      cursor: grabbing;
+    }
+  }
+
+  .slide {
+    min-width: 100%;
+    padding: 48px 40px;
+    border-radius: 24px;
+    @include surface-card();
+    backdrop-filter: blur(16px);
+    opacity: 0.7;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &.active {
+      opacity: 1;
+      transform: scale(1);
+      ring: 2px solid var(--btn-bg);
+      ring-offset: 4px;
+    }
+
+    &:hover {
+      background: var(--card-hover-bg);
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(16, 24, 40, 0.1);
+    }
+
+    .icon-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--btn-bg);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px var(--btn-ring);
+        animation: pulse 2s infinite;
+      }
+    }
+
+    .icon {
+      font-size: 2.5rem;
+      color: var(--btn-text);
     }
 
     h3 {
-      margin-bottom: 10px;
-      color: inherit;
+      margin: 0 0 16px;
+      font-size: 1.5rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-    }
-
-    .service-icon {
-      font-size: 1.5rem;
-      color: inherit;
-      flex: 0 0 auto;
+      animation: slideIn 0.6s ease forwards;
     }
 
     p {
       margin: 0;
       color: var(--muted-color);
-    }
-
-    /* hover lift + neon border glow */
-    &:hover {
-      transform: translateY(-10px) scale(1.03);
-      background: var(--card-hover-bg);
-      border-color: var(--card-hover-border);
-      box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.12),
-        0 0 20px var(--card-hover-glow),
-        0 0 40px var(--card-hover-glow);
+      line-height: 1.6;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: slideIn 0.8s ease forwards;
     }
   }
 
-  /* stagger entrance */
-  .service-card:nth-child(1) { animation-delay: 0.00s; }
-  .service-card:nth-child(2) { animation-delay: 0.06s; }
-  .service-card:nth-child(3) { animation-delay: 0.12s; }
-  .service-card:nth-child(4) { animation-delay: 0.18s; }
+  .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      background: var(--btn-bg-hover);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 25px var(--btn-ring);
+    }
+
+    &.enhanced {
+      svg {
+        font-size: 1.5rem;
+      }
+    }
+
+    &.prev {
+      left: 16px;
+    }
+
+    &.next {
+      right: 16px;
+    }
+  }
+
+  // Enhanced Controls
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .dots-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: var(--dot-inactive);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--dot-active);
+      transform: scale(1.2);
+    }
+
+    &.active {
+      width: 32px;
+      border-radius: 6px;
+      background: var(--dot-active);
+      
+      .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: var(--btn-bg-hover);
+        border-radius: 6px;
+        animation: progress 4s linear infinite;
+
+        &.paused {
+          animation-play-state: paused;
+        }
+      }
+    }
+  }
+
+  .play-pause-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    background: var(--control-bg);
+    color: var(--control-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      background: var(--card-hover-bg);
+      transform: scale(1.05);
+    }
+
+    svg {
+      font-size: 1rem;
+    }
+  }
+
+  .slide-counter {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--muted-color);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
 
   .mentoring-contact {
-  display: inline-block;
-  padding: 12px 32px;
-  border-radius: 10px;
-  font-weight: 700;
-  text-decoration: none;
-  border: 1px solid transparent;
-  background-color: var(--btn-bg);
-  color: var(--btn-text); /* متن طبق تم */
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px) scale(1.03);
-    background-color: var(--btn-bg-hover);
-    box-shadow: 0 0 25px var(--btn-ring);
-    border-color: transparent;
+    display: inline-block;
+    padding: 16px 40px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    background-color: var(--btn-bg);
     color: var(--btn-text);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      transform: translateY(-4px) scale(1.05);
+      background-color: var(--btn-bg-hover);
+      box-shadow: 0 8px 30px var(--btn-ring);
+    }
+
+    &:active {
+      transform: translateY(-2px) scale(1.02);
     }
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .mentoring-container .service-card {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
+// Enhanced Responsive Design
 @media screen and (max-width: 768px) {
   .mentoring-container {
-    padding: 40px 20px;
+    padding: 40px 16px;
 
-    .service-card {
-      padding: 20px;
+    .carousel-wrapper {
+      max-width: 100%;
     }
+
+    .slide {
+      padding: 32px 24px;
+
+      .icon-container {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+      }
+
+      .icon {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .nav {
+      width: 40px;
+      height: 40px;
+
+      &.prev {
+        left: 8px;
+      }
+
+      &.next {
+        right: 8px;
+      }
+
+      &.enhanced svg {
+        font-size: 1.25rem;
+      }
+    }
+
+    .carousel-controls {
+      gap: 16px;
+    }
+
+    .mentoring-contact {
+      padding: 14px 32px;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mentoring-container {
+    .slide {
+      padding: 24px 16px;
+    }
+
+    .carousel-controls {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .play-pause-btn {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      
+      svg {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .nav,
+  .dot,
+  .mentoring-contact,
+  .carousel-track {
+    transition: none !important;
+    animation: none !important;
   }
 }

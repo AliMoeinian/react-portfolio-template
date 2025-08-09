@@ -1,124 +1,264 @@
-.llm-overlay {
+/* Overlay: allow page-level scroll if content taller than viewport,
+   but lock background via body overflow: hidden in component */
+   .llm-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: rgba(2, 6, 23, 0.58); /* near-slate with alpha */
+    backdrop-filter: saturate(140%) blur(6px);
+    display: grid;
+    place-items: center;
     z-index: 1000;
+    overflow-y: auto;              /* overlay scrolls if needed */
+    -webkit-overflow-scrolling: touch;
+    padding: 24px;                 /* breathing room around the card */
   }
   
+  /* Card: self-contained, scrollable interior */
   .llm-chat {
-    width: 90%;
-    max-width: 500px;
-    border-radius: 8px;
-    padding: 1rem;
+    width: min(640px, 100%);
+    max-height: calc(100dvh - 48px); /* ensures internal scroll instead of trapping the page */
+    border-radius: 16px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden; /* contain internal scroll areas */
+    animation: pop-in 160ms ease-out;
+    font-size: 0.92rem; /* smaller modern chat font */
+    line-height: 1.35;
   }
   
+  @keyframes pop-in {
+    from { transform: translateY(6px) scale(0.98); opacity: 0; }
+    to   { transform: translateY(0)    scale(1);    opacity: 1; }
+  }
+  
+  /* Theming */
   .light-mode .llm-chat {
-    background: #f8f9fa;
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.92));
     color: #0d1116;
   }
   
   .dark-mode .llm-chat {
-    background: #1e293b;
-    color: #f8f9fa;
+    background: linear-gradient(180deg, rgba(15,23,42,0.88), rgba(30,41,59,0.92));
+    color: #e5e7eb;
+  }
+  
+  /* Header with sticky close */
+  .chat-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+    padding: 6px 6px 8px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index: 2;
+    backdrop-filter: blur(6px);
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    opacity: 0.95;
   }
   
   .close-button {
-    align-self: flex-end;
     background: none;
-    border: none;
-    font-size: 1.5rem;
+    border: 0;
+    font-size: 1.4rem;
+    line-height: 1;
     cursor: pointer;
+    color: inherit;
+    opacity: 0.8;
+    padding: 2px 6px;
+    border-radius: 8px;
+    transition: opacity .15s ease, transform .15s ease, background-color .15s ease;
+  
+    &:hover { opacity: 1; transform: scale(1.06); background: rgba(255,255,255,0.08); }
   }
   
+  /* Intro text */
   .llm-instruction {
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    text-align: center;
+    margin: 2px 2px 4px;
+    font-size: 0.85rem;
+    text-align: left;
+    opacity: 0.85;
   }
   
+  /* Messages area: make it flex child that can scroll. Key: min-height: 0 */
   .messages {
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 0;                 /* critical to enable internal scroll in flex column */
     overflow-y: auto;
-    margin-bottom: 1rem;
+    padding: 6px;
+    display: grid;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
   }
   
+  /* Message bubbles */
   .msg {
-    margin-bottom: 0.5rem;
+    display: flex;
   
-    &.user {
-      text-align: right;
-    }
-  
-    &.llm {
-      text-align: left;
-    }
+    &.user { justify-content: flex-end; }
+    &.llm  { justify-content: flex-start; }
   
     p {
-      display: inline-block;
-      padding: 0.5rem 0.75rem;
-      border-radius: 8px;
-      background: #f1f1f1;
-      color: #0d1116;
+      max-width: 85%;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      border: 1px solid rgba(0,0,0,0.06);
     }
   
-    &.user p {
-      background: #d0f0c0;
-    }
+    &.user p { border-top-right-radius: 4px; }
+    &.llm  p { border-top-left-radius: 4px; }
+  }
   
-    &.llm p {
-      background: #e2e8f0;
-    }
-  
-    .contact-button {
-      margin-top: 0.5rem;
-      display: inline-block;
-    }
+  .light-mode .msg {
+    p { background: #f3f4f6; color: #0d1116; }
+    &.user p { background: #dbeafe; border-color: rgba(59,130,246,0.25); }
+    &.llm  p { background: #eef2f7; }
   }
   
   .dark-mode .msg {
-    p {
-      background: #374151;
-      color: #f8f9fa;
-    }
-  
-    &.user p {
-      background: #0e33af;
-      color: #1f2937;
-    }
-  
-    &.llm p {
-      background: #475569;
-    }
+    p { background: #334155; color: #e5e7eb; border-color: rgba(255,255,255,0.06); }
+    &.user p { background: #0e33af; color: #e5e7eb; border-color: rgba(99,102,241,0.35); }
+    &.llm  p { background: #3b4457; }
   }
   
-  form {
-    display: flex;
-    gap: 0.5rem;
+  /* Contact card inside LLM message */
+  .contact-card {
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(0,0,0,0.03);
+  }
+  
+  .dark-mode .contact-card {
+    border-color: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+  }
+  
+  /* Composer */
+  .composer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.08);
   
     input {
-      flex: 1;
-      padding: 0.5rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      outline: none;
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.85);
     }
   
     button {
-      padding: 0.5rem 1rem;
+      padding: 10px 16px;
       border: none;
-      border-radius: 4px;
-      background: #007bff;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
       color: #fff;
+      font-weight: 600;
       cursor: pointer;
+      transition: transform .08s ease, filter .15s ease;
     }
   
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+    button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+  }
+  
+  .dark-mode .composer input {
+    border-color: rgba(148,163,184,0.25);
+    background: rgba(2,6,23,0.35);
+    color: #e5e7eb;
+  }
+  
+  /* Contact actions */
+  .contact-actions { display: grid; gap: 12px; }
+  
+  .email-box {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  
+    input {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border, rgba(0,0,0,0.15));
+      background: var(--card, rgba(255,255,255,0.85));
+      color: inherit;
     }
+  
+    .copy-btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      font-weight: 600;
+      transition: transform .08s ease, filter .15s ease;
+    }
+  
+    .copy-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  }
+  
+  .dark-mode .email-box input {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.12);
+  }
+  
+  .cta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  
+    .contact-button {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform .08s ease, filter .15s ease;
+  
+      &.primary {
+        background: linear-gradient(135deg, #0ea5e9, #2563eb);
+        color: #fff;
+      }
+      &.secondary {
+        background: transparent;
+        color: inherit;
+        border: 1px solid rgba(148,163,184,0.4);
+      }
+  
+      &:hover { filter: brightness(1.06); transform: translateY(-1px); }
+    }
+  }
+  
+  .tiny-hint {
+    font-size: 0.78rem;
+    opacity: 0.8;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    .llm-chat { border-radius: 12px; }
+    .title { font-size: 0.9rem; }
+    .msg p { max-width: 100%; }
   }
   

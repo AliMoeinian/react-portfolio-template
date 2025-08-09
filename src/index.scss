@@ -64,7 +64,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
   justify-content: space-between;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 
-  button {
+  .nav-link {
     font-size: 1.1rem;
     font-family: "Lato", sans-serif;
     text-transform: none;
@@ -112,7 +112,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
     background-color: rgba(43, 53, 69, 0.75);
     border-bottom-color: rgba(255, 255, 255, 0.2);
 
-    button, svg {
+    .nav-link, svg {
       color: #e5e7eb;
 
       &:hover {
@@ -141,23 +141,24 @@ p, a, h1, h2, h3, h4, h5, label, button {
   .navigation-bar {
     background-color: rgba(248, 249, 250, 0.75);
     border-bottom: 4px solid rgba(0, 0, 0, 0.05); // subtle border
-    button {
+
+    .nav-link {
       color: #0d1116;
       font-weight: 500;
 
       &:hover {
         color: #3b82f6; // آبی ملایم
-      }
 
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 10%;
-        width: 80%;
-        height: 2px;
-        background: #3b82f6;
-        border-radius: 1px;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 10%;
+          width: 80%;
+          height: 2px;
+          background: #3b82f6;
+          border-radius: 1px;
+        }
       }
     }
   }

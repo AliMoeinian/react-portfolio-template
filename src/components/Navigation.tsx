@@ -101,6 +101,7 @@ function Navigation({ parentToChild, modeChange }: any) {
             {navItems.map(([label, id]) => (
               <Button
                 key={label}
+                className="nav-link"
                 onClick={() => scrollToSection(id)}
                 sx={{ color: "inherit" }}
               >
