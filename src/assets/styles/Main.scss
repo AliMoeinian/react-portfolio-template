@@ -59,7 +59,7 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-out;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     
     // ✨ اضافه کردن شاین افکت
     &::before {
@@ -166,19 +166,20 @@
 }
 
 /* 📱 Mobile Responsive */
+/* 📱 Mobile Responsive */
 @media screen and (max-width: 768px) {
   .about-section {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 80px 20px 40px;
+    padding: 60px 15px 30px;
+    gap: 20px;
 
     .image-wrapper {
       img {
-        width: 180px;
-        height: 180px;
+        width: 120px;
+        height: 120px;
       }
-      
       &::before {
         top: -3px;
         left: -3px;
@@ -188,29 +189,42 @@
     }
 
     .content {
-      padding: 25px;
-      margin-top: 20px;
-      
+      padding: 20px;
+      margin-top: 10px;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(4px);
+
       h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin-bottom: 8px;
       }
 
       .title {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
       }
 
       .description {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         line-height: 1.5;
+        max-width: 100%;
+        margin: 0 auto;
       }
 
       .social_icons {
         justify-content: center;
-        margin-top: 25px;
+        margin-top: 20px;
+        gap: 12px;
+
+        svg {
+          font-size: 1.6em;
+        }
       }
     }
   }
 }
+
 
 /* 🌟 انیمیشن‌های جدید */
 @keyframes fadeIn {

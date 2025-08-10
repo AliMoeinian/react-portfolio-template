@@ -1,3 +1,4 @@
+// Mentoring.tsx
 import React, { useState, useEffect, useCallback } from "react";
 import "../assets/styles/Mentoring.scss";
 import ScienceIcon from "@mui/icons-material/Science";
@@ -17,36 +18,21 @@ interface MentoringItem {
 }
 
 const mentoringItems: MentoringItem[] = [
-  {
-    title: "Data Science Mentoring",
-    description:
-      "Guidance on projects, research, and learning paths in data science, from exploratory data analysis to deploying ML models.",
-    icon: ScienceIcon
-  },
-  {
-    title: "Resume & Career Review",
-    description:
-      "Personalized feedback to improve your resume, portfolio, and LinkedIn, helping you stand out to employers.",
-    icon: DescriptionIcon
-  },
-  {
-    title: "Programming Fundamentals",
-    description:
-      "Entry-level training in Python and C++ with real-world examples, clean code practices, and problem-solving skills.",
-    icon: CodeIcon
-  },
-  {
-    title: "AI & Large Language Models (LLM)",
-    description:
-      "Learn to build, fine-tune, and apply LLMs, RAG systems, and AI Agents for real-world use cases.",
-    icon: PsychologyIcon
-  },
-  {
-    title: "Interview Preparation",
-    description:
-      "Mock sessions and strategies to confidently tackle technical and behavioral interview questions.",
-    icon: WorkIcon
-  }
+  { title: "Data Science Mentoring",
+    description: "Guidance on projects, research, and learning paths in data science, from exploratory data analysis to deploying ML models.",
+    icon: ScienceIcon },
+  { title: "Resume & Career Review",
+    description: "Personalized feedback to improve your resume, portfolio, and LinkedIn, helping you stand out to employers.",
+    icon: DescriptionIcon },
+  { title: "Programming Fundamentals",
+    description: "Entry-level training in Python and C++ with real-world examples, clean code practices, and problem-solving skills.",
+    icon: CodeIcon },
+  { title: "AI & Large Language Models (LLM)",
+    description: "Learn to build, fine-tune, and apply LLMs, RAG systems, and AI Agents for real-world use cases.",
+    icon: PsychologyIcon },
+  { title: "Interview Preparation",
+    description: "Mock sessions and strategies to confidently tackle technical and behavioral interview questions.",
+    icon: WorkIcon }
 ];
 
 export default function Mentoring() {
@@ -68,19 +54,14 @@ export default function Mentoring() {
     setIndex(slideIndex);
   }, []);
 
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
+  const togglePlayPause = () => setIsPlaying(p => !p);
 
-  // Enhanced auto-play with pause on hover
   useEffect(() => {
     if (!isPlaying || isDragging) return;
-    
     const id = setInterval(nextSlide, 4000);
     return () => clearInterval(id);
   }, [isPlaying, isDragging, nextSlide]);
 
-  // Touch/Mouse drag handlers
   const handleDragStart = (clientX: number) => {
     setIsDragging(true);
     setDragStart(clientX);
@@ -89,56 +70,57 @@ export default function Mentoring() {
 
   const handleDragMove = (clientX: number) => {
     if (!isDragging) return;
-    const diff = clientX - dragStart;
-    setDragOffset(diff);
+    setDragOffset(clientX - dragStart);
   };
 
   const handleDragEnd = () => {
     if (!isDragging) return;
-    
     const threshold = 100;
-    if (dragOffset > threshold) {
-      prevSlide();
-    } else if (dragOffset < -threshold) {
-      nextSlide();
-    }
-    
+    if (dragOffset > threshold) prevSlide();
+    else if (dragOffset < -threshold) nextSlide();
     setIsDragging(false);
     setDragOffset(0);
   };
 
-  // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowLeft') prevSlide();
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === ' ') {
+    if (e.key === "ArrowLeft") prevSlide();
+    if (e.key === "ArrowRight") nextSlide();
+    if (e.key === " ") {
       e.preventDefault();
       togglePlayPause();
     }
   };
 
-  const translateX = -index * 100 + (dragOffset / 7);
+  const onRequestMentoring = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+  // In case any overlay blocks default navigation, force the mailto
+  e.preventDefault();
+  window.location.href = "mailto:alimoeinianDev@gmail.com?subject=Mentoring%20Request";
+}, []);
+
+
+  const translateX = -index * 100 + (dragOffset / window.innerWidth) * 100;
 
   return (
     <div className="mentoring-container section" id="mentoring">
       <h1 className="section-title">Free Mentoring</h1>
-      
-      <div className="carousel-wrapper">
-        <div 
+
+      <div
+        className="carousel-wrapper"
+        onMouseEnter={() => setIsPlaying(false)}
+        onMouseLeave={() => setIsPlaying(true)}
+      >
+        <div
           className="carousel"
           onKeyDown={handleKeyDown}
           tabIndex={0}
           role="region"
           aria-label="Mentoring services carousel"
-          onMouseEnter={() => setIsPlaying(false)}
-          onMouseLeave={() => setIsPlaying(true)}
         >
-          <button className="nav prev enhanced" onClick={prevSlide} aria-label="previous">
+          <button className="nav prev" onClick={prevSlide} aria-label="Previous slide">
             <ChevronLeftIcon />
           </button>
-          
           <div
-            className={`carousel-track ${isDragging ? 'dragging' : ''}`}
+            className={`carousel-track ${isDragging ? "dragging" : ""}`}
             style={{ transform: `translateX(${translateX}%)` }}
             onMouseDown={(e) => handleDragStart(e.clientX)}
             onMouseMove={(e) => handleDragMove(e.clientX)}
@@ -150,10 +132,11 @@ export default function Mentoring() {
           >
             {mentoringItems.map((item, idx) => {
               const isActive = idx === index;
+              const Icon = item.icon;
               return (
-                <div className={`slide ${isActive ? 'active' : ''}`} key={idx}>
+                <div className={`slide ${isActive ? "active" : ""}`} key={idx}>
                   <div className="icon-container">
-                    <item.icon className="icon" />
+                    <Icon className="icon" />
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
@@ -161,53 +144,50 @@ export default function Mentoring() {
               );
             })}
           </div>
-          
-          <button className="nav next enhanced" onClick={nextSlide} aria-label="next">
+          <button className="nav next" onClick={nextSlide} aria-label="Next slide">
             <ChevronRightIcon />
           </button>
         </div>
 
-        {/* Enhanced Controls */}
         <div className="carousel-controls">
-          {/* Dot Indicators */}
           <div className="dots-container">
             {mentoringItems.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => goToSlide(idx)}
-                className={`dot ${idx === index ? 'active' : ''}`}
+                className={`dot ${idx === index ? "active" : ""}`}
                 aria-label={`Go to slide ${idx + 1}`}
               >
                 {idx === index && isPlaying && (
-                  <div className={`progress-bar ${isDragging ? 'paused' : ''}`} />
+                  <div className={`progress-bar ${isDragging ? "paused" : ""}`} />
                 )}
               </button>
             ))}
           </div>
 
-          {/* Play/Pause Button */}
           <button
             onClick={togglePlayPause}
             className="play-pause-btn"
-            aria-label={isPlaying ? 'Pause carousel' : 'Play carousel'}
+            aria-label={isPlaying ? "Pause carousel" : "Play carousel"}
           >
             {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-            <span>{isPlaying ? 'Pause' : 'Play'}</span>
+            <span>{isPlaying ? "Pause" : "Play"}</span>
           </button>
-        </div>
 
-        {/* Slide Counter */}
-        <div className="slide-counter">
-          {index + 1} of {mentoringItems.length}
-        </div>s
+          <div className="slide-counter">
+            {index + 1} of {mentoringItems.length}
+          </div>
+        </div>
       </div>
 
-      <a
-        className="mentoring-contact"
-        href="mailto:alimoeinianDev@gmail.com"
-      >
-        Request Mentoring
-      </a>
+        <a
+          className="mentoring-contact"
+          href="mailto:alimoeinianDev@gmail.com"
+          onClick={onRequestMentoring}
+        >
+          Request Mentoring
+        </a>
+
     </div>
   );
 }

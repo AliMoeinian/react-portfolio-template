@@ -132,7 +132,7 @@ export default function LLMTwin({
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="chat-header">
-          <h2 className="title">This is Ali's LLM Twin, you can Talk to it about Your Projects</h2>
+          <h2 className="title">This is Ali's LLM Twin, Talk about Your Project Please</h2>
           <button className="close-button" onClick={onClose} aria-label="Close">
             ×
           </button>
