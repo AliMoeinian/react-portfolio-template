@@ -1,85 +1,295 @@
 .education-container {
   text-align: center;
+  padding: 60px 6vw;
+
+  .section-title {
+    margin-bottom: 48px;
+  }
 
   .education-list {
     list-style: none;
     margin: 0 auto;
     padding: 0;
-    max-width: 800px;
+    max-width: 900px;
 
     .education-item {
       display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+      padding: 28px 32px;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
       border: 1px solid transparent;
-      transition: transform 0.3s ease, box-shadow 0.3s ease,
-        background-color 0.3s ease, border-color 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: left;
 
       img {
-        width: 60px;
-        height: 60px;
+        width: 64px;
+        height: 64px;
         object-fit: contain;
-        border-radius: 8px;
+        border-radius: 12px;
+        flex-shrink: 0;
+        margin-top: 4px; // Align with title
+      }
+
+      .content-wrapper {
+        flex: 1;
+        min-width: 0; // Prevent flex overflow
       }
 
       h3 {
-        margin: 0;
-        font-size: 1.5rem;
+        margin: 0 0 8px 0;
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.3;
+        transition: color 0.3s ease;
       }
 
-      p {
-        margin: 5px 0;
+      .degree {
+        margin: 0 0 12px 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+        line-height: 1.4;
+        opacity: 0.9;
       }
 
       .period {
-        font-size: 0.9rem;
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin-bottom: 16px;
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
       }
 
       .details {
-        margin-top: 10px;
-        padding-left: 20px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          position: relative;
+          margin-bottom: 10px;
+          padding-left: 20px;
+          font-size: 0.95rem;
+          line-height: 1.6;
+          transition: all 0.3s ease;
+
+          // Custom bullet with primary color
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          // Subtle hover effect for individual details
+          &:hover {
+            padding-left: 24px;
+            
+            &::before {
+              transform: scale(1.3);
+            }
+          }
+        }
       }
     }
   }
 }
 
+// 🌙 Dark Mode
 .dark-mode {
   .education-item {
-      background-color: rgba(30, 41, 59, 0.6);
-      border-color: rgba(255, 255, 255, 0.1);
-      color: #e2e8f0;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    background-color: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      background-color: #334155;
+      border-color: #facc15;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
+      transform: translateY(-8px) scale(1.02);
+
+      h3 {
+        color: #facc15;
+      }
+    }
+
+    h3 {
+      color: #f1f5f9;
+    }
+
+    .degree {
+      color: #cbd5e1;
+    }
+
+    .period {
+      background-color: rgba(250, 204, 21, 0.15);
+      color: #facc15;
+      border: 1px solid rgba(250, 204, 21, 0.3);
 
       &:hover {
-        background-color: #334155;
-        border-color: #facc15;
-        box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
-        transform: translateY(-10px) scale(1.03);
+        background-color: rgba(250, 204, 21, 0.25);
+        transform: scale(1.05);
       }
+    }
+
+    .details {
+      li {
+        color: #d1d5db;
+
+        &::before {
+          background-color: #facc15;
+        }
+
+        &:hover {
+          color: #f3f4f6;
+
+          &::before {
+            background-color: #fbbf24;
+            box-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
+          }
+        }
+      }
+    }
   }
 }
 
+// ☀️ Light Mode
 .light-mode {
   .education-item {
-      background-color: rgba(255, 255, 255, 0.6);
-      border-color: rgba(0, 0, 0, 0.05);
-      color: #1f2937;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.06);
+    color: #1f2937;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    &:hover {
+      background-color: #f8fafc;
+      border-color: #3b82f6;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+      transform: translateY(-8px) scale(1.02);
+
+      h3 {
+        color: #3b82f6;
+      }
+    }
+
+    h3 {
+      color: #111827;
+    }
+
+    .degree {
+      color: #4b5563;
+    }
+
+    .period {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+      border: 1px solid rgba(59, 130, 246, 0.2);
 
       &:hover {
-        background-color: #f3f4f6;
-        border-color: #3b82f6;
-        box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
-        transform: translateY(-10px) scale(1.03);
+        background-color: rgba(59, 130, 246, 0.15);
+        transform: scale(1.05);
       }
+    }
+
+    .details {
+      li {
+        color: #374151;
+
+        &::before {
+          background-color: #3b82f6;
+        }
+
+        &:hover {
+          color: #1f2937;
+
+          &::before {
+            background-color: #2563eb;
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+          }
+        }
+      }
+    }
   }
 }
 
+// 📱 Mobile Responsive
 @media screen and (max-width: 768px) {
   .education-container {
     padding: 40px 20px;
+
+    .education-list {
+      max-width: 100%;
+
+      .education-item {
+        padding: 20px;
+        margin-bottom: 24px;
+        gap: 16px;
+
+        img {
+          width: 48px;
+          height: 48px;
+        }
+
+        h3 {
+          font-size: 1.25rem;
+        }
+
+        .degree {
+          font-size: 1rem;
+        }
+
+        .period {
+          font-size: 0.8rem;
+          padding: 4px 10px;
+        }
+
+        .details {
+          li {
+            font-size: 0.9rem;
+            padding-left: 16px;
+            
+            &:hover {
+              padding-left: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Very small screens
+@media screen and (max-width: 480px) {
+  .education-container {
+    .education-list {
+      .education-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+
+        img {
+          align-self: center;
+          margin-top: 0;
+        }
+
+        .content-wrapper {
+          text-align: left;
+        }
+      }
+    }
   }
 }

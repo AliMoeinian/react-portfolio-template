@@ -1,94 +1,465 @@
-.achievements-container {
-    padding: 80px 20px;
-    text-align: center;
+/* Theme tokens (inherits if you already define these in your app) */
+.light-mode {
+  --ach-card-bg: rgba(255, 255, 255, 0.85);
+  --ach-card-bg-hover: #ffffff;
+  --ach-card-border: rgba(0, 0, 0, 0.08);
+  --ach-text: #0f172a;
+  --ach-muted: #475569;
+  --ach-shadow: rgba(0, 0, 0, 0.06);
+  --ach-shadow-hover: rgba(0, 0, 0, 0.12);
+  --ach-primary: #3b82f6;
+}
+.dark-mode {
+  --ach-card-bg: rgba(17, 24, 39, 0.6);
+  --ach-card-bg-hover: rgba(17, 24, 39, 0.8);
+  --ach-card-border: rgba(255, 255, 255, 0.08);
+  --ach-text: #e5e7eb;
+  --ach-muted: #94a3b8;
+  --ach-shadow: rgba(0, 0, 0, 0.5);
+  --ach-shadow-hover: rgba(0, 0, 0, 0.6);
+  --ach-primary: #facc15;
+}
+
+/* Section container */
+.achievements.section {
+  position: relative;
+  padding: 60px 6vw;
+  overflow: hidden;
+}
+
+/* Optional underline handled by your Section.scss; this keeps consistent spacing */
+.section-title {
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
   
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      font-family: "Lato", sans-serif;
-    }
+  /* Subtle fade-in animation */
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatGently {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* ===== Mobile-first: carousel layout ===== */
+.carousel-wrapper {
+  position: relative;
   
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-  
-    @keyframes slideFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  
-    .achievement-card {
-      padding: 30px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      border: 1px solid transparent;
-      text-align: center;
-      animation: slideFadeIn 0.6s ease forwards;
-      opacity: 0;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  
-      h3 {
-        margin-bottom: 10px;
-        color: inherit;
-      }
-  
-      .year {
-        display: block;
-        margin-top: 15px;
-        font-size: 0.9rem;
-      }
-  
-      &:hover {
-        transform: translateY(-10px) scale(1.03);
-      }
-    }
+  /* Add subtle background glow effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 120%;
+    height: 60%;
+    background: radial-gradient(ellipse, var(--ach-primary) 0%, transparent 70%);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.achievements-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 8px 16px 0;
+  position: relative;
+  z-index: 1;
+
+  /* Custom scrollbar for better UX */
+  &::-webkit-scrollbar {
+    height: 4px;
+    margin-top: 8px;
   }
   
-  .dark-mode {
-    .achievement-card {
-      background-color: rgba(30, 41, 59, 0.6);
-      border-color: rgba(255, 255, 255, 0.08);
-      color: #e2e8f0;
+  &::-webkit-scrollbar-track {
+    background: var(--ach-card-border);
+    border-radius: 2px;
+  }
   
+  &::-webkit-scrollbar-thumb {
+    background: var(--ach-primary);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    opacity: 0.8;
+  }
+}
+
+.achievement-card {
+  flex: 0 0 88%;
+  max-width: 88%;
+  scroll-snap-align: start;
+  position: relative;
+
+  background: var(--ach-card-bg);
+  border: 1px solid var(--ach-card-border);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 25px var(--ach-shadow),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  padding: 24px 22px 20px;
+  color: var(--ach-text);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  
+  /* Stagger animation for cards */
+  animation: slideInFromLeft 0.6s ease-out;
+  animation-fill-mode: both;
+  
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Subtle gradient overlay for depth */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ach-primary), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-10px) scale(1.03);
+    outline: none;
+    
+    &::before {
+      opacity: 0.6;
+    }
+  }
+
+  &:active {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    font-weight: 700;
+    transition: color 0.3s ease;
+    flex: 1;
+  }
+
+  .year-badge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--ach-card-border);
+    background: linear-gradient(180deg, var(--ach-card-bg-hover), var(--ach-card-bg));
+    color: var(--ach-muted);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    /* Subtle shimmer effect */
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -100%;
+      width: 100%;
+      height: calc(100% + 4px);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    &:hover::after {
+      left: 100%;
+    }
+  }
+
+  .card-desc {
+    margin: 8px 0 0;
+    color: var(--ach-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  
+  /* Add micro-interaction on focus */
+  &:focus-visible {
+    animation: floatGently 2s ease-in-out infinite;
+  }
+}
+
+/* Dots navigation for mobile */
+.dots-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ach-card-border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &.active {
+      background: var(--ach-primary);
+      transform: scale(1.2);
+    }
+    
+    &:hover {
+      background: var(--ach-muted);
+      transform: scale(1.1);
+    }
+    
+    /* Active dot glow effect */
+    &.active::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--ach-primary);
+      opacity: 0.2;
+      z-index: -1;
+    }
+  }
+}
+
+/* Hide navigation buttons on mobile - user can scroll/swipe naturally */
+.nav-btn {
+  display: none;
+}
+
+/* 🌙 دارک مود - هماهنگ با skills */
+.dark-mode {
+  .achievement-card {
+    background-color: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+
+    &:hover,
+    &:focus-visible {
+      background-color: #334155;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.4); // زرد نئونی
+      border-color: #facc15;
+    }
+
+    .card-title {
       &:hover {
-        background-color: #334155;
-        box-shadow: 0 0 25px rgba(250, 204, 21, 0.4);
+        color: #facc15;
+      }
+    }
+
+    .year-badge {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      border-color: rgba(255, 255, 255, 0.1);
+
+      &:hover {
+        background-color: #facc15;
+        color: #1a202c;
         border-color: #facc15;
       }
     }
   }
-  
-  .light-mode {
-    .achievement-card {
-      background-color: rgba(255, 255, 255, 0.6);
-      border-color: rgba(0, 0, 0, 0.05);
-      color: #1f2937;
-  
+
+  .dots-navigation .dot {
+    background: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background: #94a3b8;
+    }
+
+    &.active {
+      background: #facc15;
+
+      &::after {
+        background: #facc15;
+      }
+    }
+  }
+}
+
+/* ☀️ لایت مود - هماهنگ با skills */
+.light-mode {
+  .achievement-card {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #1f2937;
+
+    &:hover,
+    &:focus-visible {
+      background-color: #f3f4f6;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); // آبی نئونی
+      border-color: #3b82f6;
+    }
+
+    .card-title {
       &:hover {
-        background-color: #f3f4f6;
-        box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+        color: #3b82f6;
+      }
+    }
+
+    .year-badge {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: #1f2937;
+      border-color: rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #3b82f6;
+        color: white;
         border-color: #3b82f6;
       }
     }
   }
-  
-  @media screen and (max-width: 768px) {
-    .achievements-container {
-      padding: 40px 20px;
+
+  .dots-navigation .dot {
+    background: rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: #475569;
     }
+
+    &.active {
+      background: #3b82f6;
+
+      &::after {
+        background: #3b82f6;
+      }
+    }
+  }
+}
+
+/* ===== Desktop/tablet: switch to grid ===== */
+@media (min-width: 768px) {
+  .dots-navigation {
+    display: none; /* Hide dots on desktop */
+  }
   
-    .achievement-card {
-      padding: 20px;
+  .achievements-list {
+    overflow: visible;
+    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    scroll-snap-type: none;
+    padding: 0;
+    
+    /* Custom scrollbar hidden on desktop */
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
   
+  .achievement-card {
+    flex: initial;
+    max-width: initial;
+    min-height: 180px;
+    flex: 0 0 auto;
+    
+    /* Enhanced hover effects for desktop */
+    &:hover {
+      transform: translateY(-10px) scale(1.03);
+    }
+    
+    /* Stagger animation reset for grid */
+    &:nth-child(n) { 
+      animation-delay: calc(0.1s * var(--card-index, 1));
+    }
+  }
+}
+
+/* Wider screens: optimize spacing */
+@media (min-width: 1120px) {
+  .achievements.section {
+    padding: 80px 6vw;
+  }
+  
+  .achievements-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .achievement-card {
+    min-height: 200px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .achievement-card,
+  .nav-btn,
+  .section-title {
+    animation: none;
+  }
+  
+  .achievement-card:focus-visible {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.1s;
+  }
+}
+
+/* 📱 Responsive */
+@media screen and (max-width: 768px) {
+  .achievements.section {
+    padding: 40px 20px;
+  }
+
+  .achievement-card {
+    padding: 20px;
+  }
+}
