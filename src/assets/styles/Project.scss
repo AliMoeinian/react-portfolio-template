@@ -1,49 +1,96 @@
 .projects-container {
-    display: flex;
-    flex-direction: column;
-    padding: 5% 10%;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  // padding removed - handled by Section.scss
+  
+  .section-title {
+    text-align: center; // Override text-align for title consistency
+  }
 }
   
 .projects-container .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  margin-top: 20px; // Space between title and grid
 }
   
 .projects-container .projects-grid .project {
-    text-align: left;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
   
 .project h2:hover {
-    text-decoration: underline;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  text-decoration: underline;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
   
 .zoom {
-    border-radius: 5px;
-    transition: transform .2s;
-    margin: 0 auto;
+  border-radius: 12px; // More modern radius
+  transition: transform .3s ease, box-shadow .3s ease;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
   
 .zoom:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-@media screen {
-    @media (max-width: 700px) {
-        .projects-container {
-            display: block;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-  
-        .projects-container .projects-grid {
-            display: block;
-        }
+// Enhanced theme support
+.light-mode {
+  .project {
+    h2 {
+      color: #1e293b;
       
-        .projects-container .projects-grid .project {
-            padding-bottom: 5%;
-        }
+      &:hover {
+        color: #3b82f6;
+      }
     }
+    
+    p {
+      color: #475569;
+    }
+  }
+}
+
+.dark-mode {
+  .project {
+    h2 {
+      color: #f1f5f9;
+      
+      &:hover {
+        color: #facc15;
+      }
+    }
+    
+    p {
+      color: #94a3b8;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .projects-container {
+    display: block;
+    // padding handled by Section.scss
+  }
+
+  .projects-container .projects-grid {
+    display: block;
+    grid-gap: 30px;
+  }
+  
+  .projects-container .projects-grid .project {
+    margin-bottom: 40px; // Better mobile spacing
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

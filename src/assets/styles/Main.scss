@@ -4,7 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding: 100px 15% 0;
+  padding: 100px 15% 80px;
   min-height: 700px;
   background-image: url("../images/bg-dark.png");
   background-repeat: no-repeat;
@@ -12,13 +12,12 @@
   background-attachment: fixed;
   background-position: center;
   position: relative;
-  
-
 
   .image-wrapper {
     position: relative;
     z-index: 2;
-    
+    margin-top: 20px;
+
     &::before {
       content: '';
       position: absolute;
@@ -26,13 +25,12 @@
       left: -5px;
       right: -5px;
       bottom: -5px;
-      background: linear-gradient(45deg, 
-        #3b82f6, #8b5cf6, #06b6d4, #10b981);
+      background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
       border-radius: 50%;
       z-index: -1;
       animation: rotate 3s linear infinite;
     }
-    
+
     img {
       width: 250px;
       height: 250px;
@@ -42,7 +40,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       animation: fadeInUp 0.8s ease-out;
       transition: transform 0.3s ease;
-      
+
       &:hover {
         transform: scale(1.05);
       }
@@ -53,99 +51,77 @@
     text-align: left;
     z-index: 2;
     padding: 30px;
-    background-color: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(6px);
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-out;
     position: relative;
-    overflow: visible;
-    
-    // ✨ اضافه کردن شاین افکت
+    overflow: hidden; // برای shimmer effect
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); // Smoother transition
+
+    // بهبود shimmer effect
     &::before {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
+      left: -120%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.1), 
-        transparent);
-      transition: left 0.5s;
-    }
-    
-    &:hover::before {
-      left: 100%;
+      background: linear-gradient(
+        110deg, 
+        transparent 25%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        transparent 75%
+      );
+      transform: skewX(-15deg);
+      transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; // جلوگیری از تداخل با کلیک
     }
 
-    /* نام - پالت رنگی جدید */
+    &:hover::before {
+      left: 120%;
+    }
+
+    // افکت pulse برای حالت focus
+    &:focus-within {
+      outline: none;
+      animation: gentle-pulse 2s ease-in-out infinite;
+    }
+
     h1 {
       font-size: 4rem;
       margin: 0;
       font-weight: 700;
-      color: #072e55; // آبی واضح
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-      animation: slideUp 0.8s ease-out, glow 2s ease-in-out infinite alternate;
+      animation: slideUp 0.8s ease-out;
       position: relative;
+      transition: all 0.3s ease;
 
-      .light-mode & {
-        background: linear-gradient(135deg, 
-          #1e40af 0%, 
-          #3730a3 50%, 
-          #581c87 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+      &::after {
+        display: none;
       }
     }
 
-    /* عنوان شغلی با رنگ‌های جدید */
     .title {
       font-size: 1.4rem;
       font-weight: 600;
-      background: linear-gradient(90deg, #facc15, #0b46f5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: blur(6px);
-      transition: filter 0.4s ease;
-      cursor: pointer;
       margin: 10px 0;
-      text-shadow: 0 2px 8px rgba(36, 23, 221, 0.781);
-
-      &:hover {
-        filter: blur(0px);
-        text-shadow:  0 2px 8px rgba(36, 23, 221, 0.781);
-      }
-
-      .light-mode & {
-        background: linear-gradient(90deg, #000000, #555555);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+      transition: all 0.3s ease;
     }
 
-    /* توضیح با رنگ‌های بهتر */
     .description {
       font-size: 1rem;
       max-width: 600px;
       margin-top: 15px;
-      color: #cbd5e1;
       letter-spacing: 0.3px;
       line-height: 1.6;
       animation: fadeIn 1.2s ease-out;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-
-      .light-mode & {
-        color: #1e293b;
-      }
+      transition: all 0.3s ease;
     }
 
     .social_icons {
       display: flex;
       gap: 10px;
-      color: white;
       margin-bottom: 10px;
       animation: fadeIn 1.4s ease-out;
 
@@ -165,21 +141,123 @@
   }
 }
 
-/* 📱 Mobile Responsive */
+/* ☀️ Light Mode */
+.light-mode {
+  .about-section .content {
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 
+        0 0 30px rgba(59, 130, 246, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.15);
+      border-color: rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px); // کمی بالا میره
+    }
+
+    // بهبود shimmer برای لایت مود
+    &::before {
+      background: linear-gradient(
+        110deg, 
+        transparent 25%, 
+        rgba(59, 130, 246, 0.1) 50%, 
+        transparent 75%
+      );
+    }
+
+    h1 {
+      color: #1f2937;
+      text-shadow: 0 2px 8px rgba(31, 41, 55, 0.2);
+    }
+
+    .title {
+      color: #3b82f6; // Blue accent for consistency
+      text-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+    }
+
+    .description {
+      color: #374151;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .social_icons {
+      color: #1f2937;
+      
+      a:hover {
+        color: #3b82f6;
+      }
+    }
+  }
+}
+
+/* 🌙 Dark Mode */
+.dark-mode {
+  .about-section .content {
+    background-color: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(250, 204, 21, 0.1);
+
+    &:hover {
+      background-color: rgba(30, 41, 59, 0.85);
+      box-shadow: 
+        0 0 30px rgba(250, 204, 21, 0.3),
+        0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(250, 204, 21, 0.4);
+      transform: translateY(-2px); // کمی بالا میره
+    }
+
+    // بهبود shimmer برای دارک مود
+    &::before {
+      background: linear-gradient(
+        110deg, 
+        transparent 25%, 
+        rgba(250, 204, 21, 0.15) 50%, 
+        transparent 75%
+      );
+    }
+
+    h1 {
+      color: #e2e8f0; // Light gray for better readability
+      text-shadow: 0 2px 8px rgba(226, 232, 240, 0.3);
+    }
+
+    .title {
+      color: #facc15; // Yellow accent for consistency with skills
+      text-shadow: 0 2px 8px rgba(250, 204, 21, 0.3);
+    }
+
+    .description {
+      color: #cbd5e1; // Light blue-gray
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .social_icons {
+      color: #e2e8f0;
+      
+      a:hover {
+        color: #facc15;
+      }
+    }
+  }
+}
+
 /* 📱 Mobile Responsive */
 @media screen and (max-width: 768px) {
   .about-section {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 60px 15px 30px;
+    padding: 60px 15px 50px;
     gap: 20px;
 
     .image-wrapper {
+      margin-top: 40px;
+
       img {
         width: 120px;
         height: 120px;
       }
+
       &::before {
         top: -3px;
         left: -3px;
@@ -190,10 +268,8 @@
 
     .content {
       padding: 20px;
-      margin-top: 10px;
+      margin-top: 20px;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(4px);
       text-align: center;
       align-items: center;
 
@@ -227,55 +303,43 @@
   }
 }
 
-
-/* 🌟 انیمیشن‌های جدید */
+/* 🌟 Animations */
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px);
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(30px) scale(0.9); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0) scale(1); 
-  }
+  from { opacity: 0; transform: translateY(30px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes slideUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(40px);
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0);
-  }
-}
-
-@keyframes glow {
-  from {
-    text-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  }
-  to {
-    text-shadow: 0 4px 20px rgba(59, 130, 246, 0.6);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
   }
-  to {
-    transform: rotate(360deg);
+  50% { 
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+  }
+}
+
+.dark-mode {
+  @keyframes gentle-pulse {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.2);
+    }
   }
 }

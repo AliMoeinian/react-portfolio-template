@@ -1,176 +1,176 @@
 .skills-container {
-    padding: 80px 40px;
-    margin: 60px auto;
-    max-width: 1200px;
+  // padding and margin removed - handled by Section.scss
+  max-width: 1200px;
+  margin: 0 auto; // Center the container
   
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      font-family: "Lato", sans-serif;
-    }
-  }
-  
-  .skills-grid {
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(4, 1fr);
-  
-    @media screen and (max-width: 1200px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    @media screen and (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  /* 🌟 انیمیشن ورود کارت */
-  @keyframes slideFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .skill {
-    padding: 30px;
-    border-radius: 20px;
+  h1 {
+    // Remove custom styles - will inherit from Section.scss
     text-align: center;
-    animation: slideFadeIn 0.6s ease forwards;
-    opacity: 0;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  
-    svg {
-      margin-bottom: 16px;
-      transition: transform 0.3s;
-    }
-  
-    &:hover {
-      transform: translateY(-10px) scale(1.03);
-    }
-  
-    &:hover svg {
-      transform: scale(1.1) rotate(2deg);
-    }
-  
-    h3 {
-      font-size: 1.4rem;
-      margin: 10px 0;
-      color: inherit;
-    }
-  
-    p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 10px;
-      color: inherit;
-    }
-  
-    .chip-title {
-      font-weight: bold;
-      font-size: 0.85rem;
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-  
-    .chip {
-      margin: 4px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
+    font-family: "Lato", sans-serif;
   }
-  
-  /* 🌙 دارک مود */
-  .dark-mode {
-    .skills-container h1 {
+}
+
+.skills-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px; // Space between title and grid
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* 🌟 انیمیشن ورود کارت */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill {
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  animation: slideFadeIn 0.6s ease forwards;
+  opacity: 0;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+  svg {
+    margin-bottom: 16px;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    transform: translateY(-10px) scale(1.03);
+  }
+
+  &:hover svg {
+    transform: scale(1.1) rotate(2deg);
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    margin: 10px 0;
+    color: inherit;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: inherit;
+  }
+
+  .chip-title {
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .chip {
+    margin: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+}
+
+/* 🌙 دارک مود */
+.dark-mode {
+  .skill {
+    background-color: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+
+    &:hover {
+      background-color: #334155;
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.4); // زرد نئونی
+      border-color: #facc15;
+    }
+
+    svg {
       color: #facc15;
     }
-  
-    .skill {
-      background-color: rgba(30, 41, 59, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+
+    .chip-title {
+      color: #facc15;
+    }
+
+    .chip {
+      background-color: rgba(255, 255, 255, 0.1);
       color: #e2e8f0;
-  
+
       &:hover {
-        background-color: #334155;
-        box-shadow: 0 0 25px rgba(250, 204, 21, 0.4); // زرد نئونی
-        border-color: #facc15;
-      }
-  
-      svg {
-        color: #facc15;
-      }
-  
-      .chip-title {
-        color: #facc15;
-      }
-  
-      .chip {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #e2e8f0;
-  
-        &:hover {
-          background-color: #3b82f6;
-          color: white;
-        }
+        background-color: #3b82f6;
+        color: white;
       }
     }
   }
-  
-  /* ☀️ لایت مود */
-  .light-mode {
-    .skills-container h1 {
+}
+
+/* ☀️ لایت مود */
+.light-mode {
+  .skill {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #1f2937;
+
+    &:hover {
+      background-color: #f3f4f6;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); // آبی نئونی
+      border-color: #3b82f6;
+    }
+
+    svg {
       color: #3b82f6;
     }
-  
-    .skill {
-      background-color: rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(0, 0, 0, 0.05);
+
+    .chip-title {
+      color: #3b82f6;
+    }
+
+    .chip {
+      background-color: rgba(0, 0, 0, 0.05);
       color: #1f2937;
-  
+
       &:hover {
-        background-color: #f3f4f6;
-        box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); // آبی نئونی
-        border-color: #3b82f6;
-      }
-  
-      svg {
-        color: #3b82f6;
-      }
-  
-      .chip-title {
-        color: #3b82f6;
-      }
-  
-      .chip {
-        background-color: rgba(0, 0, 0, 0.05);
-        color: #1f2937;
-  
-        &:hover {
-          background-color: #3b82f6;
-          color: white;
-        }
+        background-color: #3b82f6;
+        color: white;
       }
     }
   }
-  
-  /* 📱 Responsive */
-  @media screen and (max-width: 768px) {
-    .skills-container {
-      padding: 40px 20px;
+}
+
+/* 📱 Responsive - additional mobile optimizations */
+@media screen and (max-width: 768px) {
+  .skill {
+    padding: 24px 20px;
+    
+    h3 {
+      font-size: 1.25rem;
     }
-  
-    .skill {
-      padding: 20px;
+    
+    p {
+      font-size: 0.9rem;
+    }
+    
+    svg {
+      font-size: 2.5rem !important;
     }
   }
-  
+}

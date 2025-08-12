@@ -1,52 +1,116 @@
 .publications-container {
-    display: flex;
-    flex-direction: column;
-    padding: 5% 10%;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  // padding removed - handled by Section.scss
+  
+  .section-title {
+    text-align: center; // Override text-align for title consistency
   }
+}
+
+.publications-container .publications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  margin-top: 20px; // Space between title and grid
+}
+
+.publications-container .publications-grid .publication {
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  border-radius: 12px;
   
-  .publications-container .publications-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
+  &:hover {
+    transform: translateY(-5px);
   }
-  
-  .publications-container .publications-grid .publication {
-    text-align: left;
-  }
-  
-  .publication h2:hover {
-    text-decoration: underline;
-    transition: color 0.15s ease-in-out,
-                background-color 0.15s ease-in-out,
-                border-color 0.15s ease-in-out;
-  }
-  
-  .zoom {
-    border-radius: 5px;
-    transition: transform 0.2s;
-    margin: 0 auto;
-  }
-  
-  .zoom:hover {
-    transform: scale(1.05);
-  }
-  
-  @media screen {
-    @media (max-width: 700px) {
-      .publications-container {
-        display: block;
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-  
-      .publications-container .publications-grid {
-        display: block;
-      }
-  
-      .publications-container .publications-grid .publication {
-        padding-bottom: 5%;
+}
+
+.publication h2:hover {
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out;
+}
+
+.zoom {
+  border-radius: 12px; // More modern radius
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.zoom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+// Enhanced theme support
+.light-mode {
+  .publication {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+    }
+    
+    h2 {
+      color: #1e293b;
+      
+      &:hover {
+        color: #3b82f6;
       }
     }
+    
+    p {
+      color: #475569;
+    }
   }
-  
+}
+
+.dark-mode {
+  .publication {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    
+    &:hover {
+      background: rgba(30, 41, 59, 0.8);
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.2);
+    }
+    
+    h2 {
+      color: #f1f5f9;
+      
+      &:hover {
+        color: #facc15;
+      }
+    }
+    
+    p {
+      color: #94a3b8;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .publications-container {
+    display: block;
+    // padding handled by Section.scss
+  }
+
+  .publications-container .publications-grid {
+    display: block;
+    grid-gap: 30px;
+  }
+
+  .publications-container .publications-grid .publication {
+    margin-bottom: 40px; // Better mobile spacing
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

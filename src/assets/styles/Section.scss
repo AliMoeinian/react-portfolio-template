@@ -1,59 +1,273 @@
 // ==============================
-// Section.scss (resolved & final)
-// - unified spacing & dividers
-// - decorative underline on titles
+// Section.scss (Unified & Enhanced)
+// - consistent spacing for all sections
+// - unified title styles with decorative underline
 // - light/dark theme aware
 // ==============================
 
+/* Base Section Styling */
 .section {
-  padding: 80px 20px;
+  padding: 80px 40px; /* Unified padding for all sections */
   scroll-margin-top: 80px;
+  position: relative;
+  
+  /* Better spacing on mobile */
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+  
+  @media screen and (max-width: 480px) {
+    padding: 50px 15px;
+  }
 }
 
-/* subtle divider between consecutive sections */
+/* Consistent dividers between sections */
 .section + .section {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 0; /* Remove any conflicting margins */
 }
 
-/* darker divider in dark mode for better contrast */
 .dark-mode .section + .section {
   border-top-color: rgba(255, 255, 255, 0.08);
 }
 
-/* section titles with a centered gradient underline */
+/* ===== UNIFIED SECTION TITLES ===== */
 .section-title {
   position: relative;
-  margin: 0 0 28px;
+  margin: 0 0 48px 0; /* Consistent bottom margin */
   text-align: center;
   font-weight: 800;
-  letter-spacing: 0.3px;
-
+  font-size: 2.5rem; /* Unified font size */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  
+  /* Unified decorative underline */
   &::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -12px;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
-    height: 3px;
+    height: 4px;
     border-radius: 2px;
-    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      currentColor 20%, 
+      currentColor 80%, 
+      transparent 100%
+    );
+    opacity: 0.8;
+  }
+  
+  /* Responsive title sizes */
+  @media screen and (max-width: 1024px) {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 36px;
+    
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -10px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 32px;
+    
+    &::after {
+      width: 50px;
+    }
   }
 }
 
-/* Light & Dark color tweaks */
+/* Theme-specific title colors */
 .light-mode .section-title {
-  color: #0b1324;
-  text-shadow: 0 2px 4px rgba(8, 6, 125, 0.4);
+  color: #1e293b;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  &::after {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      #3b82f6 20%, 
+      #1d4ed8 80%, 
+      transparent 100%
+    );
+  }
 }
 
 .dark-mode .section-title {
-  color: #ffffff;
+  color: #f8fafc;
+  background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  &::after {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      #facc15 20%, 
+      #f59e0b 80%, 
+      transparent 100%
+    );
+  }
 }
 
-/* responsive spacing */
-@media screen and (max-width: 768px) {
-  .section {
-    padding: 40px 20px;
+/* ===== SPECIAL CASES - Override where needed ===== */
+
+/* Main section (hero) - different styling */
+.main-container .about-section {
+  padding: 100px 15% 0; /* Keep existing hero padding */
+  
+  h1 {
+    /* Keep existing hero title styles */
+    font-size: 4rem;
+    margin: 0;
+    
+    &::after {
+      display: none; /* No underline for hero */
+    }
   }
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 15px 30px;
+    
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
+
+/* Timeline section - specific spacing */
+#history {
+  padding: 80px 40px; /* Consistent with other sections */
+  
+  h1 {
+    @extend .section-title; /* Use unified title styles */
+  }
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* Contact section - ensure consistent spacing */
+.contactme-container {
+  padding: 80px 40px; /* Match other sections */
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* Skills/Expertise container */
+.skills-container {
+  padding: 80px 40px; /* Consistent with sections */
+  margin: 0; /* Remove conflicting margins */
+  
+  h1 {
+    @extend .section-title; /* Use unified styles */
+  }
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* Education container */
+.education-container {
+  padding: 80px 40px; /* Consistent spacing */
+  
+  .section-title {
+    margin-bottom: 48px; /* Consistent with other sections */
+  }
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* Projects container */
+.projects-container {
+  padding: 80px 40px; /* More consistent than 5% 10% */
+  
+  .section-title {
+    @extend .section-title; /* Ensure consistent styling */
+  }
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* Publications container */
+.publications-container {
+  padding: 80px 40px; /* Consistent spacing */
+  
+  .section-title {
+    @extend .section-title; /* Ensure consistent styling */
+  }
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* Achievements section */
+.achievements.section {
+  padding: 80px 40px; /* Override existing padding */
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* Mentoring container */
+.mentoring-container {
+  padding: 80px 40px; /* Consistent spacing */
+  
+  .section-title {
+    margin-bottom: 48px; /* Match other sections */
+  }
+  
+  @media screen and (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+/* ===== ADDITIONAL UTILITIES ===== */
+
+/* Remove any conflicting margins from containers */
+.container,
+.items-container {
+  margin: 0; /* Reset margins that might interfere */
+}
+
+/* Ensure proper spacing between section content and title */
+.section > *:first-child:not(.section-title) {
+  margin-top: 0;
+}
+
+.section > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Smooth scroll behavior for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+.section:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
