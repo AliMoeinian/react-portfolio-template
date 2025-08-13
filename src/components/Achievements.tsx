@@ -35,7 +35,14 @@ const achievements: Achievement[] = [
       "Admitted to the M.Sc. program as an Exceptional Talent at the University of Isfahan.",
     year: "2024",
   },
+  {
+    title: "Member – Young Researchers and Elite Club",
+    description:
+      "Recognized by Islamic Azad University for academic and research excellence.",
+    year: "2023",
+  },
 ];
+
 
 function Achievements() {
   const trackRef = useRef<HTMLDivElement>(null);
