@@ -1,116 +1,520 @@
+/* --- src/assets/styles/Publications.scss --- */
+
+/* Publications Section - Consistent with other sections */
 .publications-container {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  // padding removed - handled by Section.scss
-  
+  text-align: center;
+  position: relative;
+
   .section-title {
-    text-align: center; // Override text-align for title consistency
+    margin-bottom: 24px;
   }
-}
 
-.publications-container .publications-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 50px;
-  margin-top: 20px; // Space between title and grid
-}
+  .publications-intro {
+    max-width: 700px;
+    margin: 0 auto 48px;
 
-.publications-container .publications-grid .publication {
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 20px;
-  border-radius: 12px;
-  
-  &:hover {
-    transform: translateY(-5px);
-  }
-}
-
-.publication h2:hover {
-  text-decoration: underline;
-  transition: color 0.15s ease-in-out,
-              background-color 0.15s ease-in-out,
-              border-color 0.15s ease-in-out;
-}
-
-.zoom {
-  border-radius: 12px; // More modern radius
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 0 auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.zoom:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-// Enhanced theme support
-.light-mode {
-  .publication {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    
-    &:hover {
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.9;
     }
-    
-    h2 {
-      color: #1e293b;
-      
-      &:hover {
-        color: #3b82f6;
+  }
+
+  .publications-footer {
+    margin-top: 48px;
+
+    p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    .github-link {
+      margin: 0 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
       }
     }
-    
-    p {
-      color: #475569;
+  }
+}
+
+/* Grid Layout */
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Publication Cards */
+.publication-card {
+  background: transparent;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-align: left;
+  backdrop-filter: blur(12px);
+  border: 1px solid transparent;
+
+  /* Staggered animation */
+  animation: slideInUp 0.6s ease-out;
+  animation-fill-mode: both;
+  animation-delay: calc(0.1s * var(--card-index, 1));
+
+  &:hover {
+    transform: translateY(-12px) scale(1.02);
+    cursor: pointer;
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+    /* Fixed height for consistent card sizes */
+    height: 280px;
+    /* Gradient background to handle any gaps */
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .publication-image {
+      width: 100%;
+      height: 100%;
+      /* Use cover to fill the space completely */
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+      border-radius: 16px 16px 0 0;
+      display: block;
+      /* Add a subtle filter for better integration */
+      filter: brightness(1.05) contrast(1.1);
+    }
+
+    /* Alternative approach: If covers should maintain their aspect ratio */
+    &.preserve-aspect .publication-image {
+      object-fit: contain;
+      /* Add a subtle shadow to separate from background */
+      filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.3));
+      /* Scale down slightly to add padding effect */
+      transform: scale(0.95);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    &.preserve-aspect:hover .publication-image {
+      transform: scale(1);
+      filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.4));
+    }
+
+    /* Year badge styles (keeping for potential future use) */
+    .year-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .card-header {
+    margin-bottom: 16px;
+
+    .card-title {
+      margin: 0 0 8px 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+
+    .category-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 12px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .card-description {
+    margin: 0 0 24px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    transition: color 0.3s ease;
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    .download-icon {
+      transition: transform 0.3s ease;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+
+      .download-icon {
+        transform: translateY(2px);
+      }
+
+      &::before {
+        left: 100%;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .not-available {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.7;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  /* Hover effect on the entire card */
+  &:hover {
+    .card-image-wrapper:not(.preserve-aspect) .publication-image {
+      transform: scale(1.08);
+    }
+
+    .year-badge {
+      transform: scale(1.1);
     }
   }
 }
 
+/* Animation keyframes */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🌙 Dark Mode */
 .dark-mode {
-  .publication {
+  .publications-container {
+    .publications-intro p { color: #cbd5e1; }
+
+    .publications-footer {
+      p { color: #94a3b8; }
+
+      .github-link {
+        color: #facc15;
+
+        &::after { background: #facc15; }
+
+        &:hover { color: #fbbf24; }
+      }
+    }
+  }
+
+  .publication-card {
     background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
     &:hover {
       background: rgba(30, 41, 59, 0.8);
-      box-shadow: 0 0 25px rgba(250, 204, 21, 0.2);
+      border-color: #facc15;
+      box-shadow: 0 0 30px rgba(250, 204, 21, 0.4);
     }
-    
-    h2 {
-      color: #f1f5f9;
-      
-      &:hover {
+
+    .card-image-wrapper {
+      /* Dark theme gradient background */
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+
+      .year-badge {
+        background: rgba(250, 204, 21, 0.15);
         color: #facc15;
+        border-color: rgba(250, 204, 21, 0.3);
       }
     }
-    
-    p {
+
+    .card-title {
+      color: #f1f5f9;
+
+      &:hover { color: #facc15; }
+    }
+
+    .category-tag {
+      background: rgba(250, 204, 21, 0.15);
+      color: #facc15;
+      border: 1px solid rgba(250, 204, 21, 0.2);
+    }
+
+    .card-description { color: #d1d5db; }
+
+    .download-button {
+      background: #facc15;
+      color: #1f2937;
+      border-color: #facc15;
+
+      &:hover {
+        background: #eab308;
+        color: #111827;
+        box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+      }
+    }
+
+    .not-available {
+      background: rgba(255, 255, 255, 0.05);
       color: #94a3b8;
     }
   }
 }
 
-@media screen and (max-width: 700px) {
+/* ☀️ Light Mode */
+.light-mode {
   .publications-container {
-    display: block;
-    // padding handled by Section.scss
-  }
+    .publications-intro p { color: #475569; }
 
-  .publications-container .publications-grid {
-    display: block;
-    grid-gap: 30px;
-  }
+    .publications-footer {
+      p { color: #64748b; }
 
-  .publications-container .publications-grid .publication {
-    margin-bottom: 40px; // Better mobile spacing
-    
-    &:last-child {
-      margin-bottom: 0;
+      .github-link {
+        color: #3b82f6;
+
+        &::after { background: #3b82f6; }
+
+        &:hover { color: #2563eb; }
+      }
     }
+  }
+
+  .publication-card {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #3b82f6;
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    }
+
+    .card-image-wrapper {
+      /* Light theme gradient background */
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+
+      .year-badge {
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border-color: rgba(59, 130, 246, 0.2);
+      }
+    }
+
+    .card-title {
+      color: #111827;
+
+      &:hover { color: #3b82f6; }
+    }
+
+    .category-tag {
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .card-description { color: #374151; }
+
+    .download-button {
+      background: #3b82f6;
+      color: #ffffff;
+      border-color: #3b82f6;
+
+      &:hover {
+        background: #2563eb;
+        color: #ffffff;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+      }
+    }
+
+    .not-available {
+      background: rgba(0, 0, 0, 0.05);
+      color: #6b7280;
+    }
+  }
+}
+
+/* 📱 Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .publications-grid {
+    /* Masonry-style layout on mobile */
+    display: block;
+    columns: 1;
+    gap: 0;
+    padding: 0 10px;
+  }
+
+  .publication-card {
+    /* Masonry card behavior */
+    break-inside: avoid;
+    margin-bottom: 24px;
+    width: 100%;
+    display: inline-block;
+
+    /* Dynamic heights based on card index for variety */
+    &:nth-child(1) .card-image-wrapper { height: 280px; } /* Python - tall */
+    &:nth-child(2) .card-image-wrapper { height: 200px; } /* Licenses - compact */
+    &:nth-child(3) .card-image-wrapper { height: 240px; } /* Numeronyms - medium */
+    &:nth-child(4) .card-image-wrapper { height: 220px; } /* Git - medium */
+    &:nth-child(5) .card-image-wrapper { height: 260px; } /* EMMET - tall */
+    &:nth-child(6) .card-image-wrapper { height: 300px; } /* Cyrus - featured */
+    &:nth-child(7) .card-image-wrapper { height: 210px; } /* PyScript - compact */
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+    }
+
+    .download-button {
+      padding: 10px 20px;
+      font-size: 0.85rem;
+    }
+
+    /* Add some special styling for featured cards */
+    &:nth-child(6) { /* Cyrus - make it special */
+      .card-image-wrapper {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #facc15 100%);
+      }
+    }
+
+    &:nth-child(1) { /* Python book - tech gradient */
+      .card-image-wrapper {
+        background: linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #06b6d4 100%);
+      }
+    }
+
+    /* Hover effects are more subtle on mobile */
+    &:hover {
+      transform: translateY(-8px) scale(1.01);
+    }
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 480px) {
+  .publications-container {
+    .publications-intro {
+      margin-bottom: 32px;
+
+      p { font-size: 1rem; }
+    }
+  }
+
+  .publications-grid {
+    padding: 0 5px;
+  }
+
+  .publication-card {
+    margin-bottom: 20px;
+
+    /* Even more varied heights on small screens for visual interest */
+    &:nth-child(1) .card-image-wrapper { height: 260px; } /* Python */
+    &:nth-child(2) .card-image-wrapper { height: 180px; } /* Licenses */
+    &:nth-child(3) .card-image-wrapper { height: 220px; } /* Numeronyms */
+    &:nth-child(4) .card-image-wrapper { height: 200px; } /* Git */
+    &:nth-child(5) .card-image-wrapper { height: 240px; } /* EMMET */
+    &:nth-child(6) .card-image-wrapper { height: 280px; } /* Cyrus - hero */
+    &:nth-child(7) .card-image-wrapper { height: 190px; } /* PyScript */
+
+    .card-content { 
+      padding: 16px; 
+    }
+
+    /* Add some fun animations */
+    &:nth-child(odd) {
+      animation-delay: calc(0.1s * var(--card-index, 1));
+    }
+    
+    &:nth-child(even) {
+      animation-delay: calc(0.15s * var(--card-index, 1));
+    }
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .publication-card { 
+    animation: none; 
+  }
+
+  * { 
+    transition-duration: 0.1s; 
   }
 }
