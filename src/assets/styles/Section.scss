@@ -37,7 +37,7 @@
   margin: 0 0 48px 0; /* Consistent bottom margin */
   text-align: center;
   font-weight: 800;
-  font-size: 2.5rem; /* Unified font size */
+  font-size: 2.5rem; /* UNIFIED FONT SIZE FOR ALL SECTIONS */
   letter-spacing: -0.02em;
   line-height: 1.2;
   
@@ -119,6 +119,85 @@
       #f59e0b 80%, 
       transparent 100%
     );
+  }
+}
+
+/* ===== UNIFIED BUTTON STYLES ===== */
+.unified-button {
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  // Shine effect on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent);
+    transition: left 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+  }
+  
+  &:active {
+    transform: translateY(-2px) scale(1.02);
+  }
+  
+  // Better mobile sizing
+  @media screen and (max-width: 480px) {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+}
+
+/* Light mode button */
+.light-mode .unified-button {
+  background-color: #3b82f6;
+  color: #fff;
+
+  &:hover {
+    background-color: #2563eb;
+    color: #fff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Dark mode button */
+.dark-mode .unified-button {
+  background-color: #facc15;
+  color: #1f2937;
+
+  &:hover {
+    background-color: #eab308;
+    color: #1f2937;
+    border-color: #facc15;
+    box-shadow: 0 0 30px rgba(250, 204, 21, 0.5);
   }
 }
 
@@ -237,10 +316,21 @@
   
   .section-title {
     margin-bottom: 48px; /* Match other sections */
+    font-size: 2.5rem !important; /* Force consistent size */
   }
   
   @media screen and (max-width: 768px) {
     padding: 60px 20px;
+    
+    .section-title {
+      font-size: 2rem !important;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .section-title {
+      font-size: 1.8rem !important;
+    }
   }
 }
 
