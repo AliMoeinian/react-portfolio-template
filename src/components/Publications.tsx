@@ -16,9 +16,10 @@ type PubItem = {
   img: string;
   downloadable: boolean;
   alt?: string;
-  downloadUrl?: string; // For future PDF links
+  downloadUrl?: string;
   year?: string;
   category?: string;
+  language?: string; // <-- NEW
 };
 
 const publications: PubItem[] = [
@@ -152,6 +153,11 @@ export default function Publications() {
                 {pub.title}
                 {pub.category && ` — ${pub.category}`}
               </h3>
+
+              {/* NEW: language badge (defaults to فارسی) */}
+              <div className="card-meta">
+                <span className="language-tag">{pub.language || 'Farsi'}</span>
+              </div>
             </div>
             <p className="card-description">{pub.description}</p>
               

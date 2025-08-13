@@ -88,9 +88,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 16px 16px 0 0;
-    /* Fixed height for consistent card sizes */
     height: 280px;
-    /* Gradient background to handle any gaps */
     background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     display: flex;
     align-items: center;
@@ -99,22 +97,17 @@
     .publication-image {
       width: 100%;
       height: 100%;
-      /* Use cover to fill the space completely */
       object-fit: cover;
       object-position: center;
       transition: transform 0.4s ease;
       border-radius: 16px 16px 0 0;
       display: block;
-      /* Add a subtle filter for better integration */
       filter: brightness(1.05) contrast(1.1);
     }
 
-    /* Alternative approach: If covers should maintain their aspect ratio */
     &.preserve-aspect .publication-image {
       object-fit: contain;
-      /* Add a subtle shadow to separate from background */
       filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.3));
-      /* Scale down slightly to add padding effect */
       transform: scale(0.95);
       transition: transform 0.4s ease, filter 0.4s ease;
     }
@@ -124,7 +117,6 @@
       filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.4));
     }
 
-    /* Year badge styles (keeping for potential future use) */
     .year-badge {
       position: absolute;
       top: 16px;
@@ -163,6 +155,28 @@
       letter-spacing: 0.02em;
       text-transform: uppercase;
       opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    /* ✅ NEW: language badge container & style */
+    .card-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .language-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 12px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      opacity: 0.95;
+      white-space: nowrap;
       transition: all 0.3s ease;
     }
   }
@@ -238,7 +252,6 @@
     border-radius: 8px;
   }
 
-  /* Hover effect on the entire card */
   &:hover {
     .card-image-wrapper:not(.preserve-aspect) .publication-image {
       transform: scale(1.08);
@@ -292,14 +305,7 @@
     }
 
     .card-image-wrapper {
-      /* Dark theme gradient background */
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-
-      .year-badge {
-        background: rgba(250, 204, 21, 0.15);
-        color: #facc15;
-        border-color: rgba(250, 204, 21, 0.3);
-      }
     }
 
     .card-title {
@@ -331,6 +337,13 @@
     .not-available {
       background: rgba(255, 255, 255, 0.05);
       color: #94a3b8;
+    }
+
+    /* ✅ Dark mode language badge */
+    .language-tag {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.25);
     }
   }
 }
@@ -365,14 +378,7 @@
     }
 
     .card-image-wrapper {
-      /* Light theme gradient background */
       background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
-
-      .year-badge {
-        background: rgba(59, 130, 246, 0.1);
-        color: #3b82f6;
-        border-color: rgba(59, 130, 246, 0.2);
-      }
     }
 
     .card-title {
@@ -405,13 +411,19 @@
       background: rgba(0, 0, 0, 0.05);
       color: #6b7280;
     }
+
+    /* ✅ Light mode language badge */
+    .language-tag {
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.25);
+    }
   }
 }
 
 /* 📱 Mobile Responsive */
 @media screen and (max-width: 768px) {
   .publications-grid {
-    /* Masonry-style layout on mobile */
     display: block;
     columns: 1;
     gap: 0;
@@ -419,20 +431,10 @@
   }
 
   .publication-card {
-    /* Masonry card behavior */
     break-inside: avoid;
     margin-bottom: 24px;
     width: 100%;
     display: inline-block;
-
-    /* Dynamic heights based on card index for variety */
-    &:nth-child(1) .card-image-wrapper { height: 280px; } /* Python - tall */
-    &:nth-child(2) .card-image-wrapper { height: 200px; } /* Licenses - compact */
-    &:nth-child(3) .card-image-wrapper { height: 240px; } /* Numeronyms - medium */
-    &:nth-child(4) .card-image-wrapper { height: 220px; } /* Git - medium */
-    &:nth-child(5) .card-image-wrapper { height: 260px; } /* EMMET - tall */
-    &:nth-child(6) .card-image-wrapper { height: 300px; } /* Cyrus - featured */
-    &:nth-child(7) .card-image-wrapper { height: 210px; } /* PyScript - compact */
 
     .card-content {
       padding: 20px;
@@ -447,20 +449,6 @@
       font-size: 0.85rem;
     }
 
-    /* Add some special styling for featured cards */
-    &:nth-child(6) { /* Cyrus - make it special */
-      .card-image-wrapper {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #facc15 100%);
-      }
-    }
-
-    &:nth-child(1) { /* Python book - tech gradient */
-      .card-image-wrapper {
-        background: linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #06b6d4 100%);
-      }
-    }
-
-    /* Hover effects are more subtle on mobile */
     &:hover {
       transform: translateY(-8px) scale(1.01);
     }
@@ -469,14 +457,6 @@
 
 /* Very small screens */
 @media screen and (max-width: 480px) {
-  .publications-container {
-    .publications-intro {
-      margin-bottom: 32px;
-
-      p { font-size: 1rem; }
-    }
-  }
-
   .publications-grid {
     padding: 0 5px;
   }
@@ -484,26 +464,8 @@
   .publication-card {
     margin-bottom: 20px;
 
-    /* Even more varied heights on small screens for visual interest */
-    &:nth-child(1) .card-image-wrapper { height: 260px; } /* Python */
-    &:nth-child(2) .card-image-wrapper { height: 180px; } /* Licenses */
-    &:nth-child(3) .card-image-wrapper { height: 220px; } /* Numeronyms */
-    &:nth-child(4) .card-image-wrapper { height: 200px; } /* Git */
-    &:nth-child(5) .card-image-wrapper { height: 240px; } /* EMMET */
-    &:nth-child(6) .card-image-wrapper { height: 280px; } /* Cyrus - hero */
-    &:nth-child(7) .card-image-wrapper { height: 190px; } /* PyScript */
-
     .card-content { 
       padding: 16px; 
-    }
-
-    /* Add some fun animations */
-    &:nth-child(odd) {
-      animation-delay: calc(0.1s * var(--card-index, 1));
-    }
-    
-    &:nth-child(even) {
-      animation-delay: calc(0.15s * var(--card-index, 1));
     }
   }
 }
@@ -513,7 +475,6 @@
   .publication-card { 
     animation: none; 
   }
-
   * { 
     transition-duration: 0.1s; 
   }
