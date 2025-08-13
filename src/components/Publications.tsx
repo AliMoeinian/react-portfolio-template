@@ -120,11 +120,11 @@ export default function Publications() {
 
   return (
     <div className="publications-container section" id="publications">
-      <h1 className="section-title">Publications 📚</h1>
+      <h1 className="section-title">Publications</h1>
       
       <div className="publications-intro">
         <p>
-          A collection of educational books and tutorials I've written to help developers 
+          A collection of <b>Persian</b> educational books and tutorials I've written to help developers 
           learn new technologies and improve their skills. Most are available for free download!
         </p>
       </div>
@@ -153,11 +153,6 @@ export default function Publications() {
                 {pub.title}
                 {pub.category && ` — ${pub.category}`}
               </h3>
-
-              {/* NEW: language badge (defaults to فارسی) */}
-              <div className="card-meta">
-                <span className="language-tag">{pub.language || 'Farsi'}</span>
-              </div>
             </div>
             <p className="card-description">{pub.description}</p>
               
