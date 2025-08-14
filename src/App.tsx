@@ -16,7 +16,8 @@ import {
   Education,
   Achievements,
   Mentoring,
-  ContactMe
+  ContactMe,
+  Skills
 } from "./components";
 
 function App() {
@@ -37,6 +38,11 @@ function App() {
       <div className="section" id="expertise">
         <Expertise />
       </div>
+
+      <div className="section" id="skills">
+      <Skills />
+    </div>
+
       
       <div className="section" id="history">
         <Timeline />

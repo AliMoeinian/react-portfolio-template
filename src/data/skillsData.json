@@ -1,0 +1,60 @@
+[
+  {
+    "category": "AI & NLP",
+    "items": [
+      { "name": "Prompt Engineering", "icon": "bolt" },
+      { "name": "LangChain", "icon": "link" },
+      { "name": "RAG", "icon": "book" },
+      { "name": "Large Language Models", "icon": "brain" },
+      { "name": "Agent Development", "icon": "robot" }
+    ]
+  },
+  {
+    "category": "Data Science",
+    "items": [
+      { "name": "Python", "icon": "python" },
+      { "name": "C++", "icon": "code" },
+      { "name": "Pandas", "icon": "table" },
+      { "name": "NumPy", "icon": "function" },
+      { "name": "Matplotlib", "icon": "chart" },
+      { "name": "Seaborn", "icon": "chart" }
+    ]
+  },
+  {
+    "category": "Big Data",
+    "items": [
+      { "name": "PySpark", "icon": "spark" },
+      { "name": "Kafka", "icon": "stream" },
+      { "name": "Delta Lake", "icon": "delta" },
+      { "name": "Dremio", "icon": "database" },
+      { "name": "MinIO", "icon": "storage" }
+    ]
+  },
+  {
+    "category": "Backend & Infra",
+    "items": [
+      { "name": "Docker", "icon": "docker" },
+      { "name": "Git", "icon": "git" },
+      { "name": "MySQL", "icon": "mysql" },
+      { "name": "PostgreSQL", "icon": "postgres" },
+      { "name": "MongoDB", "icon": "mongodb" }
+    ]
+  },
+  {
+    "category": "Research & Practice",
+    "items": [
+      { "name": "Scientific Research", "icon": "microscope" },
+      { "name": "System Design", "icon": "structure" },
+      { "name": "Teaching & Mentorship", "icon": "mentor" },
+      { "name": "Agile Development", "icon": "agile" }
+    ]
+  },
+  {
+    "category": "Tools",
+    "items": [
+      { "name": "Jupyter", "icon": "notebook" },
+      { "name": "VS Code", "icon": "vscode" },
+      { "name": "Linux", "icon": "linux" }
+    ]
+  }
+]

@@ -1,0 +1,159 @@
+.skills-container {
+  // فاصله و الگو با Section.scss همخوان است
+  .skills-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .tab {
+          padding: 10px 14px;
+          border-radius: 999px;
+          border: 1px solid var(--card-border);
+          background: var(--card-bg);
+          color: var(--text-color);
+          font-weight: 600;
+          cursor: pointer;
+          transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--card-shadow-hover);
+          }
+          &.active {
+            border-color: var(--icon-color);
+            box-shadow: 0 6px 16px var(--card-shadow);
+          }
+        }
+      }
+
+      .search {
+        min-width: 220px;
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+
+        input[type="search"] {
+          width: 100%;
+          max-width: 360px;
+          padding: 10px 14px;
+          border-radius: 12px;
+          border: 1px solid var(--card-border);
+          background: var(--card-bg);
+          color: var(--text-color);
+          outline: none;
+          transition: box-shadow .2s ease, border-color .2s ease;
+
+          &:focus {
+            border-color: var(--icon-color);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15); // در دارک هم لطیف می‌ماند
+          }
+        }
+      }
+    }
+
+    .meta {
+      .count { opacity: 0.8; }
+    }
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (min-width: 1280px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+
+    .group-title {
+      font-weight: 800;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-color);
+      box-shadow: 0 4px 12px var(--card-shadow);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+      will-change: transform;
+      cursor: default;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px var(--card-shadow-hover);
+      }
+      &:focus-visible {
+        outline: 2px solid var(--icon-color);
+        outline-offset: 2px;
+      }
+
+      .ic { font-size: 16px; opacity: .9; }
+      .label { font-weight: 600; }
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 32px 0;
+      .empty-emoji { font-size: 28px; margin-bottom: 8px; }
+    }
+  }
+
+  /* انیمیشن ورود: fade + slideY(12px) — 280ms */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: skill-reveal .28s cubic-bezier(.4,0,.2,1) forwards;
+  }
+
+  @keyframes skill-reveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* تم‌ها با توکن‌های موجود پروژه‌ات */
+.light-mode {
+  .skills-container {
+    /* تکیه بر توکن‌های موجود */
+    --accent: #3b82f6;
+  }
+}
+.dark-mode {
+  .skills-container {
+    --accent: #facc15;
+  }
+}
