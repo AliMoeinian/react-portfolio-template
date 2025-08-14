@@ -1,23 +1,24 @@
 // ==============================
 // Section.scss (Unified & Enhanced)
-// - consistent spacing for all sections
+// - consistent spacing for all sections (REDUCED)
 // - unified title styles with decorative underline
+// - unified button styling based on Publications download buttons
 // - light/dark theme aware
 // ==============================
 
-/* Base Section Styling */
+/* Base Section Styling - REDUCED PADDING */
 .section {
-  padding: 80px 40px; /* Unified padding for all sections */
+  padding: 50px 40px; /* Reduced from 80px to 50px */
   scroll-margin-top: 80px;
   position: relative;
   
   /* Better spacing on mobile */
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px to 40px */
   }
   
   @media screen and (max-width: 480px) {
-    padding: 50px 15px;
+    padding: 30px 15px; /* Reduced from 50px to 30px */
   }
 }
 
@@ -34,7 +35,7 @@
 /* ===== UNIFIED SECTION TITLES ===== */
 .section-title {
   position: relative;
-  margin: 0 0 48px 0; /* Consistent bottom margin */
+  margin: 0 0 36px 0; /* Reduced from 48px to 36px */
   text-align: center;
   font-weight: 800;
   font-size: 2.5rem; /* UNIFIED FONT SIZE FOR ALL SECTIONS */
@@ -63,12 +64,12 @@
   /* Responsive title sizes */
   @media screen and (max-width: 1024px) {
     font-size: 2.2rem;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Reduced from 40px to 30px */
   }
   
   @media screen and (max-width: 768px) {
     font-size: 2rem;
-    margin-bottom: 36px;
+    margin-bottom: 28px; /* Reduced from 36px to 28px */
     
     &::after {
       width: 60px;
@@ -79,7 +80,7 @@
   
   @media screen and (max-width: 480px) {
     font-size: 1.8rem;
-    margin-bottom: 32px;
+    margin-bottom: 24px; /* Reduced from 32px to 24px */
     
     &::after {
       width: 50px;
@@ -122,26 +123,28 @@
   }
 }
 
-/* ===== UNIFIED BUTTON STYLES ===== */
-.unified-button {
-  display: inline-block;
-  padding: 16px 40px;
+/* ===== UNIFIED BUTTON STYLES - Based on Publications download-button ===== */
+.unified-button,
+.download-button,
+.contact-button,
+.mentoring-contact,
+.cta.primary,
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px; /* Consistent sizing like download-button */
   border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-decoration: none;
+  font-weight: 600; /* Consistent with download-button */
+  font-size: 0.9rem; /* Consistent with download-button */
   border: 1px solid transparent;
   cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
   
-  // Shine effect on hover
+  /* Shine effect on hover - same as download-button */
   &::before {
     content: '';
     position: absolute;
@@ -149,55 +152,106 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255, 255, 255, 0.2), 
-      transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.6s ease;
   }
   
-  &:hover::before {
-    left: 100%;
-  }
-  
   &:hover {
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(-2px); /* Consistent with download-button */
+
+    &::before {
+      left: 100%;
+    }
   }
-  
+
   &:active {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(0);
   }
   
-  // Better mobile sizing
+  /* Icon animations */
+  svg, .download-icon {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg,
+  &:hover .download-icon {
+    transform: translateY(2px);
+  }
+  
+  /* Mobile sizing */
   @media screen and (max-width: 480px) {
-    padding: 14px 32px;
-    font-size: 1rem;
+    padding: 10px 20px;
+    font-size: 0.85rem;
   }
 }
 
-/* Light mode button */
-.light-mode .unified-button {
-  background-color: #3b82f6;
-  color: #fff;
-
-  &:hover {
-    background-color: #2563eb;
-    color: #fff;
+/* Light mode unified buttons */
+.light-mode {
+  .unified-button,
+  .download-button,
+  .contact-button,
+  .mentoring-contact,
+  .cta.primary {
+    background: #3b82f6;
+    color: #ffffff;
     border-color: #3b82f6;
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+
+    &:hover {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    }
+  }
+  
+  .icon-btn {
+    background: #fff;
+    color: #0f172a;
+    border-color: rgba(148, 163, 184, 0.35);
+
+    &:hover {
+      box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+    }
+
+    &.success {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.07));
+      color: #065f46;
+    }
   }
 }
 
-/* Dark mode button */
-.dark-mode .unified-button {
-  background-color: #facc15;
-  color: #1f2937;
-
-  &:hover {
-    background-color: #eab308;
+/* Dark mode unified buttons */
+.dark-mode {
+  .unified-button,
+  .download-button,
+  .contact-button,
+  .mentoring-contact,
+  .cta.primary {
+    background: #facc15;
     color: #1f2937;
     border-color: #facc15;
-    box-shadow: 0 0 30px rgba(250, 204, 21, 0.5);
+
+    &:hover {
+      background: #eab308;
+      color: #111827;
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+    }
+  }
+  
+  .icon-btn {
+    background: rgba(15, 23, 42, 0.7);
+    color: #e5e7eb;
+    border-color: rgba(148, 163, 184, 0.25);
+
+    &:hover {
+      box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+    }
+
+    &.success {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.07));
+      color: #065f46;
+    }
   }
 }
 
@@ -205,7 +259,7 @@
 
 /* Main section (hero) - different styling */
 .main-container .about-section {
-  padding: 100px 15% 0; /* Keep existing hero padding */
+  padding: 80px 15% 0; /* Keep existing hero padding but slightly reduced */
   
   h1 {
     /* Keep existing hero title styles */
@@ -218,7 +272,7 @@
   }
   
   @media screen and (max-width: 768px) {
-    padding: 60px 15px 30px;
+    padding: 50px 15px 20px; /* Reduced spacing */
     
     h1 {
       font-size: 2rem;
@@ -228,29 +282,29 @@
 
 /* Timeline section - specific spacing */
 #history {
-  padding: 80px 40px; /* Consistent with other sections */
+  padding: 50px 40px; /* Reduced from 80px */
   
   h1 {
     @extend .section-title; /* Use unified title styles */
   }
   
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
   }
 }
 
 /* Contact section - ensure consistent spacing */
 .contactme-container {
-  padding: 80px 40px; /* Match other sections */
+  padding: 50px 40px; /* Reduced from 80px */
   
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
   }
 }
 
 /* Skills/Expertise container */
 .skills-container {
-  padding: 80px 40px; /* Consistent with sections */
+  padding: 50px 40px; /* Reduced from 80px */
   margin: 0; /* Remove conflicting margins */
   
   h1 {
@@ -258,69 +312,73 @@
   }
   
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
   }
 }
 
 /* Education container */
 .education-container {
-  padding: 80px 40px; /* Consistent spacing */
+  padding: 50px 40px; /* Reduced from 80px */
   
   .section-title {
-    margin-bottom: 48px; /* Consistent with other sections */
+    margin-bottom: 36px; /* Reduced from 48px */
   }
   
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
   }
 }
 
 /* Projects container */
 .projects-container {
-  padding: 80px 40px; /* More consistent than 5% 10% */
+  padding: 50px 40px; /* Reduced from 80px */
   
   .section-title {
     @extend .section-title; /* Ensure consistent styling */
   }
   
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
   }
 }
 
 /* Publications container */
 .publications-container {
-  padding: 80px 40px; /* Consistent spacing */
+  padding: 50px 40px; /* Reduced from 80px */
   
   .section-title {
     @extend .section-title; /* Ensure consistent styling */
   }
   
+  .publications-intro {
+    margin: 0 auto 32px; /* Reduced from 48px */
+  }
+  
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
   }
 }
 
 /* Achievements section */
 .achievements.section {
-  padding: 80px 40px; /* Override existing padding */
+  padding: 50px 40px; /* Reduced from 80px */
   
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
   }
 }
 
 /* Mentoring container */
 .mentoring-container {
-  padding: 80px 40px; /* Consistent spacing */
+  padding: 50px 40px; /* Reduced from 80px */
   
   .section-title {
-    margin-bottom: 48px; /* Match other sections */
+    margin-bottom: 36px; /* Reduced from 48px */
     font-size: 2.5rem !important; /* Force consistent size */
   }
   
   @media screen and (max-width: 768px) {
-    padding: 60px 20px;
+    padding: 40px 20px; /* Reduced from 60px */
     
     .section-title {
       font-size: 2rem !important;
