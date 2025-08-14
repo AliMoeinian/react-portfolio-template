@@ -7,122 +7,54 @@ import {
   faMicroscope,
   faDatabase
 } from "@fortawesome/free-solid-svg-icons";
-import Chip from "@mui/material/Chip";
 import "../assets/styles/Expertise.scss";
-
-const labelsFirst = [
-  "Python",
-  "C++",
-  "Pandas",
-  "NumPy",
-  "Matplotlib",
-  "Seaborn",
-  "PySpark",
-  "Kafka"
-];
-
-const labelsSecond = [
-  "Prompt Engineering",
-  "LangChain",
-  "Agent Development",
-  "Retrieval-Augmented Generation",
-  "Large Language Models",
-  "Small Language"
-];
-
-const labelsThird = [
-  "Scientific Research",
-  "Teaching & Mentorship",
-  "System Design",
-  "Agile Development"
-];
-
-const labelsFourth = [
-  "MySQL",
-  "PostgreSQL",
-  "MongoDB",
-  "Dremio",
-  "Delta Lake",
-  "MinIO",
-  "Docker",
-  "Git"
-];
 
 function Expertise() {
   return (
     <div className="container section" id="expertise">
-      <div className="skills-container">
+      <div className="expertise-container">
         <h1 className="section-title">Expertise</h1>
-        <div className="skills-grid">
-          {/* Data Science */}
-          <div className="skill">
+
+        <div className="expertise-grid">
+          {/* Data Science & ML */}
+          <div className="expertise-card">
             <FontAwesomeIcon icon={faChartLine} size="3x" />
             <h3>Data Science & Machine Learning</h3>
             <p>
-              I turn raw data into smart decisions — from building predictive
-              models to real-time analytics using big data tools like PySpark and
-              Kafka. With a deep understanding of statistics and machine learning,
-              I bridge theory and production.
+              Analytical pipelines have been developed to extract insight from complex, large-scale datasets.
+              Emphasis has been placed on clean evaluation, structured experimentation, and interpretability
+              across a wide range of real-world problems.
             </p>
-            <div className="flex-chips">
-              <span className="chip-title">Tech stack:</span>
-              {labelsFirst.map((label, idx) => (
-                <Chip key={idx} className="chip" label={label} />
-              ))}
-            </div>
           </div>
 
-          {/* LLM & Agents */}
-          <div className="skill">
+          {/* LLMs & Agentic Systems */}
+          <div className="expertise-card">
             <FontAwesomeIcon icon={faBrain} size="3x" />
-            <h3>LLM & Agent Development</h3>
+            <h3>LLMs & Agentic Systems</h3>
             <p>
-              I specialize in building autonomous systems powered by LLMs. From
-              prompt engineering to full-stack agent deployment using LangChain
-              and RAG, I design intelligent workflows for real-world applications —
-              including healthcare and enterprise use cases.
+              Intelligent systems have been designed by combining language models with retrieval and reasoning capabilities.
+              Special focus has been given to agent workflows, autonomous decision-making, and safe real-world deployment.
             </p>
-            <div className="flex-chips">
-              <span className="chip-title">Tech stack:</span>
-              {labelsSecond.map((label, idx) => (
-                <Chip key={idx} className="chip" label={label} />
-              ))}
-            </div>
           </div>
 
-          {/* Research */}
-          <div className="skill">
-            <FontAwesomeIcon icon={faMicroscope} size="3x" />
-            <h3>Research & Innovation</h3>
-            <p>
-              My work blends academic rigor with applied innovation. From
-              scientific research and system design to mentoring and teaching, I
-              explore the frontier of AI to create scalable, ethical, and impactful
-              solutions.
-            </p>
-            <div className="flex-chips">
-              <span className="chip-title">Tech stack:</span>
-              {labelsThird.map((label, idx) => (
-                <Chip key={idx} className="chip" label={label} />
-              ))}
-            </div>
-          </div>
-
-          {/* Backend & Infra */}
-          <div className="skill">
+          {/* Backend & Data Platforms */}
+          <div className="expertise-card">
             <FontAwesomeIcon icon={faDatabase} size="3x" />
-            <h3>Backend & Data Infrastructure</h3>
+            <h3>Backend & Data Platforms</h3>
             <p>
-              I design scalable data pipelines and backend systems using tools like
-              Kafka, Spark, and Docker. From streaming ingestion to lakehouse
-              architectures, I turn infrastructure into a strategic advantage.
+              Scalable platforms have been architected to support real-time data flow, secure access, and operational reliability.
+              Infrastructures have been optimized for both analytical workloads and production deployment.
             </p>
-            <div className="flex-chips">
-              <span className="chip-title">Tech stack:</span>
-              {labelsFourth.map((label, idx) => (
-                <Chip key={idx} className="chip" label={label} />
-              ))}
-            </div>
+          </div>
+
+          {/* Research & Mentorship */}
+          <div className="expertise-card">
+            <FontAwesomeIcon icon={faMicroscope} size="3x" />
+            <h3>Research & Mentorship</h3>
+            <p>
+              Technical knowledge has been transferred through teaching, publishing, and applied research.
+              Teams and individuals have been mentored with a focus on clarity, creativity, and long-term growth.
+            </p>
           </div>
         </div>
       </div>

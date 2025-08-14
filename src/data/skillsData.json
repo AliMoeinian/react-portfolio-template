@@ -1,60 +1,108 @@
 [
   {
-    "category": "AI & NLP",
+    "category": "AI & Agent",
     "items": [
+      { "name": "Large Language Models (LLMs)", "icon": "brain" },
       { "name": "Prompt Engineering", "icon": "bolt" },
+      { "name": "Retrieval-Augmented Generation (RAG)", "icon": "book" },
       { "name": "LangChain", "icon": "link" },
-      { "name": "RAG", "icon": "book" },
-      { "name": "Large Language Models", "icon": "brain" },
-      { "name": "Agent Development", "icon": "robot" }
+      { "name": "LangGraph", "icon": "link" },
+      { "name": "Agent Development & Tool Use", "icon": "robot" },
+      { "name": "Embeddings & Similarity Search", "icon": "vector" },
+      { "name": "Knowledge Graphs", "icon": "graph" },
+      { "name": "Natural Language Processing (NLP)", "icon": "chat" }
     ]
   },
   {
-    "category": "Data Science",
+    "category": "Data Science & Analytics",
     "items": [
       { "name": "Python", "icon": "python" },
-      { "name": "C++", "icon": "code" },
       { "name": "Pandas", "icon": "table" },
       { "name": "NumPy", "icon": "function" },
-      { "name": "Matplotlib", "icon": "chart" },
-      { "name": "Seaborn", "icon": "chart" }
+      { "name": "Scikit-learn", "icon": "sklearn" },
+      { "name": "Feature Engineering", "icon": "sparkles" },
+      { "name": "Clustering & Unsupervised Learning", "icon": "clusters" },
+      { "name": "Data Visualization & Dashboards", "icon": "dashboard" }
     ]
   },
   {
-    "category": "Big Data",
+    "category": "Big Data & Lakehouse",
     "items": [
-      { "name": "PySpark", "icon": "spark" },
-      { "name": "Kafka", "icon": "stream" },
+      { "name": "Apache Spark (PySpark)", "icon": "spark" },
+      { "name": "Apache Kafka", "icon": "kafka" },
       { "name": "Delta Lake", "icon": "delta" },
-      { "name": "Dremio", "icon": "database" },
-      { "name": "MinIO", "icon": "storage" }
+      { "name": "Apache Iceberg", "icon": "iceberg" },
+      { "name": "Lakehouse Architecture", "icon": "lakehouse" },
+      { "name": "Data Warehousing", "icon": "datawarehouse" }
     ]
   },
   {
-    "category": "Backend & Infra",
+    "category": "Backend & APIs",
+    "items": [
+      { "name": "FastAPI", "icon": "fastapi" },
+      { "name": "Flask", "icon": "flask" },
+      { "name": "RESTful API Design", "icon": "api" },
+      { "name": "Authentication", "icon": "shield" }
+    ]
+  },
+  {
+    "category": "Databases & Storage",
+    "items": [
+      { "name": "PostgreSQL", "icon": "postgres" },
+      { "name": "MySQL", "icon": "mysql" },
+      { "name": "MongoDB", "icon": "mongodb" },
+      { "name": "SQLite", "icon": "sqlite" },
+      { "name": "FAISS (Vector Store)", "icon": "faiss" },
+      { "name": "Schema Design & Normalization", "icon": "schema" },
+      { "name": "Indexing & Query Optimization", "icon": "index" },
+      { "name": "Object Storage (MinIO/S3)", "icon": "storage" }
+    ]
+  },
+  {
+    "category": "Frontend & UI",
+    "items": [
+      { "name": "React", "icon": "react" },
+      { "name": "SCSS", "icon": "scss" },
+      { "name": "Tailwind CSS", "icon": "tailwind" },
+      { "name": "HTML (basic proficiency)", "icon": "html" },
+      { "name": "CSS (basic proficiency)", "icon": "css" },
+      { "name": "Streamlit (App UI)", "icon": "stream" }
+    ]
+  },
+  {
+    "category": "MLOps & Infra",
     "items": [
       { "name": "Docker", "icon": "docker" },
-      { "name": "Git", "icon": "git" },
-      { "name": "MySQL", "icon": "mysql" },
-      { "name": "PostgreSQL", "icon": "postgres" },
-      { "name": "MongoDB", "icon": "mongodb" }
+      { "name": "Linux", "icon": "linux" },
+      { "name": "Git/GitHub", "icon": "github" }
     ]
   },
   {
-    "category": "Research & Practice",
+    "category": "Systems & Architecture",
+    "items": [
+      { "name": "System Design", "icon": "structure" },
+      { "name": "UML / DFD Modeling", "icon": "uml" },
+      { "name": "Clean Code", "icon": "clean-code" }
+    ]
+  },
+  {
+    "category": "Research, Teaching & Communication",
     "items": [
       { "name": "Scientific Research", "icon": "microscope" },
-      { "name": "System Design", "icon": "structure" },
       { "name": "Teaching & Mentorship", "icon": "mentor" },
-      { "name": "Agile Development", "icon": "agile" }
+      { "name": "Curriculum & Workshop Design", "icon": "presentation" },
+      { "name": "Technical Writing & Documentation", "icon": "docs" },
+      { "name": "Public Speaking", "icon": "speaker" },
+      { "name": "Agile & Team Collaboration", "icon": "agile" }
     ]
   },
   {
-    "category": "Tools",
+    "category": "Programming Languages",
     "items": [
-      { "name": "Jupyter", "icon": "notebook" },
-      { "name": "VS Code", "icon": "vscode" },
-      { "name": "Linux", "icon": "linux" }
+      { "name": "Python", "icon": "python" },
+      { "name": "C++", "icon": "cpp" },
+      { "name": "JavaScript", "icon": "javascript" },
+      { "name": "SQL", "icon": "sql" }
     ]
   }
 ]
