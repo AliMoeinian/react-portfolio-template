@@ -33,9 +33,9 @@ const educationData = [
     degree: "High school diploma (The Quest for Identity)",
     period: "2016 – 2019",
     details: [
-      "Found my best friend here — still my partner in crime to this day! 👬",
-      "Proudly studied at the coolest school in the city 😎",
-      "Where I started chasing my curiosity to discover what I'm truly passionate about 🔍"
+      "Found my best friend here — still my partner in crime to this day!",
+      "Group projects were 90% laughter, 10% actual work (and somehow it still worked!)",
+      "The lab where my curiosity escaped containment and started running wild"
     ],
     logo: highschoolLogo,
   },
@@ -44,9 +44,9 @@ const educationData = [
     degree: "Middle School (The Social Experiment)",
     period: "2013 – 2016",
     details: [
-      "First squad of friends — because recess was more important than math 🏃‍♂️",
-      "Got my very first touchscreen phone and felt like a hacker 📱",
-      "First real encounter with technology: trading songs via Bluetooth like a pro 🎵"
+      "Mastered the art of speed-running homework before recess bell rang",
+      "Got my first touchscreen phone & became the family’s tech support",
+      "Traded MP3s over Bluetooth like it was an underground black-market"
     ],
     logo: MiddleSchool,
   },
@@ -55,9 +55,9 @@ const educationData = [
     degree: "Elementary School (Welcome to Planet Earth)",
     period: "2007 – 2013",
     details: [
-      "Just opened my eyes to see what this whole world thing is about 🌍",
-      "Everything was brand new — from my first notebook to my first rainy school day ☔",
-      "Major discovery: recess = pure happiness (some things never change!) ⭐"
+      "First encounter with structured learning—and unstructured playground diplomacy",
+      "Fell in love with rainy school days",
+      "Major scientific breakthrough: recess > everything else, forever"
     ],
     logo: null
   }

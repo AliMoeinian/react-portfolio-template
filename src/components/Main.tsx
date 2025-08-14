@@ -25,7 +25,7 @@ function Main() {
           <p className="title"><u>AI Agent Developer & Applied AI Engineer</u></p>
 
           <p className="description">
-            <b>Designing intelligent systems with LLMs, RAG, and real-time data — blending AI engineering with hands-on research.</b>
+            <b>Designing context-aware, tool-using AI systems that retrieve, reason, and act.</b>
           </p>
 
           <div className="mobile_social_icons">

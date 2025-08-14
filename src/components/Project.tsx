@@ -224,11 +224,11 @@ export default function Project() {
               className={`tab ${activeTab === tab ? "active" : ""}`}
               onClick={() => setActiveTab(tab)}
             >
-              {tab === "Featured" && "⭐ "}
-              {tab === "AI & NLP" && "🧠 "}
-              {tab === "Big Data & Lakehouse" && "📊 "}
-              {tab === "Data Science & Analytics" && "📈 "}
-              {tab === "System Design" && "🏗️ "}
+              {tab === "Featured"}
+              {tab === "AI & NLP"}
+              {tab === "Big Data & Lakehouse"}
+              {tab === "Data Science & Analytics"}
+              {tab === "System Design"}
               {tab}
             </button>
           ))}
