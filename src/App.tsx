@@ -20,7 +20,7 @@ import {
 } from "./components";
 
 function App() {
-  const [mode, setMode] = useState<"light" | "dark">("dark");
+  const [mode, setMode] = useState<"light" | "dark">("light");
 
   const handleModeChange = () => {
     setMode(mode === "dark" ? "light" : "dark");
