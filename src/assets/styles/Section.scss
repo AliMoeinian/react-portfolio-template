@@ -1,3 +1,6 @@
+.unified-button,
+  .download-button,
+  .contact-button,
 // ==============================
 // Section.scss (Unified & Enhanced)
 // - consistent spacing for all sections (REDUCED)
@@ -129,7 +132,8 @@
 .contact-button,
 .mentoring-contact,
 .cta.primary,
-.icon-btn {
+.icon-btn,
+.composer button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -191,7 +195,8 @@
   .download-button,
   .contact-button,
   .mentoring-contact,
-  .cta.primary {
+  .cta.primary,
+  .composer button {
     background: #3b82f6;
     color: #ffffff;
     border-color: #3b82f6;
@@ -334,7 +339,19 @@
   padding: 50px 40px; /* Reduced from 80px */
   
   .section-title {
-    @extend .section-title; /* Ensure consistent styling */
+    margin-bottom: 32px; /* Reduced from default */
+  }
+  
+  .projects-controls {
+    margin: 16px 0 28px; /* Reduced spacing */
+  }
+  
+  .projects-grid {
+    margin-top: 24px; /* Reduced from 32px */
+  }
+  
+  .projects-footer {
+    margin-top: 32px; /* Reduced from 48px */
   }
   
   @media screen and (max-width: 768px) {
@@ -347,11 +364,19 @@
   padding: 50px 40px; /* Reduced from 80px */
   
   .section-title {
-    @extend .section-title; /* Ensure consistent styling */
+    margin-bottom: 18px; /* Reduced significantly */
   }
   
   .publications-intro {
-    margin: 0 auto 32px; /* Reduced from 48px */
+    margin: 0 auto 24px; /* Reduced from 48px */
+  }
+  
+  .publications-grid {
+    margin-top: 20px; /* Reduced from 32px */
+  }
+  
+  .publications-footer {
+    margin-top: 32px; /* Reduced from 48px */
   }
   
   @media screen and (max-width: 768px) {
@@ -389,6 +414,29 @@
     .section-title {
       font-size: 1.8rem !important;
     }
+  }
+}
+
+/* ===== CONTACT ME SECTION SPECIFIC OVERRIDES ===== */
+.contactme-container {
+  .contact-button-wrapper {
+    margin: 24px 0 12px; /* Reduced spacing */
+  }
+
+  p {
+    margin: 0 auto 18px; /* Reduced from 24px */
+    
+    &.llm-help {
+      margin-top: 12px; /* Reduced from 16px */
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Mentoring section spacing adjustments */
+.mentoring-container {
+  .mentoring-contact {
+    margin-top: 24px; /* Reduced from 32px */
   }
 }
 
