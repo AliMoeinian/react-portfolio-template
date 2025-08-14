@@ -17,6 +17,10 @@ function Footer() {
         Built with ❤️ + ChatGPT
       </p>
 
+      <p className="footer__funny">
+       Pics by my buddy ChatGPT 🎨
+      </p>
+
       <p className="footer__copyright">
         © {currentYear} Ali Moeinian | Template customized for myself – Original repo on <a href="https://github.com/yujisatojr/react-portfolio-template" target="_blank">GitHub</a>
       </p>
