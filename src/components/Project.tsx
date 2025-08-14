@@ -174,19 +174,58 @@ function ProjectCard({ item }: { item: ProjectItem }) {
             ))}
           </ul>
 
-          <button
-            className="expand-btn"
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              setOpen((v) => !v);
-            }}
-            aria-expanded={open}
-          >
-            {open ? "Hide details 🔼" : "Show details 🔽"}
-          </button>
+          {/* Actions row */}
+          <div className="card-actions" role="group" aria-label="Project actions">
+            <button
+              className="expand-btn"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation(); // avoid triggering card link
+                setOpen((v) => !v);
+              }}
+              aria-expanded={open}
+              aria-controls={`desc-${item.slug}`}
+            >
+              {open ? "Hide details 🔼" : "Show details 🔽"}
+            </button>
 
-          {open && <p className="long-desc">{item.description}</p>}
+            {item.href && (
+              <a
+                className="visit-btn"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`Visit Project: ${item.title} (opens in a new tab)`}
+              >
+                {/* external-link icon */}
+                <svg
+                  className="ext-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Visit Project
+              </a>
+            )}
+          </div>
+
+          {open && (
+            <p id={`desc-${item.slug}`} className="long-desc">
+              {item.description}
+            </p>
+          )}
         </div>
       </Wrapper>
     </article>
@@ -224,11 +263,6 @@ export default function Project() {
               className={`tab ${activeTab === tab ? "active" : ""}`}
               onClick={() => setActiveTab(tab)}
             >
-              {tab === "Featured"}
-              {tab === "AI & NLP"}
-              {tab === "Big Data & Lakehouse"}
-              {tab === "Data Science & Analytics"}
-              {tab === "System Design"}
               {tab}
             </button>
           ))}

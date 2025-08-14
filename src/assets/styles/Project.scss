@@ -667,3 +667,42 @@
     transition-duration: 0.1s; 
   }
 }
+/* === Actions row layout === */
+.project-card .card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* کنار هم و وسط */
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap; /* اگر فضا کم شد به خط بعد برود */
+}
+
+/* دکمه Visit دقیقاً مثل Show details */
+.project-card .visit-btn {
+  @extend .expand-btn; /* تمام استایل‌های دکمه فعلی را بگیر */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none; /* چون <a> است */
+  /* اندازه و تایپوگرافی طبق نیازت، اما ۱:۱ با expand-btn */
+  padding: 12px 24px; /* تأکید خواسته‌شده */
+  font-weight: 600;
+
+  /* آیکون خارجی */
+  .ext-icon {
+    flex-shrink: 0;
+  }
+}
+
+/* ریسپانسیو: روی موبایل عمودی و فول‌ویدث */
+@media (max-width: 640px) {
+  .project-card .card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .project-card .card-actions .expand-btn,
+  .project-card .card-actions .visit-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
