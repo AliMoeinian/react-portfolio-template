@@ -1,86 +1,139 @@
-# Developer Portfolio Template 🚀
+# 🚀 Ali Moeinian – Customized React Portfolio
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![Node.js](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge\&logo=typescript\&logoColor=white) ![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge\&logo=sass\&logoColor=white) ![MaterialUI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge\&logo=mui\&logoColor=white) ![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge\&logo=fontawesome\&logoColor=white) ![Node.js](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white) ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge\&logo=npm\&logoColor=white)
 
-## What is this?
+## 📌 Overview
 
-This simple portfolio template is designed to showcase your past projects, career history, skill sets, and more.
+This project started as a fork of **[yujisatojr/react-portfolio-template](https://github.com/yujisatojr/react-portfolio-template)** but has been **heavily customized** for personal branding.
+It now includes **additional sections**, **JSON-driven content**, an **LLM-powered contact assistant**, and refined **UI/UX styling** for a more modern, professional feel.
 
-View the [Demo](https://yujisatojr.github.io/react-portfolio-template/).
+![screenshot](./src/assets/images/screenshot.png)
 
-**This template is free to use, and no attribution is required.** You can fork or download this repository to customize it for your own use. Please don't forget to leave a ⭐ if you like this portfolio!
+---
 
-![screenshot](./src/assets//images/screenshot.png)
+## ✨ Features
 
-## Features
+* **Modern tech stack** – React, TypeScript, Sass, Material UI, Font Awesome
+* **Light/Dark mode toggle** with sticky navigation and smooth scroll-to-section
+* **LLM Twin Contact Assistant** – Screens collaboration requests before revealing contact info
+* **JSON-driven content** for projects, experience, skills, and publications (no need to edit components directly)
+* **Responsive, mobile-friendly design** with clean typography and animations
+* **Component-scoped SCSS modules** for maintainable theming
+* **Additional sections**: Expertise, Timeline, Mentoring, Publications, and Achievements
 
-✅ Open source (free to use, no attribution required)  
-✅ Responsive design & mobile-friendly  
-✅ Supports both dark and light modes  
-✅ Highly customizable multi-component layout  
-✅ Built with modern technologies (React, TypeScript, JavaScript, and SCSS)  
+---
 
-## Quick Setup
+## 🛠 Getting Started
 
-1. Ensure you have [Node.js](https://nodejs.org/) installed. Check your installation by running:
+### Prerequisites
 
-    ```bash
-    node -v
-    ```
+* [Node.js](https://nodejs.org/) (includes npm)
 
-2. In the project directory, install dependencies:
+### Installation
 
-    ```bash
-    npm install
-    ```
+```bash
+npm install
+npm start
+```
 
-3. Start the development server:
+The development server runs at:
+➡ **[http://localhost:3000](http://localhost:3000)**
 
-    ```bash
-    npm start
-    ```
+---
 
-4. Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
+## ⚙ Environment Variables
 
-5. Customize the template by navigating to the `/src/components` directory. Modify texts, pictures, and other information as needed.
+Create a `.env` file in the project root and add:
 
-The page will reload if you make edits, and you will see any lint errors in the console.
+```env
+REACT_APP_OPENROUTER_API_KEY=your_api_key_here
+```
 
-If you are interested in creating a mockup image like the ones from the personal projects section, I recommend [Genmoo](https://gemoo.com/tools/browser-mockup-generator/). This website lets you generate sleek looking browser mockups for free.
+This is used by the LLM Twin assistant for intelligent contact screening.
 
-## Deployment
+---
 
-You can choose your preferred service (e.g., [Netlify](https://www.netlify.com/), [Render](https://render.com/), [Heroku](https://www.heroku.com/)) for deployment. One of the easiest ways to host this portfolio is using GitHub Pages. Follow the instructions below for a production deploy.
+## 📂 Project Structure
+
+```
+public/                 # Static assets
+src/
+  assets/               # Images, logos, SCSS modules
+  components/           # React components for sections
+  data/                 # JSON files for projects, experience, skills
+  services/             # API helpers (e.g., OpenRouter client)
+  App.tsx               # Main app composition & theme control
+```
+
+---
+
+## 🎨 Customization
+
+* **Content:** Update JSON files in `src/data`
+* **Images:** Replace files in `src/assets/images` and `src/assets/logos`
+* **Styling:** Adjust SCSS in `src/assets/styles`
+* **Sections:** Modify or add components in `src/components`
+* **AI Assistant:** Configure `.env` with your API key
+
+---
+
+## 📜 Scripts
+
+```bash
+npm start      # Run development server
+npm run build  # Create production build
+npm test       # Run test suite
+npm run deploy # Deploy to GitHub Pages
+```
+
+---
+
+## 🌐 Deployment
+
+You can deploy on **GitHub Pages**, **Netlify**, **Vercel**, or any hosting platform.
+To deploy with GitHub Pages:
 
 1. **Set Up GitHub Repository**
-
-    Create a new repository on GitHub for your portfolio app.
+   Create a new repository for your portfolio.
 
 2. **Configure `package.json`**
 
-    Edit the following properties in your `package.json` file:
+   ```json
+   {
+     "homepage": "https://yourusername.github.io/your-repo-name",
+     "scripts": {
+       "predeploy": "npm run build",
+       "deploy": "gh-pages -d build"
+     }
+   }
+   ```
 
-    ```json
-    {
-        "homepage": "https://yourusername.github.io/your-repo-name",
-        "scripts": {
-            "predeploy": "npm run build",
-            "deploy": "gh-pages -d build",
-            ...
-        }
-    }
-    ```
+   Replace `yourusername` and `your-repo-name` accordingly.
 
-    Replace `yourusername` with your GitHub username and `your-repo-name` with the name of your GitHub repository.
+3. **Deploy**
 
-3. **Deploy to GitHub Pages**
+   ```bash
+   npm run deploy
+   ```
 
-    Run the following command to deploy your app:
+4. **Access Your Portfolio**
+   Visit: `https://yourusername.github.io/your-repo-name`
 
-    ```bash
-    npm run deploy
-    ```
+---
 
-4. **Access Your Deployed App**
+## 📄 License
 
-    After successfully deploying, you can access your app at `https://yourusername.github.io/your-repo-name`.
+Distributed under the **MIT License**, inherited from the original template.
+Feel free to use, modify, and distribute — attribution appreciated but not required.
+
+---
+
+## 🙏 Acknowledgments
+
+* **Original template**: [Yuji Sato](https://github.com/yujisatojr/react-portfolio-template)
+* **Custom enhancements** by Ali Moeinian — additional sections, LLM integration, JSON-driven content, and UI refinements
+
+---
+
+If you want, I can also make you a **more visual README** with **section GIFs, feature badges, and a tech stack diagram** so it looks more like a **modern open-source showcase**.
+Would you like me to prepare that next?

@@ -54,9 +54,7 @@
       transition: all 0.3s ease;
       background: transparent;
 
-      &:hover {
-        transform: translateY(-2px);
-      }
+      &:hover { transform: translateY(-2px); }
 
       &.active {
         transform: translateY(-2px) scale(1.05);
@@ -77,9 +75,7 @@
     border: 1px solid transparent;
     transition: all 0.3s ease;
 
-    .counter-text {
-      opacity: 0.8;
-    }
+    .counter-text { opacity: 0.8; }
 
     .counter-number {
       font-size: 1.1rem;
@@ -89,12 +85,9 @@
       transition: all 0.3s ease;
     }
 
-    &:hover {
-      transform: scale(1.05);
-    }
+    &:hover { transform: scale(1.05); }
   }
 }
-
 
 /* ===== PROJECT GRID ===== */
 .projects-grid {
@@ -102,6 +95,7 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 32px;
   margin-top: 32px;
+  align-items: stretch; /* make all cards stretch to equal height */
 
   @media screen and (max-width: 1024px) {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -126,6 +120,11 @@
   border: 1px solid transparent;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 
+  /* equal-height & bottom actions */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   /* Staggered animation */
   animation: slideInUp 0.6s ease-out;
   animation-fill-mode: both;
@@ -136,7 +135,10 @@
   }
 
   .card-link {
-    display: block;
+    /* wrapper must fill card so inner content can push actions down */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     text-decoration: none;
     color: inherit;
   }
@@ -157,7 +159,7 @@
       border-radius: 16px 16px 0 0;
     }
 
-          .chip {
+    .chip {
       position: absolute;
       top: 12px;
       left: 12px;
@@ -169,28 +171,19 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       z-index: 3;
 
-      &.released {
-        background: rgba(16, 185, 129, 0.9);
-        color: #fff;
-        border-color: #10b981;
-      }
-
-      &.wip {
-        background: rgba(245, 158, 11, 0.9);
-        color: #fff;
-        border-color: #f59e0b;
-      }
-
-      &.concept {
-        background: rgba(96, 165, 250, 0.9);
-        color: #fff;
-        border-color: #60a5fa;
-      }
+      &.released { background: rgba(16, 185, 129, 0.9); color: #fff; border-color: #10b981; }
+      &.wip      { background: rgba(245, 158, 11, 0.9); color: #fff; border-color: #f59e0b; }
+      &.concept  { background: rgba(96, 165, 250, 0.9); color: #fff; border-color: #60a5fa; }
     }
   }
 
   .content {
     padding: 24px;
+
+    /* equal-height & push actions down */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
     .header {
       display: flex;
@@ -247,6 +240,8 @@
       font-size: 0.95rem;
       line-height: 1.6;
       opacity: 0.9;
+      /* critical: let description take free space so actions stick at bottom */
+      flex-grow: 1;
     }
 
     .tech-badges {
@@ -265,28 +260,49 @@
         border: 1px solid transparent;
         transition: all 0.3s ease;
 
-        &:hover {
-          transform: translateY(-1px) scale(1.05);
-        }
+        &:hover { transform: translateY(-1px) scale(1.05); }
       }
     }
 
-    .expand-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      padding: 10px 16px;
+    /* actions: bottom-aligned + centered */
+    .card-actions {
+      margin-top: auto; /* stick to bottom */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* BASE BUTTON STYLES (shared) */
+    .expand-btn,
+    .visit-btn {
+      /* exact same box model so sizes match */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      padding: 10px 16px;      /* match sizes EXACTLY */
       border-radius: 10px;
       font-weight: 700;
       font-size: 0.85rem;
+      line-height: 1;
+      min-height: 40px;
+      box-sizing: border-box;
+
       cursor: pointer;
       transition: all 0.3s ease;
-      margin-bottom: 12px;
-
-      &:hover {
-        transform: translateY(-2px);
-      }
+      border: 1px solid transparent;
+      background: rgba(0, 0, 0, 0.02); /* will be themed below */
+      text-decoration: none;  /* also for <a>.visit-btn */
     }
 
+    /* keep previous hover motion */
+    .expand-btn:hover,
+    .visit-btn:hover { transform: translateY(-2px); }
+
+    /* themed differences are inherited below, so colors remain identical */
     .long-desc {
       margin: 12px 0 0 0;
       font-size: 0.9rem;
@@ -300,13 +316,8 @@
   }
 
   &:hover {
-    .thumb:not(.fallback) img {
-      transform: scale(1.08);
-    }
-
-    .thumb .chip {
-      transform: scale(1.1);
-    }
+    .thumb:not(.fallback) img { transform: scale(1.08); }
+    .thumb .chip { transform: scale(1.1); }
   }
 }
 
@@ -349,9 +360,7 @@
     opacity: 0.8;
     font-weight: 500;
 
-    strong {
-      font-weight: 700;
-    }
+    strong { font-weight: 700; }
   }
 }
 
@@ -381,19 +390,12 @@
       color: #e2e8f0;
       border-color: rgba(255, 255, 255, 0.08);
 
-      .counter-number {
-        background: #facc15;
-        color: #1f2937;
-      }
+      .counter-number { background: #facc15; color: #1f2937; }
 
       &:hover {
         background: rgba(30, 41, 59, 0.8);
         border-color: rgba(250, 204, 21, 0.3);
-        
-        .counter-number {
-          background: #fbbf24;
-          color: #111827;
-        }
+        .counter-number { background: #fbbf24; color: #111827; }
       }
     }
   }
@@ -412,15 +414,10 @@
     .content {
       .header .title {
         color: #f1f5f9;
-
-        &:hover {
-          color: #facc15;
-        }
+        &:hover { color: #facc15; }
       }
 
-      .desc {
-        color: #cbd5e1;
-      }
+      .desc { color: #cbd5e1; }
 
       .tech-badges .badge {
         background: rgba(255, 255, 255, 0.1);
@@ -434,7 +431,21 @@
         }
       }
 
+      /* keep colors identical to previous expand-btn */
       .expand-btn {
+        background: rgba(255, 255, 255, 0.05);
+        color: #facc15;
+        border-color: rgba(250, 204, 21, 0.3);
+
+        &:hover {
+          background: rgba(250, 204, 21, 0.15);
+          color: #fbbf24;
+          border-color: #facc15;
+        }
+      }
+
+      .visit-btn {
+        /* mirrors expand-btn exactly (sizes already unified above) */
         background: rgba(255, 255, 255, 0.05);
         color: #facc15;
         border-color: rgba(250, 204, 21, 0.3);
@@ -454,21 +465,12 @@
     }
   }
 
-  .empty-state {
-    color: #cbd5e1;
-  }
+  .empty-state { color: #cbd5e1; }
   
   .projects-footer {
     background: rgba(30, 41, 59, 0.4);
     border-color: rgba(255, 255, 255, 0.05);
-    
-    p {
-      color: #94a3b8;
-      
-      strong {
-        color: #facc15;
-      }
-    }
+    p { color: #94a3b8; strong { color: #facc15; } }
   }
 }
 
@@ -498,19 +500,12 @@
       color: #1f2937;
       border-color: rgba(0, 0, 0, 0.06);
 
-      .counter-number {
-        background: #3b82f6;
-        color: #ffffff;
-      }
+      .counter-number { background: #3b82f6; color: #ffffff; }
 
       &:hover {
         background: rgba(255, 255, 255, 0.9);
         border-color: rgba(59, 130, 246, 0.3);
-        
-        .counter-number {
-          background: #2563eb;
-          color: #ffffff;
-        }
+        .counter-number { background: #2563eb; color: #ffffff; }
       }
     }
   }
@@ -529,15 +524,10 @@
     .content {
       .header .title {
         color: #111827;
-
-        &:hover {
-          color: #3b82f6;
-        }
+        &:hover { color: #3b82f6; }
       }
 
-      .desc {
-        color: #4b5563;
-      }
+      .desc { color: #4b5563; }
 
       .tech-badges .badge {
         background: rgba(0, 0, 0, 0.05);
@@ -551,7 +541,21 @@
         }
       }
 
+      /* keep colors identical to previous expand-btn */
       .expand-btn {
+        background: rgba(0, 0, 0, 0.02);
+        color: #3b82f6;
+        border-color: rgba(59, 130, 246, 0.3);
+
+        &:hover {
+          background: rgba(59, 130, 246, 0.1);
+          color: #2563eb;
+          border-color: #3b82f6;
+        }
+      }
+
+      .visit-btn {
+        /* mirrors expand-btn exactly (sizes already unified above) */
         background: rgba(0, 0, 0, 0.02);
         color: #3b82f6;
         border-color: rgba(59, 130, 246, 0.3);
@@ -571,45 +575,24 @@
     }
   }
 
-  .empty-state {
-    color: #4b5563;
-  }
+  .empty-state { color: #4b5563; }
   
   .projects-footer {
     background: rgba(255, 255, 255, 0.5);
     border-color: rgba(0, 0, 0, 0.05);
-    
-    p {
-      color: #6b7280;
-      
-      strong {
-        color: #3b82f6;
-      }
-    }
+    p { color: #6b7280; strong { color: #3b82f6; } }
   }
 }
 
 /* ===== ANIMATIONS ===== */
 @keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -627,81 +610,38 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
-
-        .title {
-          font-size: 1.2rem;
-        }
+        .title { font-size: 1.2rem; }
       }
 
-      .desc {
-        font-size: 0.9rem;
-      }
+      .desc { font-size: 0.9rem; }
 
-      .tech-badges {
-        .badge {
-          font-size: 0.75rem;
-          padding: 3px 8px;
-        }
+      .tech-badges .badge {
+        font-size: 0.75rem;
+        padding: 3px 8px;
       }
     }
   }
 
-  .projects-controls {
-    .tabs {
-      justify-content: center;
-      
-      .tab {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-      }
-    }
+  .projects-controls .tabs {
+    justify-content: center;
+    .tab { padding: 8px 12px; font-size: 0.85rem; }
   }
 }
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .project-card { 
-    animation: none; 
-  }
-  * { 
-    transition-duration: 0.1s; 
-  }
-}
-/* === Actions row layout === */
-.project-card .card-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* کنار هم و وسط */
-  gap: 12px;
-  margin-top: 12px;
-  flex-wrap: wrap; /* اگر فضا کم شد به خط بعد برود */
+  .project-card { animation: none; }
+  * { transition-duration: 0.1s; }
 }
 
-/* دکمه Visit دقیقاً مثل Show details */
-.project-card .visit-btn {
-  @extend .expand-btn; /* تمام استایل‌های دکمه فعلی را بگیر */
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none; /* چون <a> است */
-  /* اندازه و تایپوگرافی طبق نیازت، اما ۱:۱ با expand-btn */
-  padding: 12px 24px; /* تأکید خواسته‌شده */
-  font-weight: 600;
-
-  /* آیکون خارجی */
-  .ext-icon {
-    flex-shrink: 0;
-  }
-}
-
-/* ریسپانسیو: روی موبایل عمودی و فول‌ویدث */
+/* mobile stacking for actions */
 @media (max-width: 640px) {
-  .project-card .card-actions {
+  .project-card .content .card-actions {
     flex-direction: column;
     align-items: stretch;
   }
-  .project-card .card-actions .expand-btn,
-  .project-card .card-actions .visit-btn {
+  .project-card .content .expand-btn,
+  .project-card .content .visit-btn {
     width: 100%;
     text-align: center;
   }
