@@ -133,7 +133,3 @@ Feel free to use, modify, and distribute — attribution appreciated but not req
 * **Original template**: [Yuji Sato](https://github.com/yujisatojr/react-portfolio-template)
 * **Custom enhancements** by Ali Moeinian — additional sections, LLM integration, JSON-driven content, and UI refinements
 
----
-
-If you want, I can also make you a **more visual README** with **section GIFs, feature badges, and a tech stack diagram** so it looks more like a **modern open-source showcase**.
-Would you like me to prepare that next?
