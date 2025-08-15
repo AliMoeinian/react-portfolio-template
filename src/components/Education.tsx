@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; // ✅ فقط این اضافه شد
 import "../assets/styles/Education.scss";
 import uniLogo from "../assets/logos/university-of-isfahan.webp";
 import iauLogo from "../assets/logos/iau-khorasgan.webp";
@@ -64,12 +64,17 @@ const educationData = [
 ];
 
 function Education() {
+  const [showMore, setShowMore] = useState(false); // ✅ فقط برای دکمه
+
   return (
     <div className="education-container section" id="education">
       <h1 className="section-title">Education</h1>
       <ul className="education-list">
         {educationData.map((edu, idx) => (
-          <li key={idx} className="education-item">
+          <li
+            key={idx}
+            className={`education-item ${idx >= 2 && showMore ? "show-more-visible" : ""}`} // ✅ فقط همین کلاس برای موبایل
+          >
             {edu.logo && (
               <img 
                 src={edu.logo} 
@@ -93,6 +98,20 @@ function Education() {
             </div>
           </li>
         ))}
+
+        {/* ✅ دکمه فقط برای موبایل استایل می‌گیرد چون در SCSS پنهان/نمایش می‌شود */}
+        <li>
+          <button
+            className={`show-more-btn ${showMore ? "expanded" : ""}`}
+            onClick={() => setShowMore(!showMore)}
+          >
+            {showMore ? "See Less" : "See More"}
+            {/* آیکن ساده برای انیمیشن rotate در SCSS */}
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </li>
       </ul>
     </div>
   );

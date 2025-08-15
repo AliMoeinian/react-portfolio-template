@@ -97,7 +97,7 @@ export default function Skills() {
               {/* توضیح کوچک برای Frontend & UI */}
               {group.category === "Frontend & UI" && (
                 <p style={{ margin: 0, opacity: 0.8, fontSize: "0.85rem" }}>
-                  I can write and style UI when needed, but it’s not my primary focus.
+                  <b>Not my primary focus - Only Struggle with UI When its needed.</b>
                 </p>
               )}
             </div>

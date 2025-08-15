@@ -69,22 +69,70 @@
   }
 }
 
-// ریسپانسیو برای موبایل
-@media screen and (max-width: 640px) {
+/* 🔥 MOBILE OPTIMIZATION FOR SKILLS CATEGORIES 🔥 */
+@media screen and (max-width: 768px) {
   .skills-controls {
     padding: 0 16px;
+    margin-bottom: 24px;
 
     .tabs {
-      gap: 10px;
-    }
+      /* 📱 HORIZONTAL SCROLL ON MOBILE */
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 8px 0 12px 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
 
-    .tab {
-      font-size: 0.9rem;
-      padding: 8px 16px;
+      /* Custom scrollbar for better UX */
+      &::-webkit-scrollbar {
+        height: 3px;
+        margin-top: 6px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: var(--card-border);
+        border-radius: 2px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 2px;
+        opacity: 0.6;
+      }
+
+      .tab {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        min-width: auto;
+        
+        /* Better touch target */
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
 
+/* Even smaller screens */
+@media screen and (max-width: 480px) {
+  .skills-controls {
+    padding: 0 12px;
+
+    .tabs {
+      .tab {
+        font-size: 0.8rem;
+        padding: 6px 14px;
+        min-width: 80px;
+      }
+    }
+  }
+}
 
 /* ===== GRID ===== */
 .skills-grid {
@@ -96,9 +144,12 @@
   @media (max-width: 1024px) {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
+  
+  /* 🔥 MOBILE GRID OPTIMIZATION 🔥 */
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
+    padding: 0 12px;
   }
 
   .group {
@@ -113,7 +164,20 @@
     padding: var(--group-pad);
     transition: transform .3s cubic-bezier(.4,0,.2,1);
 
-    &:hover { transform: translateY(-4px); }
+    &:hover { 
+      transform: translateY(-4px); 
+    }
+
+    /* 📱 MOBILE CARD OPTIMIZATION */
+    @media (max-width: 768px) {
+      padding: 16px;
+      border-radius: 12px;
+      
+      /* Reduce hover effect on mobile */
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
   }
 
   .group-head {
@@ -128,6 +192,12 @@
       font-size: 1.02rem;
       font-weight: 800;
       color: var(--text);
+      
+      /* 📱 MOBILE TITLE SIZE */
+      @media (max-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.3;
+      }
     }
 
     .toggle-more {
@@ -143,6 +213,20 @@
 
       &:hover { transform: translateY(-1px); }
       &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      
+      /* 📱 MOBILE BUTTON OPTIMIZATION */
+      @media (max-width: 768px) {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+        
+        /* Better touch target */
+        min-width: 44px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 
@@ -150,6 +234,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--pill-gap);
+    
+    /* 📱 MOBILE PILL OPTIMIZATION */
+    @media (max-width: 768px) {
+      gap: 6px;
+    }
   }
 
   .skill-pill {
@@ -176,8 +265,39 @@
       outline-offset: 2px;
     }
 
-    .ic { font-size: 16px; opacity: .95; line-height: 1; }
-    .label { font-weight: 700; letter-spacing: .1px; }
+    .ic { 
+      font-size: 16px; 
+      opacity: .95; 
+      line-height: 1;
+      
+      /* 📱 MOBILE ICON SIZE */
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+    
+    .label { 
+      font-weight: 700; 
+      letter-spacing: .1px;
+      
+      /* 📱 MOBILE LABEL SIZE */
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
+
+    /* 📱 MOBILE PILL SIZING */
+    @media (max-width: 768px) {
+      padding: 6px 10px;
+      gap: 6px;
+      font-size: 0.8rem;
+      
+      /* Reduce hover effect on mobile */
+      &:hover {
+        transform: translateY(-0.5px);
+      }
+    }
   }
 }
 
@@ -187,9 +307,37 @@
   padding: 32px 20px;
   opacity: 0.85;
 
-  .empty-illustration { font-size: 2.6rem; margin-bottom: 8px; }
-  h3 { margin: 0 0 6px 0; font-size: 1.2rem; font-weight: 800; }
-  p  { margin: 0; font-size: 0.95rem; opacity: 0.85; }
+  .empty-illustration { 
+    font-size: 2.6rem; 
+    margin-bottom: 8px;
+    
+    /* 📱 MOBILE ILLUSTRATION SIZE */
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  h3 { 
+    margin: 0 0 6px 0; 
+    font-size: 1.2rem; 
+    font-weight: 800;
+    
+    /* 📱 MOBILE HEADING SIZE */
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+  }
+  
+  p  { 
+    margin: 0; 
+    font-size: 0.95rem; 
+    opacity: 0.85;
+    
+    /* 📱 MOBILE TEXT SIZE */
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+  }
 }
 
 /* 🌙 Dark Mode */
@@ -279,11 +427,15 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
-  .skills-grid { gap: 16px; }
-  .group { padding: calc(var(--group-pad) - 2px); }
-  .group-head .group-title { font-size: 1rem; }
-  .skill-pill { font-size: calc(var(--pill-fz) - 0.05rem); }
+  .skills-grid { gap: 12px; padding: 0 8px; }
+  .group { padding: 14px; }
+  .group-head .group-title { font-size: 0.95rem; }
+  .skill-pill { 
+    font-size: 0.75rem;
+    padding: 5px 8px;
+  }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { animation: none; }
   * { transition-duration: 0.1s; }

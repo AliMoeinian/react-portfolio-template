@@ -12,6 +12,38 @@
     padding: 0;
     max-width: 900px;
 
+    /* 🔥 MOBILE: Show only first 2 cards, hide rest 🔥 */
+    @media screen and (max-width: 768px) {
+      max-width: 100%;
+      padding: 0 12px;
+      
+      .education-item {
+        /* Show first 2 cards by default */
+        &:nth-child(1),
+        &:nth-child(2) {
+          display: flex;
+        }
+        
+        /* Hide remaining cards initially */
+        &:nth-child(n+3) {
+          display: none;
+          
+          /* When expanded, show with animation */
+          &.show-more-visible {
+            display: flex;
+            animation: slideInUp 0.4s ease-out;
+            animation-fill-mode: both;
+            
+            /* Stagger animation for multiple cards */
+            &:nth-child(3) { animation-delay: 0.1s; }
+            &:nth-child(4) { animation-delay: 0.2s; }
+            &:nth-child(5) { animation-delay: 0.3s; }
+            &:nth-child(6) { animation-delay: 0.4s; }
+          }
+        }
+      }
+    }
+
     .education-item {
       display: flex;
       align-items: flex-start;
@@ -24,6 +56,22 @@
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       text-align: left;
 
+      /* 📱 MOBILE: Center everything and optimize layout */
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+        padding: 20px 16px;
+        border-radius: 12px;
+      }
+
+      @media screen and (max-width: 480px) {
+        padding: 16px 12px;
+        gap: 12px;
+      }
+
       img {
         width: 64px;
         height: 64px;
@@ -31,11 +79,30 @@
         border-radius: 12px;
         flex-shrink: 0;
         margin-top: 4px; // Align with title
+        
+        /* 📱 MOBILE: Center image and adjust size */
+        @media screen and (max-width: 768px) {
+          width: 56px;
+          height: 56px;
+          margin-top: 0;
+          border-radius: 10px;
+        }
+
+        @media screen and (max-width: 480px) {
+          width: 48px;
+          height: 48px;
+        }
       }
 
       .content-wrapper {
         flex: 1;
         min-width: 0; // Prevent flex overflow
+        
+        /* 📱 MOBILE: Center content */
+        @media screen and (max-width: 768px) {
+          text-align: center;
+          width: 100%;
+        }
       }
 
       h3 {
@@ -44,6 +111,16 @@
         font-weight: 700;
         line-height: 1.3;
         transition: color 0.3s ease;
+        
+        /* 📱 MOBILE: Smaller title */
+        @media screen and (max-width: 768px) {
+          font-size: 1.2rem;
+          margin-bottom: 6px;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 1.1rem;
+        }
       }
 
       .degree {
@@ -52,6 +129,16 @@
         font-weight: 500;
         line-height: 1.4;
         opacity: 0.9;
+        
+        /* 📱 MOBILE: Adjust degree size */
+        @media screen and (max-width: 768px) {
+          font-size: 1rem;
+          margin-bottom: 8px;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 0.95rem;
+        }
       }
 
       .period {
@@ -63,12 +150,30 @@
         margin-bottom: 16px;
         letter-spacing: 0.02em;
         transition: all 0.3s ease;
+        
+        /* 📱 MOBILE: Adjust period badge */
+        @media screen and (max-width: 768px) {
+          font-size: 0.8rem;
+          padding: 5px 12px;
+          margin-bottom: 12px;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 0.75rem;
+          padding: 4px 10px;
+        }
       }
 
       .details {
         margin: 0;
         padding: 0;
         list-style: none;
+
+        /* 📱 MOBILE: Center details */
+        @media screen and (max-width: 768px) {
+          text-align: left;
+          max-width: 100%;
+        }
 
         li {
           position: relative;
@@ -77,6 +182,18 @@
           font-size: 0.95rem;
           line-height: 1.6;
           transition: all 0.3s ease;
+
+          /* 📱 MOBILE: Adjust detail items */
+          @media screen and (max-width: 768px) {
+            font-size: 0.9rem;
+            padding-left: 16px;
+            margin-bottom: 8px;
+          }
+
+          @media screen and (max-width: 480px) {
+            font-size: 0.85rem;
+            padding-left: 14px;
+          }
 
           // Custom bullet with primary color
           &::before {
@@ -88,6 +205,13 @@
             height: 6px;
             border-radius: 50%;
             transition: all 0.3s ease;
+            
+            /* 📱 MOBILE: Adjust bullet position */
+            @media screen and (max-width: 768px) {
+              top: 10px;
+              width: 5px;
+              height: 5px;
+            }
           }
 
           &:last-child {
@@ -101,10 +225,100 @@
             &::before {
               transform: scale(1.3);
             }
+            
+            /* 📱 MOBILE: Reduce hover effect */
+            @media screen and (max-width: 768px) {
+              padding-left: 18px;
+              
+              &::before {
+                transform: scale(1.1);
+              }
+            }
           }
         }
       }
     }
+
+    /* 🔥 MOBILE: Show More Button 🔥 */
+    .show-more-btn {
+      display: none; /* Hidden by default on desktop */
+      
+      /* 📱 MOBILE: Show button only on mobile */
+      @media screen and (max-width: 768px) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 24px;
+        margin: 20px auto 0;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        background: transparent;
+        
+        /* Shine effect on hover */
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.6s ease;
+        }
+        
+        &:hover {
+          transform: translateY(-2px);
+
+          &::before {
+            left: 100%;
+          }
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+        
+        svg {
+          width: 18px;
+          height: 18px;
+          transition: transform 0.3s ease;
+        }
+        
+        /* Icon rotation for expanded state */
+        &.expanded svg {
+          transform: rotate(180deg);
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
+
+/* 🔥 MOBILE SLIDE-IN ANIMATION 🔥 */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -125,6 +339,11 @@
       h3 {
         color: #facc15;
       }
+      
+      /* 📱 MOBILE: Reduce hover effect */
+      @media screen and (max-width: 768px) {
+        transform: translateY(-4px) scale(1.01);
+      }
     }
 
     h3 {
@@ -143,6 +362,11 @@
       &:hover {
         background-color: rgba(250, 204, 21, 0.25);
         transform: scale(1.05);
+        
+        /* 📱 MOBILE: Reduce hover effect */
+        @media screen and (max-width: 768px) {
+          transform: scale(1.02);
+        }
       }
     }
 
@@ -165,6 +389,21 @@
       }
     }
   }
+  
+  /* 🔥 MOBILE: Show More Button Dark Mode 🔥 */
+  .education-list .show-more-btn {
+    @media screen and (max-width: 768px) {
+      background: #facc15;
+      color: #1f2937;
+      border-color: #facc15;
+
+      &:hover {
+        background: #eab308;
+        color: #111827;
+        box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+      }
+    }
+  }
 }
 
 // ☀️ Light Mode
@@ -184,6 +423,11 @@
       h3 {
         color: #3b82f6;
       }
+      
+      /* 📱 MOBILE: Reduce hover effect */
+      @media screen and (max-width: 768px) {
+        transform: translateY(-4px) scale(1.01);
+      }
     }
 
     h3 {
@@ -202,6 +446,11 @@
       &:hover {
         background-color: rgba(59, 130, 246, 0.15);
         transform: scale(1.05);
+        
+        /* 📱 MOBILE: Reduce hover effect */
+        @media screen and (max-width: 768px) {
+          transform: scale(1.02);
+        }
       }
     }
 
@@ -221,6 +470,21 @@
             box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
           }
         }
+      }
+    }
+  }
+  
+  /* 🔥 MOBILE: Show More Button Light Mode 🔥 */
+  .education-list .show-more-btn {
+    @media screen and (max-width: 768px) {
+      background: #3b82f6;
+      color: #ffffff;
+      border-color: #3b82f6;
+
+      &:hover {
+        background: #2563eb;
+        color: #ffffff;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
       }
     }
   }
@@ -277,8 +541,6 @@
   .education-container {
     .education-list {
       .education-item {
-        flex-direction: column;
-        text-align: center;
         gap: 12px;
 
         img {
@@ -287,7 +549,11 @@
         }
 
         .content-wrapper {
-          text-align: left;
+          text-align: center;
+          
+          .details {
+            text-align: left;
+          }
         }
       }
     }
