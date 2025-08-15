@@ -1,9 +1,9 @@
 import React from "react";
 import "../assets/styles/Education.scss";
-import uniLogo from "../assets/logos/university-of-isfahan.png";
-import iauLogo from "../assets/logos/iau-khorasgan.png";
-import highschoolLogo from "../assets/logos/imam-sadegh-highschool.png";
-import MiddleSchool from "../assets/logos/LoghmanHakim.png";
+import uniLogo from "../assets/logos/university-of-isfahan.webp";
+import iauLogo from "../assets/logos/iau-khorasgan.webp";
+import highschoolLogo from "../assets/logos/imam-sadegh-highschool.webp";
+import MiddleSchool from "../assets/logos/LoghmanHakim.webp";
 
 const educationData = [
   {

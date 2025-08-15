@@ -1,14 +1,14 @@
 import React from "react";
 import "../assets/styles/Publications.scss";
 
-// Images (exact filenames as you listed; all .png)
-import emmetImg from "../assets/images/EMMET Plugin.png";
-import day21Img from "../assets/images/21DaywithPython.png";
-import gitImg from "../assets/images/GitGithub.png";
-import cyrusImg from "../assets/images/Cyrus.png";
-import pyscriptImg from "../assets/images/Pyscript.png";
-import licensesImg from "../assets/images/Licenses.png";
-import neumeronymsImg from "../assets/images/Neumeronyms.png";
+// Images
+import emmetImg from "../assets/images/EMMET Plugin.webp";
+import day21Img from "../assets/images/21DaywithPython.webp";
+import gitImg from "../assets/images/GitGithub.webp";
+import cyrusImg from "../assets/images/Cyrus.webp";
+import pyscriptImg from "../assets/images/Pyscript.webp";
+import licensesImg from "../assets/images/Licenses.webp";
+import neumeronymsImg from "../assets/images/Neumeronyms.webp";
 
 type PubItem = {
   title: string;

@@ -3,24 +3,24 @@ import "../assets/styles/Project.scss";
 import projectsData from "../data/ProjectsData.json";
 
 // Import all project images
-import web3FutureOfMoney from "../assets/images/web3-future-of-money.png";
-import edPatientRegistryAi from "../assets/images/ed-patient-registry-ai.png";
-import erpnextDeploymentDemo from "../assets/images/erpnext-deployment-demo.png";
-import smartLibrarian from "../assets/images/smart-librarian.png";
-import personalPortfolioLlm from "../assets/images/personal-portfolio-llm.png";
-import digitalHealthAssistant from "../assets/images/digital-health-assistant.png";
-import insideforge from "../assets/images/insideforge.png";
-import healthagent from "../assets/images/healthagent.png";
-import countryCityLanguageDw from "../assets/images/country-city-language-dw.png";
-import googlePlayAnalytics from "../assets/images/google-play-analytics.png";
-import persianRagChatbot from "../assets/images/persian-rag-chatbot.png";
-import diabetesRiskMl from "../assets/images/diabetes-risk-ml.png";
-import customerSegmentationClustering from "../assets/images/customer-segmentation-clustering.png";
-import trendIdentificationTextMining from "../assets/images/trend-identification-text-mining.png";
-import sparkHadoopTwitterTrends from "../assets/images/spark-hadoop-twitter-trends.png";
-import nycTaxiDeltaLakehouse from "../assets/images/nyc-taxi-delta-lakehouse.png";
-import industrialIotLakehouse from "../assets/images/industrial-iot-lakehouse.png";
-import complexNetworksGnn from "../assets/images/complex-networks-gnn.png";
+import web3FutureOfMoney from "../assets/images/web3-future-of-money.webp";
+import edPatientRegistryAi from "../assets/images/ed-patient-registry-ai.webp";
+import erpnextDeploymentDemo from "../assets/images/erpnext-deployment-demo.webp";
+import smartLibrarian from "../assets/images/smart-librarian.webp";
+import personalPortfolioLlm from "../assets/images/personal-portfolio-llm.webp";
+import digitalHealthAssistant from "../assets/images/digital-health-assistant.webp";
+import insideforge from "../assets/images/insideforge.webp";
+import healthagent from "../assets/images/healthagent.webp";
+import countryCityLanguageDw from "../assets/images/country-city-language-dw.webp";
+import googlePlayAnalytics from "../assets/images/google-play-analytics.webp";
+import persianRagChatbot from "../assets/images/persian-rag-chatbot.webp";
+import diabetesRiskMl from "../assets/images/diabetes-risk-ml.webp";
+import customerSegmentationClustering from "../assets/images/customer-segmentation-clustering.webp";
+import trendIdentificationTextMining from "../assets/images/trend-identification-text-mining.webp";
+import sparkHadoopTwitterTrends from "../assets/images/spark-hadoop-twitter-trends.webp";
+import nycTaxiDeltaLakehouse from "../assets/images/nyc-taxi-delta-lakehouse.webp";
+import industrialIotLakehouse from "../assets/images/industrial-iot-lakehouse.webp";
+import complexNetworksGnn from "../assets/images/complex-networks-gnn.webp";
 
 type ProjectItem = {
   slug: string;
