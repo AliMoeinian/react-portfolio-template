@@ -25,7 +25,7 @@ function ContactActions({ email }: { email: string }) {
   const handleMailto = () => {
     const subject = encodeURIComponent("Collaboration Inquiry");
     const body = encodeURIComponent(
-      `Hi Ali,\n\nI’d like to collaborate on a project that matches your expertise.\n\nBest,\n[Your Name]`
+      `Hi Ali,\n\nI'd like to collaborate on a project that matches your expertise.\n\nBest,\n[Your Name]`
     );
     window.open(`mailto:${email}?subject=${subject}&body=${body}`, "_self");
   };
@@ -125,7 +125,7 @@ function ContactActions({ email }: { email: string }) {
       </div>
 
       <p className="micro-copy">
-        If these buttons don’t work on your device, copy the email and paste it into your client.
+        If these buttons don't work on your device, copy the email and paste it into your client.
       </p>
     </div>
   );
@@ -163,13 +163,19 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
 
   // autoscroll
   useEffect(() => {
-    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
+    if (listRef.current) {
+      const scrollElement = listRef.current;
+      scrollElement.scrollTo({ 
+        top: scrollElement.scrollHeight, 
+        behavior: "smooth" 
+      });
+    }
   }, [messages, loading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const userText = input.trim();
-    if (!userText) return;
+    if (!userText || loading) return;
 
     setMessages((prev) => [...prev, { from: "user", text: userText }]);
     setInput("");
@@ -180,6 +186,11 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
       setMessages((prev) => [
         ...prev,
         { from: "llm", text: result.reply, email: result.email }
+      ]);
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        { from: "llm", text: "Sorry, I encountered an error. Please try again." }
       ]);
     } finally {
       setLoading(false);
@@ -200,8 +211,7 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
               Ali
             </div>
             <div className="titles">
-              <h2 className="title">Please Describe Your Project to get Contact Info 👽</h2>
-              
+              <h2 className="title">Describe Your Project to Get Contact Info 🚀</h2>
             </div>
           </div>
           <button className="close-button" onClick={onClose} aria-label="Close chat">
@@ -210,6 +220,15 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
         </header>
 
         <div ref={listRef} className="messages scrollable" aria-live="polite">
+          {messages.length === 0 && (
+            <div className="msg llm" role="group" aria-label="assistant message">
+              <p>
+                Hi there! 👋 I'm Ali's AI assistant. Tell me about your project or collaboration idea, 
+                and I'll help determine if it's a good fit. If so, I'll provide you with the best way to reach out!
+              </p>
+            </div>
+          )}
+          
           {messages.map((m, i) => (
             <div key={i} className={`msg ${m.from}`} role="group" aria-label={`${m.from} message`}>
               <p>{m.text}</p>
@@ -230,8 +249,8 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
                       </svg>
                     </div>
                     <div className="head-text">
-                      <h4>Looks like a match</h4>
-                      <span>Choose how you’d like to get in touch</span>
+                      <h4>Perfect Match! ✨</h4>
+                      <span>Your project aligns well with Ali's expertise</span>
                     </div>
                   </header>
 
@@ -239,7 +258,7 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
 
                   <footer className="contact-foot">
                     <span className="secure-dot" aria-hidden="true"></span>
-                    <small>No spam. Your message goes straight to Ali.</small>
+                    <small>Direct contact • No spam • Quick response guaranteed</small>
                   </footer>
                 </section>
               )}
@@ -261,14 +280,16 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Describe your project..."
+            placeholder="Describe your project, collaboration idea, or what you're working on..."
             aria-label="Project description"
+            disabled={loading}
+            maxLength={500}
           />
-          <button type="submit" disabled={loading} aria-label="Send message">
+          <button type="submit" disabled={loading || !input.trim()} aria-label="Send message">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M2 21l20-9L2 3v7l14 2-14 2v7z" fill="currentColor" />
             </svg>
-            <span>Send</span>
+            <span>{loading ? "Sending..." : "Send"}</span>
           </button>
         </form>
       </div>
