@@ -32,7 +32,7 @@ const publications: PubItem[] = [
     alt: "EMMET Plugin cover",
     year: "2024",
     category: "Web Development",
-    downloadUrl: "/downloads/emmet-plugin.pdf", // Placeholder
+    downloadUrl: "https://github.com/AliMoeinian/Emmet-Summary", // Placeholder
   },
   {
     title: "21 Days with Python",
@@ -43,7 +43,7 @@ const publications: PubItem[] = [
     alt: "21 Day with Python cover",
     year: "2024",
     category: "Programming",
-    downloadUrl: "/downloads/21-days-python.pdf", // Placeholder
+    downloadUrl: "https://github.com/AliMoeinian/21-Day-Python-Challenge", // Placeholder
   },
   {
     title: "Git & GitHub",
@@ -54,7 +54,7 @@ const publications: PubItem[] = [
     alt: "Git & GitHub cover",
     year: "2024",
     category: "Version Control",
-    downloadUrl: "/downloads/git-github.pdf", // Placeholder
+    downloadUrl: "https://github.com/AliMoeinian/Practical-summary-of-the-Git", // Placeholder
   },
   {
     title: "Cyrus the Great",
@@ -75,7 +75,7 @@ const publications: PubItem[] = [
     alt: "PyScript tutorial cover",
     year: "2022",
     category: "Web Development",
-    downloadUrl: "/downloads/pyscript.pdf", // Placeholder
+    downloadUrl: "https://github.com/AliMoeinian/Pyscript-Summary", // Placeholder
   },
   {
     title: "Open Source Licenses",
@@ -86,7 +86,7 @@ const publications: PubItem[] = [
     alt: "Licenses on GitHub cover",
     year: "2023",
     category: "Open Source",
-    downloadUrl: "/downloads/licenses.pdf", // Placeholder
+    downloadUrl: "https://github.com/AliMoeinian/GitHub-licenses", // Placeholder
   },
   {
     title: "Numeronyms in Software",
@@ -97,25 +97,14 @@ const publications: PubItem[] = [
     alt: "Numeronyms cover",
     year: "2023",
     category: "Software Engineering",
-    downloadUrl: "/downloads/numeronyms.pdf", // Placeholder
+    downloadUrl: "https://github.com/AliMoeinian/Numeronyms", // Placeholder
   },
 ];
 
 export default function Publications() {
   const handleDownload = (pub: PubItem) => {
     if (!pub.downloadable || !pub.downloadUrl) return;
-    
-    // For now, show a message that files will be available soon
-    // In production, you'd link to actual PDF files
-    alert(`📚 "${pub.title}" will be available for download soon!\n\nContact Ali for early access: alimoeinianDev@gmail.com`);
-    
-    // Future implementation:
-    // const link = document.createElement('a');
-    // link.href = pub.downloadUrl;
-    // link.download = `${pub.title.replace(/\s+/g, '-').toLowerCase()}.pdf`;
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
+    window.open(pub.downloadUrl,"_blank");
   };
 
   return (
