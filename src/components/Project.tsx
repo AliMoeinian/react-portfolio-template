@@ -84,12 +84,12 @@ const statusChip = (s: ProjectItem["status"]) =>
 // Generate placeholder with gradient
 function generatePlaceholder(slug: string, title: string): string {
   const colors = [
-    ['#3b82f6', '#8b5cf6'], // blue to purple
-    ['#10b981', '#06b6d4'], // green to cyan
-    ['#f59e0b', '#ef4444'], // yellow to red
-    ['#8b5cf6', '#ec4899'], // purple to pink
-    ['#06b6d4', '#3b82f6'], // cyan to blue
-    ['#ef4444', '#f59e0b'], // red to yellow
+    ['#3b82f6', '#8b5cf6'],
+    ['#10b981', '#06b6d4'],
+    ['#f59e0b', '#ef4444'],
+    ['#8b5cf6', '#ec4899'],
+    ['#06b6d4', '#3b82f6'],
+    ['#ef4444', '#f59e0b'],
   ];
   
   const colorIndex = slug.length % colors.length;
@@ -122,27 +122,37 @@ function generatePlaceholder(slug: string, title: string): string {
 }
 
 function ProjectCard({ item }: { item: ProjectItem }) {
-  const [open, setOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   // Try to get real image, fallback to placeholder
   const imageUrl = imageMap[item.slug] || generatePlaceholder(item.slug, item.title);
   
-  const Wrapper = ({ children }: { children: React.ReactNode }) =>
-    item.href ? (
-      <a
-        className="card-link"
-        href={item.href!}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    ) : (
-      <div className="card-link">{children}</div>
-    );
+  const handleCardClick = () => {
+    if (window.innerWidth <= 768) {
+      setIsExpanded(!isExpanded);
+    }
+  };
+
+  const handleVisitClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (item.href) {
+      window.open(item.href, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const Wrapper = ({ children }: { children: React.ReactNode }) => (
+    <div 
+      className={`card-wrapper ${isExpanded ? 'expanded' : ''}`}
+      onClick={handleCardClick}
+      onMouseEnter={() => window.innerWidth > 768 && setIsExpanded(true)}
+      onMouseLeave={() => window.innerWidth > 768 && setIsExpanded(false)}
+    >
+      {children}
+    </div>
+  );
 
   return (
-    <article className={`project-card reveal ${open ? "open" : ""}`}>
+    <article className={`project-card reveal ${isExpanded ? "expanded" : ""}`}>
       <Wrapper>
         <div className="thumb">
           <img 
@@ -174,32 +184,14 @@ function ProjectCard({ item }: { item: ProjectItem }) {
             ))}
           </ul>
 
-          {/* Actions row */}
-          <div className="card-actions" role="group" aria-label="Project actions">
-            <button
-              className="expand-btn"
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation(); // avoid triggering card link
-                setOpen((v) => !v);
-              }}
-              aria-expanded={open}
-              aria-controls={`desc-${item.slug}`}
-            >
-              {open ? "Hide details 🔼" : "Show details 🔽"}
-            </button>
-
-            {item.href && (
-              <a
+          {/* Visit button - always visible */}
+          {item.href && (
+            <div className="card-actions" role="group" aria-label="Project actions">
+              <button
                 className="visit-btn"
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
+                onClick={handleVisitClick}
                 aria-label={`Visit Project: ${item.title} (opens in a new tab)`}
               >
-                {/* external-link icon */}
                 <svg
                   className="ext-icon"
                   width="16"
@@ -217,15 +209,16 @@ function ProjectCard({ item }: { item: ProjectItem }) {
                   />
                 </svg>
                 Visit Project
-              </a>
-            )}
-          </div>
-
-          {open && (
-            <p id={`desc-${item.slug}`} className="long-desc">
-              {item.description}
-            </p>
+              </button>
+            </div>
           )}
+        </div>
+
+        {/* 🔒 Minimal overlay: description only */}
+        <div className="details-overlay">
+          <div className="overlay-inner">
+            <p className="overlay-description">{item.description}</p>
+          </div>
         </div>
       </Wrapper>
     </article>
