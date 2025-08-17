@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders portfolio owner name', () => {
+test('renders loading states for sections', () => {
   render(<App />);
-  const nameElements = screen.getAllByText(/Ali Moeinian/i);
-  expect(nameElements.length).toBeGreaterThan(0);
+  const loaderElements = screen.getAllByText(/Loading.../i);
+  expect(loaderElements.length).toBeGreaterThan(0);
 });

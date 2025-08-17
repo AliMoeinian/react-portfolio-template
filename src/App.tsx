@@ -1,24 +1,22 @@
 // App.tsx یا App.js
 // مطمئن شوید که تمام کامپوننت‌ها کلاس section را دارند
 
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 
 import "./assets/styles/Section.scss"; // Import the unified section styles
 
-import {
-  Navigation,
-  Footer,
-  Main,
-  Expertise,
-  Timeline,
-  Project,
-  Publications,
-  Education,
-  Achievements,
-  Mentoring,
-  ContactMe,
-  Skills
-} from "./components";
+const Navigation = lazy(() => import("./components/Navigation"));
+const Footer = lazy(() => import("./components/Footer"));
+const Main = lazy(() => import("./components/Main"));
+const Expertise = lazy(() => import("./components/Expertise"));
+const Skills = lazy(() => import("./components/Skills"));
+const Timeline = lazy(() => import("./components/Timeline"));
+const Project = lazy(() => import("./components/Project"));
+const Publications = lazy(() => import("./components/Publications"));
+const Education = lazy(() => import("./components/Education"));
+const Achievements = lazy(() => import("./components/Achievements"));
+const Mentoring = lazy(() => import("./components/Mentoring"));
+const ContactMe = lazy(() => import("./components/ContactMe"));
 
 function App() {
   const [mode, setMode] = useState<"light" | "dark">("light");
@@ -29,50 +27,73 @@ function App() {
 
   return (
     <div className={`main-container ${mode}-mode`}>
-      <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
-      
+      <Suspense fallback={<div className="loader">Loading...</div>}>
+        <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
+      </Suspense>
+
       {/* Hero section - special styling */}
-      <Main />
-      
+      <Suspense fallback={<div className="loader">Loading...</div>}>
+        <Main />
+      </Suspense>
+
       {/* All other sections should have consistent spacing */}
       <div className="section" id="expertise">
-        <Expertise />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Expertise />
+        </Suspense>
       </div>
 
       <div className="section" id="skills">
-      <Skills />
-    </div>
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Skills />
+        </Suspense>
+      </div>
 
-      
       <div className="section" id="history">
-        <Timeline />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Timeline />
+        </Suspense>
       </div>
-      
+
       <div className="section" id="projects">
-        <Project />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Project />
+        </Suspense>
       </div>
-      
+
       <div className="section" id="publications">
-        <Publications />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Publications />
+        </Suspense>
       </div>
-      
+
       <div className="section" id="achievements">
-        <Achievements />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Achievements />
+        </Suspense>
       </div>
-      
+
       <div className="section" id="mentoring">
-        <Mentoring />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Mentoring />
+        </Suspense>
       </div>
-      
+
       <div className="section" id="education">
-        <Education />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <Education />
+        </Suspense>
       </div>
-      
+
       <div className="section" id="contact">
-        <ContactMe />
+        <Suspense fallback={<div className="loader">Loading...</div>}>
+          <ContactMe />
+        </Suspense>
       </div>
-      
-      <Footer />
+
+      <Suspense fallback={<div>className="loader"Loading...</div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
