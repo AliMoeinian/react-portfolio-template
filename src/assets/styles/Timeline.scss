@@ -31,20 +31,6 @@
       font-size: 0.9rem;
       font-weight: 600;
     }
-
-    .see-more-btn {
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: #1e293b;
-      font-weight: 600;
-      
-      &:hover {
-        background: #3b82f6;
-        color: white;
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        transform: translateY(-2px);
-      }
-    }
   }
 }
 
@@ -69,20 +55,6 @@
       font-size: 0.9rem;
       font-weight: 600;
     }
-
-    .see-more-btn {
-      background: rgba(30, 41, 59, 0.6);
-      border: 1px solid rgba(250, 204, 21, 0.3);
-      color: #e2e8f0;
-      font-weight: 600;
-
-      &:hover {
-        background: #facc15;
-        color: #1f2937;
-        box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
-        transform: translateY(-2px);
-      }
-    }
   }
 }
 
@@ -92,16 +64,27 @@
   .vertical-timeline-element-content {
     padding: 24px !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
     
     &:hover {
-      transform: translateY(-3px);
+      transform: translateY(-6px) scale(1.01);
     }
+  }
+
+  // Background content that gets blurred
+  .timeline-background-content {
+    position: relative;
+    z-index: 1;
+    transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   h3 {
     font-size: 1.2rem;
     margin-bottom: 8px;
     line-height: 1.4;
+    transition: color 0.3s ease;
   }
 
   h4 {
@@ -120,50 +103,96 @@
   p {
     margin-bottom: 12px;
     font-size: 0.95rem;
-    
-    &.expanded-description {
-      margin-top: 16px;
-      padding: 16px;
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.05);
-      font-style: italic;
-      
-      .dark-mode & {
-        background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* ===== TIMELINE DETAILS OVERLAY (same as project cards) ===== */
+  .timeline-details-overlay {
+    position: absolute; 
+    inset: 0;
+    pointer-events: none;
+    border-radius: 16px;
+    opacity: 0; 
+    visibility: hidden;
+    transform: translateY(16px) scale(0.98);
+    transition: opacity .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1), visibility .4s;
+    z-index: 10; 
+    display: grid; 
+    place-items: center; 
+    padding: 32px;
+    border: 1px solid rgba(255,255,255,.15);
+
+    /* Light base (light mode overridden later) */
+    background: linear-gradient(145deg, rgba(255,255,255,.96) 0%, rgba(248,250,252,.94) 50%, rgba(241,245,249,.92) 100%);
+    @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+      background: linear-gradient(145deg, rgba(255,255,255,.72) 0%, rgba(248,250,252,.70) 50%, rgba(241,245,249,.68) 100%);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      backdrop-filter: blur(16px) saturate(150%);
+    }
+
+    box-shadow:
+      0 25px 50px rgba(0,0,0,.25),
+      inset 0 1px 0 rgba(255,255,255,.7);
+
+    @media screen and (max-width: 768px) { 
+      border-radius: 16px; 
+      padding: 24px; 
+    }
+
+    .overlay-inner {
+      width: min(760px, 100%);
+      display: block;
+      text-align: center;
+      color: #0f172a;
+      transform: translateY(8px);
+      transition: transform .45s cubic-bezier(.2,.8,.2,1);
+      max-height: 70vh;
+      overflow: auto;
+    }
+
+    .overlay-description {
+      margin: 0 auto;
+      max-width: 70ch;
+      font-size: 1.06rem;
+      line-height: 1.8;
+      color: #334155;
+      text-shadow: 0 2px 8px rgba(0,0,0,.06);
+
+      @media screen and (max-width: 768px) { 
+        font-size: 0.98rem; 
+        line-height: 1.65; 
       }
     }
   }
 
-  .see-more-btn {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 8px 16px;
-    font-size: 0.85rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: none;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
+  /* ===== HOVER REVEAL LOGIC ===== */
+  @media (hover: hover) {
+    &:hover .timeline-details-overlay { 
+      opacity: 1; 
+      visibility: visible; 
+      transform: translateY(0) scale(1); 
+      pointer-events: auto; 
     }
-
-    &:hover::before {
-      left: 100%;
+    &:hover .timeline-details-overlay .overlay-inner { 
+      transform: translateY(0); 
     }
-
-    &:active {
-      transform: translateY(-1px) scale(0.98);
+    // Blur ONLY the background content when overlay appears
+    &:hover .timeline-background-content {
+      filter: blur(8px);
     }
+  }
+
+  &:focus-within .timeline-details-overlay,
+  .vertical-timeline-element-content:focus-visible .timeline-details-overlay {
+    opacity: 1; 
+    visibility: visible; 
+    transform: translateY(0) scale(1); 
+    pointer-events: auto;
+  }
+  
+  // Also blur on focus states
+  &:focus-within .timeline-background-content,
+  .vertical-timeline-element-content:focus-visible .timeline-background-content {
+    filter: blur(8px);
   }
 }
 
@@ -188,6 +217,53 @@
   ) !important;
 }
 
+/* 🌙 Dark Mode Timeline Overlay */
+.dark-mode {
+  .vertical-timeline-element {
+    .timeline-details-overlay {
+      background: linear-gradient(145deg, rgba(17,24,39,.92) 0%, rgba(30,41,59,.9) 50%, rgba(51,65,85,.88) 100%);
+      @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+        background: linear-gradient(145deg, rgba(17,24,39,.80) 0%, rgba(30,41,59,.78) 50%, rgba(51,65,85,.76) 100%);
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
+        backdrop-filter: blur(18px) saturate(140%);
+      }
+      border-color: rgba(250,204,21,.18);
+      box-shadow: 0 28px 60px rgba(0,0,0,.65), inset 0 1px 0 rgba(250,204,21,.10);
+
+      .overlay-inner { 
+        color: #e2e8f0; 
+      }
+      .overlay-description { 
+        color: #e5e7eb; 
+        text-shadow: 0 2px 10px rgba(0,0,0,.5); 
+      }
+    }
+  }
+}
+
+/* ☀️ Light Mode Timeline Overlay */
+.light-mode {
+  .vertical-timeline-element {
+    .timeline-details-overlay {
+      background: linear-gradient(145deg, rgba(255,255,255,.96) 0%, rgba(248,250,252,.94) 50%, rgba(241,245,249,.92) 100%);
+      @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+        background: linear-gradient(145deg, rgba(255,255,255,.72) 0%, rgba(248,250,252,.70) 50%, rgba(241,245,249,.68) 100%);
+        -webkit-backdrop-filter: blur(16px) saturate(150%);
+        backdrop-filter: blur(16px) saturate(150%);
+      }
+      border-color: rgba(0,0,0,0.08);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+
+      .overlay-inner { 
+        color: #0f172a; 
+      }
+      .overlay-description { 
+        color: #374151; 
+      }
+    }
+  }
+}
+
 // Mobile Optimizations
 @media screen and (max-width: 768px) {
   #history {
@@ -201,6 +277,10 @@
   .vertical-timeline-element {
     .vertical-timeline-element-content {
       padding: 20px !important;
+      
+      &:hover {
+        transform: translateY(-3px) scale(1.005);
+      }
     }
 
     .vertical-timeline-element-date {
@@ -208,14 +288,6 @@
       margin-bottom: 12px;
       text-align: right;
       font-size: 0.85rem !important;
-    }
-
-    .see-more-btn {
-      margin-top: 20px;
-      display: block;
-      text-align: center;
-      width: fit-content;
-      padding: 10px 20px;
     }
 
     h3 {
@@ -233,5 +305,38 @@
     p {
       font-size: 0.9rem;
     }
+
+    .timeline-details-overlay {
+      padding: 16px;
+      .overlay-description { 
+        font-size: 0.94rem; 
+        line-height: 1.7; 
+      }
+    }
+    
+    // Reduced blur effect on mobile for better performance
+    &:hover .timeline-background-content {
+      filter: blur(4px);
+    }
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .vertical-timeline-element .vertical-timeline-element-content { 
+    transition-duration: .01ms !important; 
+  }
+  .timeline-details-overlay, 
+  .overlay-inner,
+  .timeline-background-content { 
+    transition-duration: .01ms !important; 
+  }
+  .vertical-timeline-element:hover .vertical-timeline-element-content { 
+    transform: none !important; 
+  }
+  // Disable blur effect for reduced motion
+  .vertical-timeline-element:hover .timeline-background-content,
+  .vertical-timeline-element:focus-within .timeline-background-content {
+    filter: none !important;
   }
 }

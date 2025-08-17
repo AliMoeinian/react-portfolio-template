@@ -29,7 +29,6 @@ const iconMap: { [key: string]: any } = {
 };
 
 function Timeline() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   useEffect(() => {
@@ -52,10 +51,6 @@ function Timeline() {
     return () => observer.disconnect();
   }, []);
 
-  const toggleDetails = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
-
   return (
     <div className={isDarkMode ? "dark-mode" : "light-mode"}>
       <div id="history" className="items-container section">
@@ -64,7 +59,7 @@ function Timeline() {
           {experienceData.map((item, index) => (
             <VerticalTimelineElement
               key={index}
-              className="vertical-timeline-element--work"
+              className="vertical-timeline-element--work timeline-card-hover"
               date={item.date}
               iconStyle={{
                 background: isDarkMode ? "#facc15" : "#3b82f6",
@@ -91,22 +86,26 @@ function Timeline() {
                   : "7px solid rgba(59, 130, 246, 0.8)"
               }}
             >
-              <h3 className="vertical-timeline-element-title">{item.title}</h3>
-              <h4 className="vertical-timeline-element-subtitle">
-                {item.subtitle}
-              </h4>
-              {item.location && (
-                <h5 className="vertical-timeline-element-location">
-                  {item.location}
-                </h5>
-              )}
-              <p>{item.description}</p>
-              {expandedIndex === index && (
-                <p className="expanded-description">{item.fullDescription}</p>
-              )}
-              <button className="see-more-btn" onClick={() => toggleDetails(index)}>
-                {expandedIndex === index ? "See less ▲" : "See more ▼"}
-              </button>
+              {/* Background content that will be blurred */}
+              <div className="timeline-background-content">
+                <h3 className="vertical-timeline-element-title">{item.title}</h3>
+                <h4 className="vertical-timeline-element-subtitle">
+                  {item.subtitle}
+                </h4>
+                {item.location && (
+                  <h5 className="vertical-timeline-element-location">
+                    {item.location}
+                  </h5>
+                )}
+                <p>{item.description}</p>
+              </div>
+
+              {/* Hover overlay for full description - separate from background */}
+              <div className="timeline-details-overlay">
+                <div className="overlay-inner">
+                  <p className="overlay-description">{item.fullDescription}</p>
+                </div>
+              </div>
             </VerticalTimelineElement>
           ))}
         </VerticalTimeline>
