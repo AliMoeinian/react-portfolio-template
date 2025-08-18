@@ -36,7 +36,6 @@ function ContactActions({ email }: { email: string }) {
 
   return (
     <div className="contact-actions">
-      {/* email pill + copy */}
       <div className="email-row" role="group" aria-label="Contact email">
         <span className="email-chip" title="Primary contact">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
@@ -100,7 +99,6 @@ function ContactActions({ email }: { email: string }) {
         </button>
       </div>
 
-      {/* CTAs */}
       <div className="cta-grid">
         <button type="button" className="cta primary" onClick={handleMailto}>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
@@ -135,17 +133,7 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const chatRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
-
-  // lock page scroll while open
-  useEffect(() => {
-    const original = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = original;
-    };
-  }, []);
 
   // ESC to close
   useEffect(() => {
@@ -156,19 +144,11 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  // close on outside click
-  const onOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (chatRef.current && !chatRef.current.contains(e.target as Node)) onClose();
-  };
-
-  // autoscroll
+  // Auto-scroll messages
   useEffect(() => {
     if (listRef.current) {
-      const scrollElement = listRef.current;
-      scrollElement.scrollTo({ 
-        top: scrollElement.scrollHeight, 
-        behavior: "smooth" 
-      });
+      const el = listRef.current;
+      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
     }
   }, [messages, loading]);
 
@@ -187,7 +167,7 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
         ...prev,
         { from: "llm", text: result.reply, email: result.email }
       ]);
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { from: "llm", text: "Sorry, I encountered an error. Please try again." }
@@ -198,37 +178,36 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="llm-overlay" role="dialog" aria-modal="true" onMouseDown={onOverlayClick}>
-      <div
-        ref={chatRef}
+    <div className="llm-overlay" aria-hidden="false">
+      {/* Backdrop only dims, doesn't block interactions/scroll behind */}
+      <div className="llm-backdrop" aria-hidden="true" />
+
+      <section
         className="llm-chat"
-        role="document"
-        onMouseDown={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label="AI Contact Assistant"
       >
         <header className="chat-header">
           <div className="brand">
-            <div className="avatar" aria-hidden="true">
-              Ali
-            </div>
+            <div className="avatar" aria-hidden="true">Ali</div>
             <div className="titles">
               <h2 className="title">Describe Your Project to Get Contact Info 🚀</h2>
             </div>
           </div>
-          <button className="close-button" onClick={onClose} aria-label="Close chat">
-            ×
-          </button>
+          <button className="close-button" onClick={onClose} aria-label="Close chat">×</button>
         </header>
 
-        <div ref={listRef} className="messages scrollable" aria-live="polite">
+        <div ref={listRef} className="messages" aria-live="polite">
           {messages.length === 0 && (
             <div className="msg llm" role="group" aria-label="assistant message">
               <p>
-                Hi there! 👋 I'm Ali's AI assistant. Tell me about your project or collaboration idea, 
+                Hi there! 👋 I'm Ali's AI assistant. Tell me about your project or collaboration idea,
                 and I'll help determine if it's a good fit. If so, I'll provide you with the best way to reach out!
               </p>
             </div>
           )}
-          
+
           {messages.map((m, i) => (
             <div key={i} className={`msg ${m.from}`} role="group" aria-label={`${m.from} message`}>
               <p>{m.text}</p>
@@ -292,7 +271,7 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
             <span>{loading ? "Sending..." : "Send"}</span>
           </button>
         </form>
-      </div>
+      </section>
     </div>
   );
 }
