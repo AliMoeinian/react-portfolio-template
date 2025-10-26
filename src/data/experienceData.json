@@ -1,12 +1,30 @@
 [
+      {
+      "title": "Teaching Assistant – Advanced Database (Dr. Mohammad Ali Nematbakhsh)",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Oct 2025 – Present",
+      "icon": "faChalkboardTeacher",
+      "description": "Assisted in developing Deep and practical excercises ",
+      "fullDescription": "Will be complete SOON"
+    },
+        {
+      "title": "Teaching Assistant – Advanced Algorithms (Dr. Afsaneh Fatemi)",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Oct 2025 – Present",
+      "icon": "faChalkboardTeacher",
+      "description": "Assisted in developing Deep and practical excercises ",
+      "fullDescription": "Will be complete SOON"
+    },
     {
-      "title": "Teaching Assistant – Natural Language Processing",
+      "title": "Teaching Assistant – Natural Language Processing (Dr. Reza Ramezani)",
       "subtitle": "University of Isfahan",
       "location": "Isfahan Province, Iran",
       "date": "Jul 2025 – Present",
       "icon": "faChalkboardTeacher",
       "description": "Assisted in course design and resource compilation for NLP.",
-      "fullDescription": "Supported course preparation including syllabus design and resource compilation (GitHub, Kaggle, academic courses, books) under Dr. Reza Ramezani, enhancing student engagement and learning outcomes."
+      "fullDescription": "Supported course preparation including syllabus design and resource compilation (GitHub, Kaggle, academic courses, books) under Dr. Reza Ramezani, enhancing student engagement and learning outcomes. Prepare Educational Slides for Text Preprocessing and Large Language models Chapters"
     },
     {
       "title": "RAG Research Branch Member",
@@ -27,7 +45,7 @@
       "fullDescription": "As a member of the Big Data Research Group (est. 2017), comprising 6 faculty members, 30 PhD candidates, and 30 master’s students, I contribute to cutting-edge research in data science and big data technologies, fostering collaborative innovation."
     },
     {
-      "title": "Teaching Assistant – Semantic Web and Knowledge Graph",
+      "title": "Teaching Assistant – Semantic Web and Knowledge Graph (Dr. Reza Ramezani)",
       "subtitle": "University of Isfahan",
       "location": "Isfahan, Isfahan Province, Iran",
       "date": "Apr 2025 – Jun 2025",
@@ -99,7 +117,7 @@
       "fullDescription": "Supported students in learning C++ programming through real-world examples and project-based learning, emphasizing clean code practices. Introduced software engineering fields and taught soft skills like communication and problem-solving to prepare students for careers."
     },
     {
-      "title": "Research Assistant",
+      "title": "Research Assistant (Dr. Koorosh Hadian)",
       "subtitle": "Islamic Azad University",
       "location": "Isfahan Province, Iran",
       "date": "Aug 2022 – Nov 2022",
