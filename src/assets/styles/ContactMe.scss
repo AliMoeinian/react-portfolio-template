@@ -74,6 +74,65 @@
       font-size: 0.85rem;
     }
   }
+
+  /* ✨ NEW: Grid animation styles */
+  .contact-toggle-wrapper {
+    display: grid;
+    // Start with the prompt row taking up space (1fr) and chat row taking none (0fr)
+    grid-template-rows: 1fr 0fr; 
+    transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .contact-prompt,
+    .chat-wrapper {
+      overflow: hidden; // This is CRITICAL for the animation
+    }
+
+    /* State 1: Prompt is visible */
+    &.prompt-open {
+      .contact-prompt {
+        // Fade in (staggered)
+        transition: opacity 0.3s ease-out 0.1s, transform 0.3s ease-out 0.1s;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .chat-wrapper {
+        // Fade out
+        transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none; // Prevent interaction when hidden
+      }
+    }
+
+    /* State 2: Chat is visible */
+    &.chat-open {
+      grid-template-rows: 0fr 1fr; // Animate to this state
+
+      .contact-prompt {
+        // Fade out
+        transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none; // Prevent interaction when hidden
+      }
+      .chat-wrapper {
+        // Fade in (staggered)
+        transition: opacity 0.3s ease-out 0.2s, transform 0.3s ease-out 0.2s;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Center the chat-container inside the wrapper */
+    .chat-wrapper .chat-container {
+      margin-top: 30px;
+      margin-bottom: 30px; // Add some bottom margin
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+  }
 }
 
 /* Theme-specific button and text colors */

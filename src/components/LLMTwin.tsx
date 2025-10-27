@@ -17,7 +17,6 @@ function ContactActions({ email }: { email: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1400);
     } catch {
-      setCopied(false);
       alert("Copy failed. Please select and copy manually.");
     }
   };
@@ -36,79 +35,65 @@ function ContactActions({ email }: { email: string }) {
 
   return (
     <div className="contact-actions">
-      <div className="email-row" role="group" aria-label="Contact email">
-        <span className="email-chip" title="Primary contact">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-            <path
-              d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          {email}
-        </span>
-
+      <div className="email-display">
+        <span className="email-text">{email}</span>
         <button
           type="button"
-          className={`icon-btn ${copied ? "success" : ""}`}
+          className={`copy-btn ${copied ? "copied" : ""}`}
           onClick={handleCopy}
-          aria-live="polite"
+          aria-label={copied ? "Email copied" : "Copy email"}
         >
           {copied ? (
-            <>
-              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                <path
-                  d="m20 6-11 11-5-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Copied
-            </>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path
+                d="m20 6-11 11-5-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           ) : (
-            <>
-              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                <path
-                  d="M16 3H5a2 2 0 0 0-2 2v11"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-                <rect
-                  x="8"
-                  y="6"
-                  width="13"
-                  height="15"
-                  rx="2"
-                  ry="2"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-              </svg>
-              Copy
-            </>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path
+                d="M16 3H5a2 2 0 0 0-2 2v11"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <rect
+                x="8"
+                y="6"
+                width="13"
+                height="15"
+                rx="2"
+                ry="2"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+            </svg>
           )}
         </button>
       </div>
 
-      <div className="cta-grid">
-        <button type="button" className="cta primary" onClick={handleMailto}>
+      <div className="action-buttons">
+        <button type="button" className="email-btn primary" onClick={handleMailto}>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <path
+              d="M4 4h16v16H4z"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
             <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" strokeWidth="1.5" />
           </svg>
           Email via Mail App
         </button>
 
-        <a className="cta ghost" href={gmailUrl} target="_blank" rel="noreferrer">
+        <a className="email-btn secondary" href={gmailUrl} target="_blank" rel="noreferrer">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
             <path d="M3 7.5 12 13l9-5.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
             <path
@@ -121,10 +106,6 @@ function ContactActions({ email }: { email: string }) {
           Open in Gmail
         </a>
       </div>
-
-      <p className="micro-copy">
-        If these buttons don't work on your device, copy the email and paste it into your client.
-      </p>
     </div>
   );
 }
@@ -133,22 +114,16 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const listRef = useRef<HTMLDivElement>(null);
-
-  // ESC to close
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll messages
   useEffect(() => {
-    if (listRef.current) {
-      const el = listRef.current;
-      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    if (messagesContainerRef.current) {
+      const { scrollHeight, clientHeight } = messagesContainerRef.current;
+      messagesContainerRef.current.scrollTo({
+        top: scrollHeight - clientHeight,
+        behavior: "smooth",
+      });
     }
   }, [messages, loading]);
 
@@ -165,12 +140,12 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
       const result: TwinResponse = await askLLMTwin(userText);
       setMessages((prev) => [
         ...prev,
-        { from: "llm", text: result.reply, email: result.email }
+        { from: "llm", text: result.reply, email: result.email },
       ]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        { from: "llm", text: "Sorry, I encountered an error. Please try again." }
+        { from: "llm", text: "Sorry, I encountered an error. Please try again." },
       ]);
     } finally {
       setLoading(false);
@@ -178,100 +153,105 @@ export default function LLMTwin({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="llm-overlay" aria-hidden="false">
-      {/* Backdrop only dims, doesn't block interactions/scroll behind */}
-      <div className="llm-backdrop" aria-hidden="true" />
-
-      <section
-        className="llm-chat"
-        role="dialog"
-        aria-modal="true"
-        aria-label="AI Contact Assistant"
-      >
-        <header className="chat-header">
-          <div className="brand">
-            <div className="avatar" aria-hidden="true">Ali</div>
-            <div className="titles">
-              <h2 className="title">Describe Your Project to Get Contact Info 🚀</h2>
-            </div>
+    <div className="chat-container" role="dialog" aria-modal="false" aria-label="AI Assistant">
+      {/* Header */}
+      <header className="chat-header">
+        <div className="header-content">
+          <div className="avatar">A</div>
+          <div className="header-text">
+            <h2>Ali's AI Assistant</h2>
+            <p>Describe your project to get contact info</p>
           </div>
-          <button className="close-button" onClick={onClose} aria-label="Close chat">×</button>
-        </header>
+        </div>
+        <button className="close-btn" onClick={onClose} aria-label="Close chat">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <path
+              d="M18 6 6 18M6 6l12 12"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </header>
 
-        <div ref={listRef} className="messages" aria-live="polite">
-          {messages.length === 0 && (
-            <div className="msg llm" role="group" aria-label="assistant message">
+      {/* Messages */}
+      <div className="messages-container" aria-live="polite" ref={messagesContainerRef}>
+        {messages.length === 0 && (
+          <div className="message assistant">
+            <div className="message-content">
               <p>
-                Hi there! 👋 I'm Ali's AI assistant. Tell me about your project or collaboration idea,
-                and I'll help determine if it's a good fit. If so, I'll provide you with the best way to reach out!
+                👋 Hi! I'm Ali's AI assistant. Tell me about your project or collaboration
+                idea, and I'll help determine if it's a good fit. If so, I'll share the best
+                way to reach out!
               </p>
             </div>
-          )}
+          </div>
+        )}
 
-          {messages.map((m, i) => (
-            <div key={i} className={`msg ${m.from}`} role="group" aria-label={`${m.from} message`}>
+        {messages.map((m, i) => (
+          <div key={i} className={`message ${m.from === "user" ? "user" : "assistant"}`}>
+            <div className="message-content">
               <p>{m.text}</p>
 
               {m.email && (
-                <section className="contact-card" aria-label="Contact options">
-                  <header className="contact-head">
-                    <div className="badge">
-                      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <div className="contact-card">
+                  <div className="card-header">
+                    <div className="success-icon">
+                      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                         <path
                           d="m20 6-11 11-5-5"
                           fill="none"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="2.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                       </svg>
                     </div>
-                    <div className="head-text">
-                      <h4>Perfect Match! ✨</h4>
+                    <div>
+                      <h4>Perfect Match!</h4>
                       <span>Your project aligns well with Ali's expertise</span>
                     </div>
-                  </header>
+                  </div>
 
                   <ContactActions email={m.email} />
-
-                  <footer className="contact-foot">
-                    <span className="secure-dot" aria-hidden="true"></span>
-                    <small>Direct contact • No spam • Quick response guaranteed</small>
-                  </footer>
-                </section>
+                </div>
               )}
             </div>
-          ))}
+          </div>
+        ))}
 
-          {loading && (
-            <div className="msg llm">
-              <div className="typing-indicator" aria-label="Assistant is typing">
-                <span />
-                <span />
-                <span />
+        {loading && (
+          <div className="message assistant">
+            <div className="message-content">
+              <div className="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
 
-        <form onSubmit={handleSubmit} className="composer" aria-label="Message composer">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Describe your project, collaboration idea, or what you're working on..."
-            aria-label="Project description"
-            disabled={loading}
-            maxLength={500}
-          />
-          <button type="submit" disabled={loading || !input.trim()} aria-label="Send message">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M2 21l20-9L2 3v7l14 2-14 2v7z" fill="currentColor" />
-            </svg>
-            <span>{loading ? "Sending..." : "Send"}</span>
-          </button>
-        </form>
-      </section>
+      {/* Input */}
+      <form onSubmit={handleSubmit} className="chat-input">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Describe your project, collaboration idea..."
+          aria-label="Project description"
+          disabled={loading}
+          maxLength={500}
+        />
+        <button type="submit" disabled={loading || !input.trim()} aria-label="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 21l20-9L2 3v7l14 2-14 2v7z" fill="currentColor" />
+          </svg>
+        </button>
+      </form>
     </div>
   );
 }

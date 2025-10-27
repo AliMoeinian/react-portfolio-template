@@ -1,9 +1,6 @@
-// App.tsx یا App.js
-// مطمئن شوید که تمام کامپوننت‌ها کلاس section را دارند
-
 import React, { useState, lazy, Suspense } from "react";
 
-import "./assets/styles/Section.scss"; // Import the unified section styles
+import "./assets/styles/Section.scss";
 
 const Navigation = lazy(() => import("./components/Navigation"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -15,7 +12,7 @@ const Project = lazy(() => import("./components/Project"));
 const Publications = lazy(() => import("./components/Publications"));
 const Education = lazy(() => import("./components/Education"));
 const Achievements = lazy(() => import("./components/Achievements"));
-const Mentoring = lazy(() => import("./components/Mentoring"));
+const Articles = lazy(() => import("./components/Articles")); // NEW
 const ContactMe = lazy(() => import("./components/ContactMe"));
 
 function App() {
@@ -31,12 +28,10 @@ function App() {
         <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
       </Suspense>
 
-      {/* Hero section - special styling */}
       <Suspense fallback={<div className="loader">Loading...</div>}>
         <Main />
       </Suspense>
 
-      {/* All other sections should have consistent spacing */}
       <div className="section" id="expertise">
         <Suspense fallback={<div className="loader">Loading...</div>}>
           <Expertise />
@@ -73,9 +68,10 @@ function App() {
         </Suspense>
       </div>
 
-      <div className="section" id="mentoring">
+      {/* NEW ARTICLES SECTION - Replaces Mentoring */}
+      <div className="section" id="articles">
         <Suspense fallback={<div className="loader">Loading...</div>}>
-          <Mentoring />
+          <Articles />
         </Suspense>
       </div>
 
@@ -91,7 +87,7 @@ function App() {
         </Suspense>
       </div>
 
-      <Suspense fallback={<div>className="loader"Loading...</div>}>
+      <Suspense fallback={<div className="loader">Loading...</div>}>
         <Footer />
       </Suspense>
     </div>

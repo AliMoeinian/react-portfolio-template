@@ -28,7 +28,7 @@ const navItems: [label: string, id: string][] = [
   ["Projects", "projects"],
   ["Publications", "publications"],
   ["Achievements", "achievements"],
-  ["Mentoring", "mentoring"],
+  ["Articles", "articles"],
   ["Education", "education"],
   ["Contact", "contact"],
 ];
