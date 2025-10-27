@@ -8,9 +8,7 @@
       { "name": "LangChain", "icon": "link" },
       { "name": "LangGraph", "icon": "link" },
       { "name": "Agent Development & Tool Use", "icon": "robot" },
-      { "name": "Embeddings & Similarity Search", "icon": "vector" },
-      { "name": "Knowledge Graphs", "icon": "graph" },
-      { "name": "Natural Language Processing (NLP)", "icon": "chat" }
+      { "name": "Knowledge Graphs", "icon": "graph" }
     ]
   },
   {
@@ -19,10 +17,7 @@
       { "name": "Python", "icon": "python" },
       { "name": "Pandas", "icon": "table" },
       { "name": "NumPy", "icon": "function" },
-      { "name": "Scikit-learn", "icon": "sklearn" },
-      { "name": "Feature Engineering", "icon": "sparkles" },
-      { "name": "Clustering & Unsupervised Learning", "icon": "clusters" },
-      { "name": "Data Visualization & Dashboards", "icon": "dashboard" }
+      { "name": "Data Visualization", "icon": "dashboard" }
     ]
   },
   {
@@ -30,19 +25,14 @@
     "items": [
       { "name": "Apache Spark (PySpark)", "icon": "spark" },
       { "name": "Apache Kafka", "icon": "kafka" },
-      { "name": "Delta Lake", "icon": "delta" },
-      { "name": "Apache Iceberg", "icon": "iceberg" },
-      { "name": "Lakehouse Architecture", "icon": "lakehouse" },
-      { "name": "Data Warehousing", "icon": "datawarehouse" }
+      { "name": "Delta Lake", "icon": "delta" }
     ]
   },
   {
     "category": "Backend & APIs",
     "items": [
       { "name": "FastAPI", "icon": "fastapi" },
-      { "name": "Flask", "icon": "flask" },
-      { "name": "RESTful API Design", "icon": "api" },
-      { "name": "Authentication", "icon": "shield" }
+      { "name": "Flask", "icon": "flask" }
     ]
   },
   {
@@ -52,9 +42,6 @@
       { "name": "MySQL", "icon": "mysql" },
       { "name": "MongoDB", "icon": "mongodb" },
       { "name": "SQLite", "icon": "sqlite" },
-      { "name": "FAISS (Vector Store)", "icon": "faiss" },
-      { "name": "Schema Design & Normalization", "icon": "schema" },
-      { "name": "Indexing & Query Optimization", "icon": "index" },
       { "name": "Object Storage (MinIO/S3)", "icon": "storage" }
     ]
   },
@@ -81,7 +68,6 @@
     "category": "Systems & Architecture",
     "items": [
       { "name": "System Design", "icon": "structure" },
-      { "name": "UML / DFD Modeling", "icon": "uml" },
       { "name": "Clean Code", "icon": "clean-code" }
     ]
   },
@@ -89,11 +75,9 @@
     "category": "Research, Teaching & Communication",
     "items": [
       { "name": "Scientific Research", "icon": "microscope" },
-      { "name": "Teaching & Mentorship", "icon": "mentor" },
-      { "name": "Curriculum & Workshop Design", "icon": "presentation" },
+      { "name": "Mentorship", "icon": "mentor" },
       { "name": "Technical Writing & Documentation", "icon": "docs" },
-      { "name": "Public Speaking", "icon": "speaker" },
-      { "name": "Agile & Team Collaboration", "icon": "agile" }
+      { "name": "Public Speaking", "icon": "speaker" }
     ]
   },
   {
