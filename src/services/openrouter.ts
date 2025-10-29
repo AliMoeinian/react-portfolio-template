@@ -4,7 +4,7 @@ export interface TwinResponse {
   email?: string;
 }
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://react-portfolio-template-abr8.onrender.com:5000';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://react-portfolio-template-abr8.onrender.com';
 
 export async function askLLMTwin(
   message: string,
