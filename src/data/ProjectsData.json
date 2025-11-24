@@ -89,7 +89,7 @@
     "oneLiner": "Adaptive fitness, nutrition, and wellness plans via an AI agent.",
     "description": "Collects essential metrics, understands goals, and generates evolving plans for weight loss/gain/maintenance with secure handling of sensitive data.",
     "tags": ["AI Agent", "Wellness", "Fitness", "Nutrition"],
-    "status": "WIP",
+    "status": "Released",
     "level": "Intermediate",
     "category": "AI & NLP",
     "image": "healthagent",
