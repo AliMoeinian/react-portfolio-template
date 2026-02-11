@@ -24,7 +24,7 @@
       "date": "Oct 2025 – Present",
       "icon": "faChalkboardTeacher",
       "description": "Assisted in developing Deep and practical excercises ",
-      "fullDescription": "Designed and implemented 6 comprehensive hands-on projects covering the full data engineering lifecycle—from JSON/XML modeling and MapReduce to Medallion Architecture—culminating in a capstone Uber analytics platform that processed 148K+ real-world records. Guided students through advanced indexing strategies, ACID transactions, and the integration of LLM-based Text-to-SQL assistants with vector search, ensuring deep technical proficiency beyond basic AI tool usage."
+      "fullDescription": "Designed 6 end-to-end, hands-on engineering projects—from JSON/XML and MapReduce to Medallion Architecture—culminating in an Uber-scale analytics platform processing 148K+ real-world records, while mentoring students on advanced indexing, ACID transactions, and LLM-powered Text-to-SQL with vector search."
     },
         {
       "title": "Teaching Assistant – Advanced Algorithms (Dr. Afsaneh Fatemi)",
