@@ -1,6 +1,15 @@
 [
+        {
+      "title": "AI Tools Workshop Instructor",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Jan 2026 – Jan 2026",
+      "icon": "faChalkboardTeacher",
+      "description": "Conducted hands‑on workshop on practical AI tools for students of Administrative Sciences and Economics.",
+      "fullDescription": "Delivered a 1‑month hands‑on workshop teaching prompt engineering, AI chatbots, AI‑assisted research, advanced search, and AI presentation tools, enabling immediate real‑world application in academic and professional settings."
+    },
       {
-      "title": "AI Workshop Mentor (1 Day Workshop)",
+      "title": "AI Workshop Mentor",
       "subtitle": "Farkhondeh Food Industries",
       "location": "Isfahan, Isfahan Province, Iran",
       "date": "Nov 2025 – Nov 2025",
@@ -15,7 +24,7 @@
       "date": "Oct 2025 – Present",
       "icon": "faChalkboardTeacher",
       "description": "Assisted in developing Deep and practical excercises ",
-      "fullDescription": "Will be complete SOON"
+      "fullDescription": "Designed and implemented 6 comprehensive hands-on projects covering the full data engineering lifecycle—from JSON/XML modeling and MapReduce to Medallion Architecture—culminating in a capstone Uber analytics platform that processed 148K+ real-world records. Guided students through advanced indexing strategies, ACID transactions, and the integration of LLM-based Text-to-SQL assistants with vector search, ensuring deep technical proficiency beyond basic AI tool usage."
     },
         {
       "title": "Teaching Assistant – Advanced Algorithms (Dr. Afsaneh Fatemi)",
@@ -24,7 +33,7 @@
       "date": "Oct 2025 – Present",
       "icon": "faChalkboardTeacher",
       "description": "Assisted in developing Deep and practical excercises ",
-      "fullDescription": "Will be complete SOON"
+      "fullDescription": "Develop engaging practical and coding exercises to enhance student learning and application of advanced algorithmic concepts."
     },
     {
       "title": "Teaching Assistant – Natural Language Processing (Dr. Reza Ramezani)",
@@ -79,15 +88,6 @@
       "icon": "faPenNib",
       "description": "Created educational AI content for broad audiences.",
       "fullDescription": "Tracked latest developments in LLMs, NLP, and AGI, writing summaries, commentaries, and explainers on cutting-edge tools, and creating educational posts for beginners and practitioners."
-    },
-    {
-      "title": "Marathon Trainee – Personal Challenge",
-      "subtitle": "Self-Directed",
-      "location": "Isfahan, Isfahan Province, Iran",
-      "date": "Apr 2025 – Present",
-      "icon": "faRunning",
-      "description": "Pursued endurance training for personal growth.",
-      "fullDescription": "Embraced endurance training to push personal limits, focusing on balance, personal growth, and living fully beyond code and careers."
     },
     {
       "title": "AI Workshop Mentor",
