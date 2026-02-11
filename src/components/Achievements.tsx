@@ -48,8 +48,6 @@ function Achievements() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
 
   // Intersection Observer for animation trigger
   useEffect(() => {
@@ -83,22 +81,11 @@ function Achievements() {
     setCurrentIndex(Math.max(0, Math.min(newIndex, achievements.length - 1)));
   }, []);
 
-  // Update scroll button states
-  const updateScrollButtons = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-
-    const maxScroll = el.scrollWidth - el.clientWidth;
-    setCanScrollPrev(el.scrollLeft > 10);
-    setCanScrollNext(el.scrollLeft < maxScroll - 10);
-  }, []);
-
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
 
     const handleScroll = () => {
-      updateScrollButtons();
       updateActiveDot();
     };
 
@@ -106,21 +93,7 @@ function Achievements() {
     handleScroll(); // Initial check
 
     return () => el.removeEventListener('scroll', handleScroll);
-  }, [updateScrollButtons, updateActiveDot]);
-
-  const scrollByCard = (dir: "prev" | "next") => {
-    const el = trackRef.current;
-    if (!el) return;
-    
-    const card = el.querySelector<HTMLElement>(".achievement-card");
-    const gap = 20; // Match the CSS gap
-    const delta = card ? card.offsetWidth + gap : el.clientWidth * 0.9;
-    
-    el.scrollBy({ 
-      left: dir === "next" ? delta : -delta, 
-      behavior: "smooth" 
-    });
-  };
+  }, [updateActiveDot]);
 
   // Scroll to specific card (for dot navigation)
   const scrollToCard = (index: number) => {

@@ -22,7 +22,7 @@ function Footer() {
       </p>
 
       <p className="footer__copyright">
-        © {currentYear} Ali Moeinian | Template customized for myself – Original repo on <a href="https://github.com/yujisatojr/react-portfolio-template" target="_blank">GitHub</a>
+        © {currentYear} Ali Moeinian | Template customized for myself – Original repo on <a href="https://github.com/yujisatojr/react-portfolio-template" target="_blank" rel="noreferrer">GitHub</a>
       </p>
     </footer>
   );
