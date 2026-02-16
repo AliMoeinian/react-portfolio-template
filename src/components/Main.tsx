@@ -24,12 +24,14 @@ function Main() {
 
           <h1>Ali Moeinian</h1>
           {/* Spoiler Title */}
-          <p className="title"><u>AI Agent Developer & Applied AI Engineer</u></p>
-
           <p className="title">
-            <u>AI Agent Developer & Applied AI Engineer</u>
+            AI Agent Developer & Applied AI Engineer
             <br />
             M.Sc. Student in Data Science
+          </p>
+
+          <p className="description">
+            <b>Open to academic collaborations and co-authoring research papers in RAG, Multi-Agent Systems and Data Science.</b>
           </p>
 
           <div className="mobile_social_icons">
