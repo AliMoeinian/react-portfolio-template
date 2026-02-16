@@ -8,6 +8,12 @@ type Achievement = {
 };
 
 const achievements: Achievement[] = [
+    {
+    title: "2nd Place – Idea Show (57th Edition)",
+    description:
+      "Presented and defended the project 'AI in Intelligent Detection of Financial Crimes', securing 2nd place.",
+    year: "2026",
+  },
   {
     title: "Top Student Award",
     description: "Ranked 1st out of 311 students in B.Sc. Computer Engineering (IAU Khorasgan).",
