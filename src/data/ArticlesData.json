@@ -2,9 +2,9 @@
   {
     "title": "Evaluating Prompt Engineering Techniques for RAG in Small Language Models: A Multi-Hop QA Approach",
     "description": "Comprehensive empirical study on optimizing Retrieval-Augmented Generation for Small Language Models through prompt template design, revealing key strategies for efficient reasoning in resource-constrained settings.",
-    "date": "2025",
+    "date": "2026",
     "category": "RAG - Prompt Engineering - SLMs",
     "readTime": "Journal of Computing and Security",
-    "link": ""
+    "link": "https://arxiv.org/abs/2602.13890"
   }
 ]

@@ -15,21 +15,6 @@ const achievements: Achievement[] = [
     year: "2026",
   },
   {
-    title: "Top Student Award",
-    description: "Ranked 1st out of 311 students in B.Sc. Computer Engineering (IAU Khorasgan).",
-    year: "2023",
-  },
-  {
-    title: "Highest GPA in Computer Engineering",
-    description:
-      "Achieved the highest GPA in the department and ranked within the top 1% university-wide.",
-    year: "2023",
-  },
-  {
-    title: "LinkedIn Mentorship Impact",
-    description: "Mentored 80+ professionals on resume and career profile improvement.",
-  },
-  {
     title: "Top Satisfaction in Mentorship",
     description:
       "Received the highest satisfaction score in a mentorship program at Mobarakeh Steel Company.",
@@ -42,10 +27,25 @@ const achievements: Achievement[] = [
     year: "2024",
   },
   {
+    title: "Top Student Award",
+    description: "Ranked 1st out of 311 students in B.Sc. Computer Engineering (IAU Khorasgan).",
+    year: "2023",
+  },
+  {
+    title: "Highest GPA in Computer Engineering",
+    description:
+      "Achieved the highest GPA in the department and ranked within the top 1% university-wide.",
+    year: "2023",
+  },
+  {
     title: "Member – Young Researchers and Elite Club",
     description:
       "Recognized by Islamic Azad University for academic and research excellence.",
     year: "2023",
+  },
+  {
+    title: "LinkedIn Mentorship Impact",
+    description: "Mentored 80+ professionals on resume and career profile improvement.",
   },
 ];
 
