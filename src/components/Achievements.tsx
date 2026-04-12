@@ -9,7 +9,7 @@ type Achievement = {
 
 const achievements: Achievement[] = [
       {
-    title: "Top Student",
+    title: "Top Student Award",
     description:
       "Ranked 1st out of 7 M.Sc. Data Science students at the University of Isfahan.",
     year: "2026",
