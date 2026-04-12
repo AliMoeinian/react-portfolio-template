@@ -8,6 +8,12 @@ type Achievement = {
 };
 
 const achievements: Achievement[] = [
+      {
+    title: "Top Student",
+    description:
+      "Ranked 1st out of 7 M.Sc. Data Science students at the University of Isfahan.",
+    year: "2026",
+  },
     {
     title: "2nd Place – Idea Show (57th Edition)",
     description:

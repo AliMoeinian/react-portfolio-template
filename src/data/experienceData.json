@@ -1,5 +1,32 @@
 [
+      {
+      "title": "Teaching Assistant – Complex Dynamic Networks (Dr. Afsaneh Fatemi)",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Feb 2026 – Now",
+      "icon": "faChalkboardTeacher",
+      "description": "Assisted in developing Projects during the Term and Final Project.",
+      "fullDescription": "Created a comprehensive final project that challenges students to apply course concepts to real-world network data, fostering critical thinking and practical application of complex network theories."
+    },
         {
+      "title": "Teaching Assistant (Lead TA) – Big Data (Dr. Mohammad Ali Nematbakhsh)",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Feb 2026 – Now",
+      "icon": "faChalkboardTeacher",
+      "description": "Assisted in developing Deep and practical excercises",
+      "fullDescription": "Led and coordinated a team of Teaching Assistants, Reviewed and refined assessment materials, Contributed to design Kafka-focused projects"
+    },
+        {
+      "title": "AI Tools Workshop Instructor",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Jan 2026 – Jan 2026",
+      "icon": "faChalkboardTeacher",
+      "description": "Conducted hands‑on workshop on practical AI tools for students of Administrative Sciences and Economics.",
+      "fullDescription": "Delivered a hands‑on workshop teaching prompt engineering, AI chatbots, AI‑assisted research, advanced search, and AI presentation tools, enabling immediate real‑world application in academic and professional settings."
+    },
+      {
       "title": "AI Tools Workshop Instructor",
       "subtitle": "University of Isfahan",
       "location": "Isfahan Province, Iran",
@@ -23,7 +50,7 @@
       "location": "Isfahan Province, Iran",
       "date": "Oct 2025 – feb 2026",
       "icon": "faChalkboardTeacher",
-      "description": "Assisted in developing Deep and practical excercises ",
+      "description": "Assisted in developing Deep and practical excercises",
       "fullDescription": "Designed 6 end-to-end, hands-on engineering projects—from JSON/XML and MapReduce to Medallion Architecture—culminating in an Uber-scale analytics platform processing 148K+ real-world records, while mentoring students on advanced indexing, ACID transactions, and LLM-powered Text-to-SQL with vector search."
     },
         {
@@ -39,7 +66,7 @@
       "title": "Teaching Assistant – Natural Language Processing (Dr. Reza Ramezani)",
       "subtitle": "University of Isfahan",
       "location": "Isfahan Province, Iran",
-      "date": "Jul 2025 – Present",
+      "date": "Jul 2025 – April 2026",
       "icon": "faChalkboardTeacher",
       "description": "Assisted in course design and resource compilation for NLP.",
       "fullDescription": "Supported course preparation including syllabus design and resource compilation (GitHub, Kaggle, academic courses, books) & Prepare Educational Slides for 'Text Preprocessing' and 'Large Language models' Chapters."
