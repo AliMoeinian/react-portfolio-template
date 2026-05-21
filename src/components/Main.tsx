@@ -18,26 +18,47 @@ const XIcon = () => (
   </svg>
 );
 
+const CvIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <polyline points="14 2 14 8 20 8" />
+    <line x1="16" y1="13" x2="8" y2="13" />
+    <line x1="16" y1="17" x2="8" y2="17" />
+    <polyline points="10 9 9 9 8 9" />
+  </svg>
+);
+
+const CV_LINK = "https://drive.google.com/file/d/1KAG_Fseu-gX5_R4M4c5h_DhSnxerrSe_/view?usp=sharing";
+
 function Main() {
   return (
     <div className="container">
       <div className="about-section">
-        {/* عکس پروفایل */}
         <div className="image-wrapper">
           <img src={profilePic} alt="Ali Moeinian" />
         </div>
 
-        {/* متن و لینک‌ها */}
         <div className="content">
           <div className="social_icons">
             <a href="https://github.com/AliMoeinian" target="_blank" rel="noreferrer"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/alimoeinian1/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
             <a href="https://scholar.google.com/citations?user=iPgbWYkAAAAJ&hl=en" target="_blank" rel="noreferrer"><SchoolIcon/></a>
             <a href="https://x.com/alim0einian" target="_blank" rel="noreferrer"><XIcon /></a>
+            <a href={CV_LINK} target="_blank" rel="noreferrer" aria-label="View CV"><CvIcon /></a>
           </div>
 
           <h1>Ali Moeinian</h1>
-          {/* Spoiler Title */}
           <p className="title">
             AI Agent Developer & Applied AI Engineer
             <br />
@@ -53,6 +74,7 @@ function Main() {
             <a href="https://www.linkedin.com/in/alimoeinian1/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
             <a href="https://scholar.google.com/citations?user=iPgbWYkAAAAJ&hl=en" target="_blank" rel="noreferrer"><SchoolIcon/></a>
             <a href="https://x.com/alim0einian" target="_blank" rel="noreferrer"><XIcon /></a>
+            <a href={CV_LINK} target="_blank" rel="noreferrer" aria-label="View CV"><CvIcon /></a>
           </div>
         </div>
       </div>
