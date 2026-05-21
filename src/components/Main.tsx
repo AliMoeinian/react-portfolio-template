@@ -39,7 +39,7 @@ const CvIcon = () => (
   </svg>
 );
 
-const CV_LINK = "https://drive.google.com/file/d/1KAG_Fseu-gX5_R4M4c5h_DhSnxerrSe_/view?usp=sharing";
+const CV_LINK = "https://drive.google.com/file/d/1RHO54INRM8F0islGO0or2Y4mR_8VRt_g/view?usp=sharing";
 
 function Main() {
   return (
