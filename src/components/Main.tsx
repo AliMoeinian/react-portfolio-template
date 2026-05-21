@@ -39,7 +39,21 @@ const CvIcon = () => (
   </svg>
 );
 
-const CV_LINK = "https://drive.google.com/file/d/1RHO54INRM8F0islGO0or2Y4mR_8VRt_g/view?usp=sharing";
+const OrcidIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947-.947-.431-.947-.947.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.444 3.588-3.722 0-2.016-1.091-3.722-3.588-3.722h-2.297z"/>
+  </svg>
+);
+
+const CV_LINK = "https://drive.google.com/file/d/1JbhUtRGuS_oklO7Bf2hckvg4z4UBmO_j/view?usp=sharing";
+const ORCID_LINK = "https://orcid.org/0009-0002-1232-3379";
 
 function Main() {
   return (
@@ -55,6 +69,7 @@ function Main() {
             <a href="https://www.linkedin.com/in/alimoeinian1/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
             <a href="https://scholar.google.com/citations?user=iPgbWYkAAAAJ&hl=en" target="_blank" rel="noreferrer"><SchoolIcon/></a>
             <a href="https://x.com/alim0einian" target="_blank" rel="noreferrer"><XIcon /></a>
+            <a href={ORCID_LINK} target="_blank" rel="noreferrer" aria-label="ORCID Profile"><OrcidIcon /></a>
             <a href={CV_LINK} target="_blank" rel="noreferrer" aria-label="View CV"><CvIcon /></a>
           </div>
 
@@ -74,6 +89,7 @@ function Main() {
             <a href="https://www.linkedin.com/in/alimoeinian1/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
             <a href="https://scholar.google.com/citations?user=iPgbWYkAAAAJ&hl=en" target="_blank" rel="noreferrer"><SchoolIcon/></a>
             <a href="https://x.com/alim0einian" target="_blank" rel="noreferrer"><XIcon /></a>
+            <a href={ORCID_LINK} target="_blank" rel="noreferrer" aria-label="ORCID Profile"><OrcidIcon /></a>
             <a href={CV_LINK} target="_blank" rel="noreferrer" aria-label="View CV"><CvIcon /></a>
           </div>
         </div>
