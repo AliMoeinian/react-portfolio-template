@@ -52,7 +52,7 @@ const OrcidIcon = () => (
   </svg>
 );
 
-const CV_LINK = "https://drive.google.com/file/d/1JbhUtRGuS_oklO7Bf2hckvg4z4UBmO_j/view?usp=sharing";
+const CV_LINK = "https://drive.google.com/file/d/14GOOgAJOsswp8yEGVCxqqBXr10n7l0Pd/view?usp=sharing";
 const ORCID_LINK = "https://orcid.org/0009-0002-1232-3379";
 
 function Main() {
