@@ -1,135 +1,67 @@
-# 🚀 Ali Moeinian – Customized React Portfolio
+# Ali Moeinian — Glass Portfolio
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge\&logo=typescript\&logoColor=white) ![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge\&logo=sass\&logoColor=white) ![MaterialUI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge\&logo=mui\&logoColor=white) ![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge\&logo=fontawesome\&logoColor=white) ![Node.js](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white) ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge\&logo=npm\&logoColor=white)
+A frontend-only React / TypeScript portfolio with separate browser routes, a blue glass design system, light/dark themes, searchable projects, and curved career and education roadmaps.
 
-## 📌 Overview
+## Local development
 
-This project started as a fork of **[yujisatojr/react-portfolio-template](https://github.com/yujisatojr/react-portfolio-template)** but has been **heavily customized** for personal branding.
-It now includes **additional sections**, **JSON-driven content**, an **LLM-powered contact assistant**, and refined **UI/UX styling** for a more modern, professional feel.
-
-![screenshot](./src/assets/images/screenshot.png)
-
----
-
-## ✨ Features
-
-* **Modern tech stack** – React, TypeScript, Sass, Material UI, Font Awesome
-* **Light/Dark mode toggle** with sticky navigation and smooth scroll-to-section
-* **LLM Twin Contact Assistant** – Screens collaboration requests before revealing contact info
-* **JSON-driven content** for projects, experience, skills, and publications (no need to edit components directly)
-* **Responsive, mobile-friendly design** with clean typography and animations
-* **Component-scoped SCSS modules** for maintainable theming
-* **Additional sections**: Expertise, Timeline, Mentoring, Publications, and Achievements
-
----
-
-## 🛠 Getting Started
-
-### Prerequisites
-
-* [Node.js](https://nodejs.org/) (includes npm)
-
-### Installation
-
-```bash
-npm install
+```sh
+npm ci
 npm start
 ```
 
-The development server runs at:
-➡ **[http://localhost:3000](http://localhost:3000)**
+Production verification:
 
----
-
-## ⚙ Environment Variables
-
-Create a `.env` file in the project root and add:
-
-```env
-REACT_APP_OPENROUTER_API_KEY=your_api_key_here
+```sh
+npm run typecheck
+npm test -- --watchAll=false
+npm run build
+npm run preview
 ```
 
-This is used by the LLM Twin assistant for intelligent contact screening.
+The local preview uses http://localhost:3000. Set `PORT` to choose another port. No API keys, backend or environment variables are required. Old ignored `.env` files are not used by the application.
 
----
+## Edit content
 
-## 📂 Project Structure
+| File in `src/data` | Content |
+| --- | --- |
+| `profile.json` | Name, role, introduction, CV, email, social links and collaboration notice |
+| `expertiseData.json` | Expertise descriptions and topics |
+| `skillsData.json` | Skill categories and items |
+| `ProjectsData.json` | All projects, descriptions, images, links and `featured` selection |
+| `experienceData.json` | Original career records, dates and extended descriptions |
+| `educationData.json` | Education, institution logos and milestones |
+| `publicationsData.json` | Books, covers, dates and resource links |
+| `ArticlesData.json` | Papers, publication venue, authorship and dates |
+| `achievementsData.json` | Awards and recognition |
 
-```
-public/                 # Static assets
-src/
-  assets/               # Images, logos, SCSS modules
-  components/           # React components for sections
-  data/                 # JSON files for projects, experience, skills
-  services/             # API helpers (e.g., OpenRouter client)
-  App.tsx               # Main app composition & theme control
-```
+Set `profile.opening.active` to `false` to hide the collaboration notice. Its text and destination are editable in the same object.
 
----
+Add project images to `src/assets/images` as WebP files and set `image` to the filename (with or without `.webp`). No image import map needs updating. Each project needs a unique URL-safe `slug`. `featured: true` includes it in the featured view. Categories are derived automatically from the data. Missing images get a visual fallback. `href: null` omits an external project link.
 
-## 🎨 Customization
+Institution logos go in `src/assets/logos`; `logo` accepts a filename or `null`. Dates in the original career data are preserved. Career entries are presented by starting date, and can be filtered by starting year. Concurrent roles remain separate. The original data includes two identical January 2026 workshop records; both are intentionally preserved for the owner to review.
 
-* **Content:** Update JSON files in `src/data`
-* **Images:** Replace files in `src/assets/images` and `src/assets/logos`
-* **Styling:** Adjust SCSS in `src/assets/styles`
-* **Sections:** Modify or add components in `src/components`
-* **AI Assistant:** Configure `.env` with your API key
+## Structure
 
----
+- `src/App.tsx`: common navigation, theme, route metadata and lazy page loading.
+- `src/pages`: Home, Explore (expertise/skills), Projects (collection/detail), Journey (career/education), Library (articles/books/awards), Contact.
+- `src/ui/router.tsx`: small History API router; real anchor URLs, modifier clicks and back/forward support.
+- `src/ui/Icon.tsx`: shared SVG icon family with CSS glass treatment.
+- `src/ui/Mascot.tsx` and `src/ui/mascot.scss`: animated voxel character, greetings, pause control, reduced-motion and off-screen pause behavior.
+- `src/assets/images/ali-voxel-mascot.png`: transparent character generated with the built-in image generator, using the owner's photo and voxel style reference. The exact prompt is recorded beside it in `ali-voxel-mascot.prompt.txt`.
+- `src/ui/design.scss`: responsive styles and light/dark design tokens.
+- `scripts/preview.cjs`: local static build server with SPA fallback.
+- `vercel.json`: direct-route fallback for Vercel.
 
-## 📜 Scripts
+## Routes
 
-```bash
-npm start      # Run development server
-npm run build  # Create production build
-npm test       # Run test suite
-npm run deploy # Deploy to GitHub Pages
-```
+`/`, `/expertise`, `/skills`, `/projects`, `/projects/:slug`, `/journey`, `/education`, `/articles`, `/publications`, `/achievements`, `/contact`.
 
----
+All routes work without a backend. Contact uses email links and optional clipboard copy. Nothing is submitted to a server. Theme preference is stored locally in the browser. No analytics or third-party fonts are loaded.
 
-## 🌐 Deployment
+## Publishing
 
-You can deploy on **GitHub Pages**, **Netlify**, **Vercel**, or any hosting platform.
-To deploy with GitHub Pages:
+Review locally before pushing. The connected Vercel project may deploy automatically when changes are pushed to its deployment branch. This redesign does not perform a push or deployment.
 
-1. **Set Up GitHub Repository**
-   Create a new repository for your portfolio.
+## Credits
 
-2. **Configure `package.json`**
-
-   ```json
-   {
-     "homepage": "https://yourusername.github.io/your-repo-name",
-     "scripts": {
-       "predeploy": "npm run build",
-       "deploy": "gh-pages -d build"
-     }
-   }
-   ```
-
-   Replace `yourusername` and `your-repo-name` accordingly.
-
-3. **Deploy**
-
-   ```bash
-   npm run deploy
-   ```
-
-4. **Access Your Portfolio**
-   Visit: `https://yourusername.github.io/your-repo-name`
-
----
-
-## 📄 License
-
-Distributed under the **MIT License**, inherited from the original template.
-Feel free to use, modify, and distribute — attribution appreciated but not required.
-
----
-
-## 🙏 Acknowledgments
-
-* **Original template**: [Yuji Sato](https://github.com/yujisatojr/react-portfolio-template)
-* **Custom enhancements** by Ali Moeinian — additional sections, LLM integration, JSON-driven content, and UI refinements
-
+Based on Yuji Sato's React portfolio template, customized for Ali Moeinian. Original MIT license retained. Existing cover artwork was created with ChatGPT.

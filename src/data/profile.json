@@ -1,0 +1,23 @@
+{
+  "name": "Ali Moeinian",
+  "role": "AI Agent Developer & Applied AI Engineer",
+  "study": "M.Sc. Student in Data Science",
+  "headline": "Turning intelligence into impact.",
+  "intro": "Exploring the space between data, language and intelligent systems. Building with curiosity. Sharing what I learn.",
+  "email": "alimoeinian.dev@gmail.com",
+  "cv": "https://drive.google.com/file/d/14GOOgAJOsswp8yEGVCxqqBXr10n7l0Pd/view?usp=sharing",
+  "opening": {
+    "active": true,
+    "label": "OPEN FOR COLLABORATION",
+    "title": "Let's explore the next research question.",
+    "description": "Open to academic collaborations and co-authoring research papers in RAG, Multi-Agent Systems and Data Science.",
+    "href": "/contact"
+  },
+  "socials": [
+    { "name": "GitHub", "href": "https://github.com/AliMoeinian", "icon": "code" },
+    { "name": "LinkedIn", "href": "https://www.linkedin.com/in/alimoeinian1/", "icon": "linkedin" },
+    { "name": "Google Scholar", "href": "https://scholar.google.com/citations?user=iPgbWYkAAAAJ&hl=en", "icon": "education" },
+    { "name": "X", "href": "https://x.com/alim0einian", "icon": "x" },
+    { "name": "ORCID", "href": "https://orcid.org/0009-0002-1232-3379", "icon": "orcid" }
+  ]
+}

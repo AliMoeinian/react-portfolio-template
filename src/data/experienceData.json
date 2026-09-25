@@ -1,9 +1,36 @@
 [
+    {
+      "title": "Workshop Mentor – Introduction to Data Science",
+      "subtitle": "Esfahan's Mobarakeh Steel Company",
+      "location": "Isfahan, Isfahan Province, Iran",
+      "date": "Jul 2026 – Sep 2026",
+      "icon": "faChalkboardTeacher",
+      "description": "Led the hands-on component of introductory data science workshops, covering Excel-based data analysis and practical AI tools.",
+      "fullDescription": "Invited by Dr. Afsaneh Fatemi to mentor the practical component of an eight-session workshop series delivered to two groups, with 40 participants in total. Guided participants through hands-on data analysis with Excel and the use of AI alongside their analysis workflows, building on an earlier collaboration with Mobarakeh Steel Company."
+    },
+    {
+      "title": "Agent Development Lead – Paper2LaTeX",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Jul 2026 – Sep 2026",
+      "icon": "faCode",
+      "description": "Led agent development for Paper2LaTeX, an internal university project supporting drag-and-drop LaTeX workflows.",
+      "fullDescription": "Headed the Peer-Review Multi-Agent component, leading the development of a LangChain-based multi-agent system to assist with the review of academic papers. Oversaw the agent development work within the broader Paper2LaTeX project."
+    },
+    {
+      "title": "Research Project Lead – Fine-FRE RAG Replication",
+      "subtitle": "University of Isfahan",
+      "location": "Isfahan Province, Iran",
+      "date": "Jul 2026 – Sep 2026",
+      "icon": "faFlask",
+      "description": "Led an undergraduate research internship project reimplementing Fine-FRE RAG for fraud detection.",
+      "fullDescription": "Supervised undergraduate interns in a research-focused reimplementation of the Fine-FRE RAG paper. Guided the team through understanding the proposed approach and translating it into a working implementation for the fraud detection domain."
+    },
       {
       "title": "Teaching Assistant – Dynamic Complex Networks (Dr. Afsaneh Fatemi)",
       "subtitle": "University of Isfahan",
       "location": "Isfahan Province, Iran",
-      "date": "Feb 2026 – Now",
+      "date": "Feb 2026 – Sep 2026",
       "icon": "faChalkboardTeacher",
       "description": "Assisted in developing Projects during the Term and Final Project.",
       "fullDescription": "Created a comprehensive final project that challenges students to apply course concepts to real-world network data, fostering critical thinking and practical application of complex network theories."
@@ -12,7 +39,7 @@
       "title": "Teaching Assistant (Lead TA) – Big Data (Dr. Mohammad Ali Nematbakhsh)",
       "subtitle": "University of Isfahan",
       "location": "Isfahan Province, Iran",
-      "date": "Feb 2026 – Now",
+      "date": "Feb 2026 – Sep 2026",
       "icon": "faChalkboardTeacher",
       "description": "Assisted in developing Deep and practical excercises",
       "fullDescription": "Led and coordinated a team of Teaching Assistants, Reviewed and refined assessment materials, Contributed to design Kafka-focused projects"

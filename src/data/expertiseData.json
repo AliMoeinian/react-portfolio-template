@@ -1,0 +1,6 @@
+[
+  {"title":"Data Science & Machine Learning","icon":"data","description":"Analytical pipelines have been developed to extract insight from complex, large-scale datasets. Emphasis has been placed on clean evaluation, structured experimentation, and interpretability across a wide range of real-world problems.","tags":["Experimentation","Evaluation","Interpretability"]},
+  {"title":"LLMs & Agentic Systems","icon":"brain","description":"Intelligent systems have been designed by combining language models with retrieval and reasoning capabilities. Special focus has been given to agent workflows, autonomous decision-making, and safe real-world deployment.","tags":["RAG","Language models","AI agents"]},
+  {"title":"Backend & Data Platforms","icon":"layers","description":"Scalable platforms have been architected to support real-time data flow, secure access, and operational reliability. Infrastructures have been optimized for both analytical workloads and production deployment.","tags":["Data infrastructure","APIs","Architecture"]},
+  {"title":"Research & Mentorship","icon":"research","description":"Technical knowledge has been transferred through teaching, publishing, and applied research. Teams and individuals have been mentored with a focus on clarity, creativity, and long-term growth.","tags":["Research","Teaching","Knowledge sharing"]}
+]

@@ -2,9 +2,34 @@
   {
     "title": "Evaluating Prompt Engineering Techniques for RAG in Small Language Models: A Multi-Hop QA Approach",
     "description": "Comprehensive empirical study on optimizing Retrieval-Augmented Generation for Small Language Models through prompt template design, revealing key strategies for efficient reasoning in resource-constrained settings.",
+    "abstract": "Retrieval Augmented Generation (RAG) offers a practical way to improve the factual grounding of language models using external knowledge. Though widely explored for large language models, much less is known about how to best utilize RAG for Small Language Models (SLMs), especially for complex multi-hop question answering benchmarks that demand extensive reasoning. In these systems, prompt template design is a crucial yet under-explored factor influencing performance. This paper presents a large-scale empirical study to investigate this factor, evaluating 24 different prompt templates on the HotpotQA dataset provided by RAGBench. The set includes a standard RAG prompt, 9 established techniques from the literature, and 14 novel hybrid prompt templates proposed in this work and systematically constructed via a compositional framework integrating explicit decomposition, evidence grounding, and bounded self-verification to mitigate SLM-specific failure modes. All templates are tested on Qwen2.5-3B-Instruct and Gemma3-4B-It. Our findings, based on 18,720 test instances, reveal peak accuracies of 83.0% on Qwen2.5 and 84.6% on Gemma3-4B-It. Statistical significance testing and in-depth error analysis reveal a model-specific asymmetry: while the ∼6% accuracy lift on Gemma over the standard baseline is statistically significant, the comparable mean gain on Qwen is not. We demonstrate that this discrepancy stems from divergent failure mechanisms under complex prompts, providing actionable, model-specific recommendations for designing effective prompts for SLM-based RAG systems.",
     "date": "2026",
-    "category": "2nd Author",
+    "category": "1st Author",
+    "status": "Under review",
+    "venueUrl": "https://jcomsec.ui.ac.ir/",
     "readTime": "Journal of Computing and Security",
     "link": "https://arxiv.org/abs/2602.13890"
+  },
+  {
+    "title": "Mitigating the Constraint Tax: A Two-Stage Reasoning-then-Alignment Framework for Temporal Reasoning in Small Language Models",
+    "description": "Introducing DeTaX, a two-stage prompting framework that separates temporal reasoning from output formatting to reduce the constraint tax in small language models.",
+    "abstract": "Temporal reasoning is a critical but limited capability in Small Language Models (SLMs). Enforcing strict output schemas during monolithic Chain-of-Thought (CoT) prompting imposes a constraint tax, degrading arithmetic accuracy in resource-constrained models. To address this, we introduce DeTaX, a two-stage prompting framework decoupling logic from syntax. Stage 1 conducts unconstrained chronological simulation for timeline reconstruction and arithmetic, while Stage 2 reflectively evaluates this trace to self-correct errors and enforce the target schema. Evaluating five sub-10B SLMs (from Meta, IBM, Mistral AI, and Alibaba) on the TIME-Lite benchmark, paired Wilcoxon tests reveal statistically significant gains (p < 0.05) for Llama 3.2 3B (p < 0.00001), Ministral3 3B (p = 0.00003), and Llama 3.1 8B (p = 0.0458). Granite H Micro 3B achieves a highly significant structured-text gain (+11.18% on Wiki, p = 0.046). Conversely, reasoning-tuned Qwen3 8B shows no improvement, revealing a native ceiling effect bounding our prompt-based approach.",
+    "date": "2026",
+    "category": "1st Author",
+    "status": "Under review",
+    "readTime": "ICCKE",
+    "venueUrl": "https://iccke.um.ac.ir/en",
+    "link": ""
+  },
+  {
+    "title": "A Behavioral Study of Multi-Agent RAG Across Ministral 3 Model Sizes: Evidence from TechQA",
+    "description": "A controlled study of multi-agent RAG across the Ministral 3 family, examining how verifier-led orchestration changes abstention behavior, answer quality and token consumption.",
+    "abstract": "Multi-agent retrieval-augmented generation systems are increasingly deployed, yet their behavioral impact on small language models remains underexplored. This work presents a controlled study of the Ministral 3 family (3B, 8B, 14B) on TechQA, evaluating 12 pipeline configurations across dev (N=310) and pooled (N=910) splits using deterministic F1, LLM-as-a-judge, and RAGAS. Results show that agentic orchestration improves F1 primarily by changing abstention behavior rather than answer extraction, with effects varying across model scales. The verifier is the dominant contributor: removing it causes pooled-split F1 drops of up to 0.105, whereas removing the planner reduces F1 by at most 0.009. A clear size–refusal trade-off emerges, with the 3B model refusing most aggressively and the 14B model achieving a better extraction–abstention balance. Notably, a verifier-equipped 3B model without the planner achieves 0.488 Official dev F1, 70.5% above the 14B naive baseline (0.286), at roughly 7.8× higher token consumption. Overall, verifier-based orchestration primarily improves conservative refusal rather than answer extraction in this setting.",
+    "date": "2026",
+    "category": "1st Author",
+    "status": "Submitted",
+    "readTime": "IST 2026",
+    "venueUrl": "https://ist.itrc.ac.ir/2026/en",
+    "link": ""
   }
 ]

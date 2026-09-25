@@ -1,0 +1,38 @@
+.hero .hero-name{font-size:clamp(68px,7.3vw,104px);line-height:1.05;letter-spacing:-5.5px;margin:23px 0 30px}
+.hero-introduction .hero-role{font-size:16px;color:var(--ink);font-weight:550;max-width:360px;line-height:1.55}
+.hero-tagline{font-size:16px;color:var(--blue);font-weight:550;margin:22px 0 0}
+.hero-description{margin-top:9px}
+.mascot-art{height:475px}
+.mascot-art .orbit-one{width:84%;height:66%;transform:rotate(-20deg)}
+.mascot-art .orbit-two{width:96%;height:43%;transform:rotate(25deg)}
+.mascot-art .tile-brain{top:115px;left:5%}
+.mascot-art .tile-data{bottom:125px;right:2%}
+.mascot-art .floating-tile .glass-icon{width:69px;height:69px;border-radius:21px}
+.mascot-art .floating-tile .icon{width:34px;height:34px}
+.mascot-stage{position:relative;width:100%;height:100%;display:flex;justify-content:center;align-items:center}
+.mascot-halo{position:absolute;width:310px;height:310px;border-radius:50%;background:radial-gradient(circle,#cbe8ff99,#86bafa1f 60%,transparent 72%);top:90px}
+.mascot-platform{position:absolute;width:255px;height:84px;bottom:94px;left:calc(50% - 127px);border-radius:50%;background:linear-gradient(160deg,#ffffff66,#a8cefa44);border:1px solid #fff9;box-shadow:0 12px 0 -5px #aac4ea1f,0 22px 25px -16px #4777aa33;transform:rotate(-7deg)}
+.mascot-traveler{position:absolute;width:220px;bottom:120px;animation:mascot-wander 14s ease-in-out infinite;z-index:2}
+.mascot-character{display:block;background:transparent;padding:0;width:100%;border-radius:60px;transform-origin:50% 95%;animation:mascot-breathe 3.5s ease-in-out infinite;cursor:pointer}
+.mascot-character img{width:100%;height:auto;max-height:290px;object-fit:contain;filter:drop-shadow(5px 10px 6px #19427219);user-select:none}
+.mascot-character:hover{filter:brightness(1.06)}
+.mascot-character:active{scale:.97}
+.mascot-bubble{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);padding:11px 18px;border-radius:15px;background:var(--solid);color:var(--ink);font-size:14px;font-weight:600;white-space:nowrap;animation:bubble-arrive .35s ease-out both;box-shadow:0 8px 20px -13px #134c9c50,inset 0 1px 0 white}
+.mascot-bubble:after{content:'';position:absolute;left:50%;bottom:-7px;width:13px;height:13px;transform:rotate(45deg);background:var(--solid);border-right:1px solid #aecbe54d;border-bottom:1px solid #aecbe54d}
+.bubble-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#5091e6;margin-left:10px;vertical-align:middle}
+.mascot-ground-shadow{position:absolute;bottom:119px;width:135px;height:15px;background:#2e598b21;border-radius:50%;filter:blur(5px);animation:mascot-wander 14s ease-in-out infinite}
+.mascot-caption{position:absolute;bottom:62px;display:flex;align-items:center;gap:10px;font-size:11px;color:var(--muted);letter-spacing:.2px}
+.mascot-motion-control{position:absolute;bottom:18px;display:flex;align-items:center;justify-content:center;gap:7px;min-height:34px;background:transparent;font-size:9px;color:var(--muted);padding:7px 12px;border-radius:10px}
+.mascot-motion-control .icon{width:13px;height:13px}
+.mascot-motion-control:hover{background:#4f91e512}
+.mascot-paused .mascot-traveler,.mascot-paused .mascot-character,.mascot-paused .mascot-ground-shadow{animation-play-state:paused}
+.mascot-paused .mascot-bubble{animation:none}
+@keyframes mascot-wander{0%,100%{transform:translateX(-20px)}25%{transform:translateX(22px) translateY(-3px)}50%{transform:translateX(8px)}75%{transform:translateX(-27px) translateY(-2px)}}
+@keyframes mascot-breathe{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+@keyframes bubble-arrive{from{opacity:0;translate:0 5px;scale:.95}to{opacity:1;translate:0 0;scale:1}}
+[data-theme=dark] .mascot-halo{background:radial-gradient(circle,#3471c738,#3574bd0f 65%,transparent 72%)}
+[data-theme=dark] .mascot-platform{background:linear-gradient(160deg,#75a8e51f,#1635634f);border-color:#a6ceff36;box-shadow:0 12px 0 -5px #263e681f}
+@media(max-width:1100px){.hero .hero-name{font-size:clamp(65px,7.6vw,91px);letter-spacing:-4px}.mascot-art{height:460px}.mascot-art .tile-brain{left:1%}.mascot-art .tile-data{right:0}}
+@media(max-width:800px){.hero .hero-name{font-size:68px;letter-spacing:-4px}.hero-introduction .hero-role{font-size:14px}.mascot-art{height:430px}.mascot-traveler{width:185px;bottom:110px}.mascot-character img{max-height:258px}.mascot-art .floating-tile .glass-icon{width:51px;height:51px;border-radius:16px}.mascot-art .floating-tile .icon{width:26px;height:26px}.mascot-art .tile-brain{left:1%;top:95px}.mascot-art .tile-data{right:-1%;bottom:120px}.mascot-platform{bottom:91px;width:205px;left:calc(50% - 102px)}.mascot-ground-shadow{bottom:111px}.mascot-bubble{font-size:12px;padding:10px 14px}.mascot-caption{font-size:9px}.mascot-halo{width:270px;height:270px}.hero-tagline{font-size:14px}}
+@media(max-width:580px){.hero .hero-name{font-size:clamp(61px,16vw,82px);line-height:1.05;letter-spacing:-3.5px;margin:20px 0 25px}.hero-introduction .hero-role{font-size:14px;max-width:270px}.hero-tagline{font-size:14px;margin-top:18px}.mascot-art{height:345px;margin-top:22px}.mascot-traveler{width:173px;bottom:75px}.mascot-character img{max-height:228px}.mascot-platform{bottom:53px;width:220px;left:calc(50% - 110px);height:65px}.mascot-ground-shadow{bottom:74px;width:115px}.mascot-caption{bottom:34px;font-size:9px}.mascot-motion-control{bottom:-1px;font-size:8px;min-height:30px}.mascot-art .tile-brain{top:88px;left:4%}.mascot-art .tile-data{right:3%;bottom:85px}.mascot-art .art-label{display:none}.mascot-bubble{font-size:12px;bottom:calc(100% + 1px)}.mascot-halo{width:255px;height:255px;top:25px}.mascot-art .orbit-one{height:68%}.mascot-art .orbit-two{height:42%}}
+@media(prefers-reduced-motion:reduce){.mascot-traveler,.mascot-character,.mascot-ground-shadow,.mascot-bubble{animation:none!important}}

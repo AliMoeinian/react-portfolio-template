@@ -1,0 +1,71 @@
+[
+  {
+    "title": "EMMET Plugin",
+    "description": "Learn the Emmet plugin—shorthand expansions that help you write HTML/CSS much faster. A comprehensive guide for developers.",
+    "img": "EMMET Plugin.webp",
+    "downloadable": true,
+    "alt": "EMMET Plugin cover",
+    "year": "2024",
+    "category": "Web Development",
+    "downloadUrl": "https://github.com/AliMoeinian/Emmet-Summary"
+  },
+  {
+    "title": "21 Days with Python",
+    "description": "A from‑zero, 21‑day introduction to Python programming for absolute beginners. Complete with exercises and projects.",
+    "img": "21DaywithPython.webp",
+    "downloadable": true,
+    "alt": "21 Day with Python cover",
+    "year": "2024",
+    "category": "Programming",
+    "downloadUrl": "https://github.com/AliMoeinian/21-Day-Python-Challenge"
+  },
+  {
+    "title": "Git & GitHub",
+    "description": "Git & GitHub for complete beginners—version control basics, branching, commits, and pull requests. Essential for every developer.",
+    "img": "GitGithub.webp",
+    "downloadable": true,
+    "alt": "Git & GitHub cover",
+    "year": "2024",
+    "category": "Version Control",
+    "downloadUrl": "https://github.com/AliMoeinian/Practical-summary-of-the-Git"
+  },
+  {
+    "title": "Cyrus the Great",
+    "description": "A research book on Cyrus the Great, created in collaboration by my professor's invitation. Officially printed; not available for download.",
+    "img": "Cyrus.webp",
+    "downloadable": false,
+    "alt": "Cyrus the Great cover",
+    "year": "2023",
+    "category": "History"
+  },
+  {
+    "title": "PyScript Tutorial",
+    "description": "The first Persian tutorial on PyScript, written within 24 hours of its initial announcement. Pioneering content for Python in browser.",
+    "img": "Pyscript.webp",
+    "downloadable": true,
+    "alt": "PyScript tutorial cover",
+    "year": "2022",
+    "category": "Web Development",
+    "downloadUrl": "https://github.com/AliMoeinian/Pyscript-Summary"
+  },
+  {
+    "title": "Open Source Licenses",
+    "description": "A practical guide to open‑source licenses on GitHub—an underrated but essential topic every developer should understand.",
+    "img": "Licenses.webp",
+    "downloadable": true,
+    "alt": "Licenses on GitHub cover",
+    "year": "2023",
+    "category": "Open Source",
+    "downloadUrl": "https://github.com/AliMoeinian/GitHub-licenses"
+  },
+  {
+    "title": "Numeronyms in Software",
+    "description": "An introduction to numeronyms used in software projects (e.g., i18n, l10n, k8s) and when to use them effectively.",
+    "img": "Neumeronyms.webp",
+    "downloadable": true,
+    "alt": "Numeronyms cover",
+    "year": "2023",
+    "category": "Software Engineering",
+    "downloadUrl": "https://github.com/AliMoeinian/Numeronyms"
+  }
+]
