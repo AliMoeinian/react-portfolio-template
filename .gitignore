@@ -116,3 +116,8 @@ htmlcov/
 .eslintcache
 .stylelintcache
 *.tsbuildinfo
+
+# GitHub App private keys
+*.pem
+.env*
+!.env.example

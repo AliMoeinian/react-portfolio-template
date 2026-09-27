@@ -1,46 +1,43 @@
 # The Unlisted Archive
 
-This is a discoverable Easter egg, not private storage or authentication. Any content committed to this repository is public. Do not put sensitive notes or real private drafts here.
+This archive is a discoverable Easter egg, not private storage or authentication. Published notes are committed to this repository and become public website content.
 
 ## Local review
 
-Run `npm start`. On the homepage click Ali's main figure ten times. The final speech bubble offers explicit Enter and Not now actions and never navigates automatically. Enter resets the gate, then select **moon → diamond → star** and drag the handle upward. Leaving through Back to the surface resets discovery and puzzle progress, so every new visit starts from the ten-click discovery. Keyboard users can focus the handle and use Arrow Up, End, Enter or Space after solving the pattern.
+Run `npm start`. On the homepage, click Ali's main figure ten times and explicitly choose **Follow the signal**. Solve the gate with **moon -> diamond -> star**, then drag the handle upward. Leaving through **Back to the surface** resets discovery and puzzle progress.
 
-Progress is stored in `sessionStorage` for the current tab, with an in-memory fallback. The public portfolio and its inner-page figures do not reveal an archive link. Direct archive URLs show a hint or the gate until the two steps are completed. This is a UI convention, not access control.
+Progress lives only in `sessionStorage` for the current tab, with an in-memory fallback. Direct archive URLs are guarded by the same presentation flow, but this is a UI convention rather than access control. Archive routes include `noindex, nofollow` metadata.
 
-Two clearly labelled demo notes from `posts/preview.json` appear only in the development server. This file is excluded from the production content context and its development import is removed in production. Demo entries are not real opinions or experiences from Ali. Normal production categories start empty until real notes are added.
+## Categories
 
-## Add a category or topic
+`categories.json` contains the twelve English folder definitions. Each category has a unique URL-safe `id`, an English `title`, a short `caption`, an accent `color`, and a supported `symbol`.
 
-Edit `categories.json`. Each category has an `id`, English `title`, short `caption`, accent `color`, `symbol`, and array of `topics`. Keep IDs unique and URL-safe. Supported folder symbols: globe, document, mail, conversation, pen, spark.
+## Posts
 
-## Add a real note
-
-Add an object to `posts/entries.json`, or create another `.json` file in `posts/` containing an array. All non-preview JSON files are discovered automatically. Each note needs:
+Every published note is a separate JSON file in `posts/`. The Telegram publisher creates these files automatically. The supported schema is:
 
 ```json
 {
   "id": "a-unique-note-slug",
-  "category": "academic-cv",
-  "topic": "Structure",
-  "title": "Your title",
-  "excerpt": "A short introduction.",
-  "date": "2026-09-26",
-  "language": "en",
+  "category": "writing-sop",
+  "title": "Your English title",
+  "excerpt": "A short English introduction for the archive card.",
+  "date": "2026-09-27",
   "blocks": [
     {"type": "paragraph", "text": "Your opening paragraph."},
     {"type": "heading", "text": "A section heading"},
     {"type": "list", "items": ["First item", "Second item"]},
     {"type": "quote", "text": "A quotation."},
     {"type": "callout", "text": "An aside or useful note."},
-    {"type": "link", "text": "Reference", "href": "https://example.com"},
-    {"type": "image", "src": "/archive-images/example.webp", "alt": "Describe the image", "text": "Optional caption"}
+    {"type": "link", "text": "Reference", "href": "https://example.com"}
   ]
 }
 ```
 
-Use `language: "fa"` for Persian with right-to-left reading. Match category IDs and topic names exactly. Put local images in `public/archive-images/`. Content renders as text and structured blocks, not raw HTML. Dates use `YYYY-MM-DD`. Reading time is calculated automatically.
+Content is English-only. Raw HTML and unsafe links are rejected. Dates use `YYYY-MM-DD`, reading time is calculated automatically, and the article slug is generated from its title.
 
-Routes: `/unlisted/gate`, `/unlisted`, `/unlisted/{category}`, `/unlisted/{category}/{note}`. Folder topic and scroll position are restored on return. Archive routes carry `noindex, nofollow` metadata; this is a discovery preference, not a privacy guarantee.
+Routes: `/unlisted/gate`, `/unlisted`, `/unlisted/{category}`, and `/unlisted/{category}/{note}`.
 
-Review locally before authorizing a production push.
+## Telegram publishing
+
+See `docs/TELEGRAM_BOT_SETUP.md`. The bot stages one article at a time on the `bot-content-preview` branch, then writes the confirmed JSON file to `master`. There is no database and no persistent draft system.

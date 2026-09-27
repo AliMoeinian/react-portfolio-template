@@ -22,6 +22,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "typecheck": "tsc --noEmit",
+    "typecheck:api": "tsc -p tsconfig.api.json",
+    "bot:identity": "node --env-file=.env.local scripts/get-telegram-identity.mjs",
+    "bot:github-check": "node --env-file=.env.local scripts/check-github-app.mjs",
+    "bot:local-secrets": "node scripts/configure-local-bot-secrets.mjs",
+    "bot:sandbox": "node --env-file=.env.local scripts/bootstrap-bot-sandbox.mjs",
+    "bot:dev": "node --env-file=.env.local scripts/run-vercel-dev.mjs",
+    "bot:security-smoke": "node --env-file=.env.local scripts/security-smoke.mjs",
+    "bot:webhook": "node --env-file=.env.local scripts/register-telegram-webhook.mjs",
+    "bot:webhook:remove": "node --env-file=.env.local scripts/remove-telegram-webhook.mjs",
     "preview": "node scripts/preview.cjs"
   },
   "eslintConfig": {

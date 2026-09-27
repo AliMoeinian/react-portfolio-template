@@ -74,7 +74,7 @@ function Folder({category}:{category:Category}){
     <Link to="/unlisted" className="archive-back">← Back to archive</Link>
     <div className="folder-heading"><div><p className="archive-kicker">THE UNLISTED ARCHIVE / COLLECTION {String(categories.indexOf(category)+1).padStart(2,'0')}</p><h1>{category.title}<em>.</em></h1><p>{category.caption}</p></div><RetroFolder symbol={category.symbol}/></div>
     <div className="paper-drawer"><div className="drawer-label"><span>CONTENTS / {entries.length.toString().padStart(2,'0')} FILES</span><span>PERSONAL COLLECTION</span></div>
-      {entries.length?<div className="notes-grid">{entries.map((p,i)=><Link to={`/unlisted/${category.id}/${p.id}`} className={`note-card note-colour-${i%3}`} key={p.id}><div className="note-meta"><span>FILE №{String(i+1).padStart(2,'0')}</span><span>{p.preview?'DESIGN PREVIEW':p.date}</span></div><div dir={p.language==='fa'?'rtl':'ltr'} lang={p.language}><h2>{p.title}</h2><p>{p.excerpt}</p></div><div className="note-bottom"><span>{readingMinutes(p)} MIN READ</span><span>↗</span></div></Link>)}</div>:<div className="archive-empty"><span>✎</span><h2>A folder for things<br/><em>still to be written.</em></h2><p>No notes in this collection yet. Come back with a little curiosity.</p></div>}
+      {entries.length?<div className="notes-grid">{entries.map((p,i)=><Link to={`/unlisted/${category.id}/${p.id}`} className={`note-card note-colour-${i%3}`} key={p.id}><div className="note-meta"><span>FILE №{String(i+1).padStart(2,'0')}</span><span>{p.date}</span></div><div lang="en"><h2>{p.title}</h2><p>{p.excerpt}</p></div><div className="note-bottom"><span>{readingMinutes(p)} MIN READ</span><span>↗</span></div></Link>)}</div>:<div className="archive-empty"><span>✎</span><h2>A folder for things<br/><em>still to be written.</em></h2><p>No notes in this collection yet. Come back with a little curiosity.</p></div>}
     </div>
   </section>;
 }
@@ -82,8 +82,8 @@ function Folder({category}:{category:Category}){
 function Reader({post,category}:{post:Post;category:Category}){
   return <section className="archive-reader" style={{'--folder-accent':category.color} as React.CSSProperties}>
     <Link to={`/unlisted/${category.id}`} className="archive-back">← Back to folder</Link>
-    <div className="reader-heading"><p className="archive-kicker">{category.title} / {post.topic}</p><span>{readingMinutes(post)} MIN READ</span></div>
-    <div className="dossier"><span className="dossier-tab">{category.title}</span><article className="reading-paper" dir={post.language==='fa'?'rtl':'ltr'} lang={post.language}>
+    <div className="reader-heading"><p className="archive-kicker">{category.title}</p><span>{readingMinutes(post)} MIN READ</span></div>
+    <div className="dossier"><span className="dossier-tab">{category.title}</span><article className="reading-paper" lang="en">
       <div className="paper-holes" aria-hidden="true"><i/><i/><i/></div>
       <div className="paper-topline"><span>THE UNLISTED ARCHIVE</span><time dateTime={post.date}>{post.date}</time></div>
       <h1>{post.title}</h1><p className="paper-deck">{post.excerpt}</p>
@@ -93,10 +93,9 @@ function Reader({post,category}:{post:Post;category:Category}){
         if(b.type==='callout')return <aside className="paper-callout" key={i}>{b.text}</aside>;
         if(b.type==='list')return <ul key={i}>{b.items?.map((item,j)=><li key={j}>{item}</li>)}</ul>;
         if(b.type==='link')return <p key={i}>{safeHref(b.href)?<a href={safeHref(b.href)} target="_blank" rel="noopener noreferrer">{b.text} ↗</a>:b.text}</p>;
-        if(b.type==='image')return safeHref(b.src)?<figure key={i}><img src={safeHref(b.src)} alt={b.alt||''} loading="lazy"/>{b.text&&<figcaption>{b.text}</figcaption>}</figure>:null;
         return <p key={i}>{b.text}</p>;
       })}</div>
-      <div className="paper-signature"><span>END OF NOTE</span><em>{post.preview?'Layout study':'Ali Moeinian'}</em></div>
+      <div className="paper-signature"><span>END OF NOTE</span><em>Ali Moeinian</em></div>
     </article></div>
     <Link to={`/unlisted/${category.id}`} className="archive-back reader-return">← Put this note back in its folder</Link>
   </section>;
