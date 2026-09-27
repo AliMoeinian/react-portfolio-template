@@ -1,7 +1,10 @@
 import {createSign} from 'node:crypto';
-import categories from '../../src/data/archive/categories.json';
+import {createRequire} from 'node:module';
 import {validatePost,type ArchivePost} from '../../src/archive/postSchema.js';
 import type {BotConfig} from './config.js';
+
+const require=createRequire(import.meta.url);
+const categories=require('../../src/data/archive/categories.json') as Array<{id:string}>;
 
 type GithubFile={sha:string;content:string;encoding:string;html_url?:string};
 let cachedToken:{value:string;expires:number}|undefined;

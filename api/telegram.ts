@@ -1,9 +1,12 @@
-import categories from '../src/data/archive/categories.json';
+import {createRequire} from 'node:module';
 import {parseTelegramArticle} from '../src/archive/postSchema.js';
 import {getConfig,type BotConfig} from './_lib/config.js';
 import {callbackData,readCallback,verifyWebhookSecret} from './_lib/security.js';
 import {answerCallback,downloadTextDocument,escapeHtml,sendMessage} from './_lib/telegram.js';
 import {cancelStagedPost,DuplicatePostError,productionStatus,publishPost,stagePost,stagedPost} from './_lib/github.js';
+
+const require=createRequire(import.meta.url);
+const categories=require('../src/data/archive/categories.json') as Array<{id:string;title:string}>;
 
 type TelegramUser={id:number};
 type TelegramChat={id:number;type:string};
