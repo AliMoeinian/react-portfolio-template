@@ -1,0 +1,35 @@
+[
+  {
+    "id": "the-best-programming-language-english",
+    "category": "english-language",
+    "title": "The Best Programming Language: English",
+    "excerpt": "If you work in computer science and want to succeed, the most important language to learn is English. It is essential for real growth.",
+    "date": "2026-09-27",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "I can not explain how important english skills are !"
+      },
+      {
+        "type": "paragraph",
+        "text": "If you are in the computer field, want to succeed, and want to be an active person, the most important thing you need to learn is English, because it is extremely important."
+      },
+      {
+        "type": "paragraph",
+        "text": "Almost all source code, books, technologies, and documentation are created in English. Not knowing it may not seem like a big deal at first, but the deeper you go into this field, the more obvious its importance becomes."
+      },
+      {
+        "type": "paragraph",
+        "text": "Whether you are writing articles, understanding technologies, reading papers, watching courses, interviewing for admission, or doing anything else you can imagine, English is your lifesaver."
+      },
+      {
+        "type": "paragraph",
+        "text": "· Source code, documentation, and error messages are mostly in English. · Courses, conference talks, and technical articles are mostly in English. · Interviews, admissions, and international opportunities often require English."
+      },
+      {
+        "type": "quote",
+        "text": "If your English is weak, forget about immigration :) with respect."
+      }
+    ]
+  }
+]
