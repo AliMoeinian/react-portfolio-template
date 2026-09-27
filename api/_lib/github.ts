@@ -1,7 +1,7 @@
 import {createSign} from 'node:crypto';
 import categories from '../../src/data/archive/categories.json';
-import {validatePost,type ArchivePost} from '../../src/archive/postSchema';
-import type {BotConfig} from './config';
+import {validatePost,type ArchivePost} from '../../src/archive/postSchema.js';
+import type {BotConfig} from './config.js';
 
 type GithubFile={sha:string;content:string;encoding:string;html_url?:string};
 let cachedToken:{value:string;expires:number}|undefined;

@@ -1,9 +1,9 @@
 import categories from '../src/data/archive/categories.json';
-import {parseTelegramArticle} from '../src/archive/postSchema';
-import {getConfig,type BotConfig} from './_lib/config';
-import {callbackData,readCallback,verifyWebhookSecret} from './_lib/security';
-import {answerCallback,downloadTextDocument,escapeHtml,sendMessage} from './_lib/telegram';
-import {cancelStagedPost,DuplicatePostError,productionStatus,publishPost,stagePost,stagedPost} from './_lib/github';
+import {parseTelegramArticle} from '../src/archive/postSchema.js';
+import {getConfig,type BotConfig} from './_lib/config.js';
+import {callbackData,readCallback,verifyWebhookSecret} from './_lib/security.js';
+import {answerCallback,downloadTextDocument,escapeHtml,sendMessage} from './_lib/telegram.js';
+import {cancelStagedPost,DuplicatePostError,productionStatus,publishPost,stagePost,stagedPost} from './_lib/github.js';
 
 type TelegramUser={id:number};
 type TelegramChat={id:number;type:string};
@@ -14,7 +14,7 @@ type TelegramUpdate={update_id:number;message?:TelegramMessage;callback_query?:C
 
 const categoryIds=categories.map(category=>category.id);
 const categoryById=(id:string)=>categories.find(category=>category.id===id);
-const owned=(config:BotConfig,userId?:number,chat?:TelegramChat)=>userId===config.ownerUserId&&chat?.id===config.ownerChatId&&chat.type==='private';
+const owned=(config:BotConfig,userId?:number,chat?:TelegramChat)=>Boolean(chat&&userId===config.ownerUserId&&chat.id===config.ownerChatId&&chat.type==='private');
 
 function todayInTehran(){
   const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tehran',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
