@@ -1,0 +1,64 @@
+[
+  {
+    "id": "building-a-professional-resume-that-gets",
+    "category": "professional-resume",
+    "title": "Building a Professional Resume That Gets Read",
+    "excerpt": "A practical guide to creating a clear and focused resume that communicates your value without unnecessary complexity.",
+    "date": "2026-09-27",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Start with the target role"
+      },
+      {
+        "type": "paragraph",
+        "text": "A strong resume is not a complete history of everything you have ever done. It is a focused document designed for a specific opportunity."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before writing, study the job description and identify the skills, responsibilities and outcomes that appear repeatedly."
+      },
+      {
+        "type": "heading",
+        "text": "Write experience around impact"
+      },
+      {
+        "type": "paragraph",
+        "text": "Instead of listing routine responsibilities, describe what changed because of your work."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Begin each bullet with a clear action.",
+          "Mention the problem or responsibility.",
+          "Explain the measurable result when possible.",
+          "Remove details that do not support the target role."
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "A resume should make your relevance obvious within the first few seconds."
+      },
+      {
+        "type": "heading",
+        "text": "Keep the structure readable"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use consistent headings, short bullet points and enough whitespace. Recruiters should be able to locate your experience, education and technical skills without searching through dense paragraphs."
+      },
+      {
+        "type": "heading",
+        "text": "Review every sentence"
+      },
+      {
+        "type": "paragraph",
+        "text": "Remove vague phrases such as “hard-working” or “responsible for.” Replace them with specific evidence that demonstrates your contribution."
+      },
+      {
+        "type": "callout",
+        "text": "This is temporary sandbox content created to test the professional resume category."
+      }
+    ]
+  }
+]
