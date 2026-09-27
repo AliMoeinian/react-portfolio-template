@@ -1,0 +1,39 @@
+[
+  {
+    "id": "my-first-sandbox-archive-note",
+    "category": "english-language",
+    "title": "My First Sandbox Archive Note",
+    "excerpt": "A temporary article created to verify the secure Telegram publishing workflow.",
+    "date": "2026-09-27",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Why this note exists"
+      },
+      {
+        "type": "paragraph",
+        "text": "This is a temporary sandbox article. It verifies that Telegram can safely transform a complete message into structured archive content."
+      },
+      {
+        "type": "heading",
+        "text": "What should happen"
+      },
+      {
+        "type": "list",
+        "items": [
+          "The article should be validated.",
+          "A preview should appear before publishing.",
+          "The production website should remain unchanged."
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "This content belongs only to the sandbox test."
+      },
+      {
+        "type": "callout",
+        "text": "The note will be removed after the publishing workflow is verified."
+      }
+    ]
+  }
+]
