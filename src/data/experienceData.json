@@ -18,13 +18,13 @@
       "fullDescription": "Headed the Peer-Review Multi-Agent component, leading the development of a LangChain-based multi-agent system to assist with the review of academic papers. Oversaw the agent development work within the broader Paper2LaTeX project."
     },
     {
-      "title": "Research Project Lead – Fine-FRE RAG Replication",
+      "title": "Research Project Lead – FinFRE-RAG Reimplementation",
       "subtitle": "University of Isfahan",
       "location": "Isfahan Province, Iran",
       "date": "Jul 2026 – Sep 2026",
       "icon": "faFlask",
-      "description": "Led an undergraduate research internship project reimplementing Fine-FRE RAG for fraud detection.",
-      "fullDescription": "Supervised undergraduate interns in a research-focused reimplementation of the Fine-FRE RAG paper. Guided the team through understanding the proposed approach and translating it into a working implementation for the fraud detection domain."
+      "description": "Led an undergraduate research internship project reimplementing FinFRE-RAG for fraud detection.",
+      "fullDescription": "Supervised undergraduate interns in a research-focused reimplementation of the FinFRE-RAG paper. Guided the team through understanding the proposed approach and translating it into a working implementation for the fraud detection domain."
     },
       {
       "title": "Teaching Assistant – Dynamic Complex Networks (Dr. Afsaneh Fatemi)",
@@ -45,15 +45,6 @@
       "fullDescription": "Led and coordinated a team of Teaching Assistants, Reviewed and refined assessment materials, Contributed to design Kafka-focused projects"
     },
         {
-      "title": "AI Tools Workshop Instructor",
-      "subtitle": "University of Isfahan",
-      "location": "Isfahan Province, Iran",
-      "date": "Jan 2026 – Jan 2026",
-      "icon": "faChalkboardTeacher",
-      "description": "Conducted hands‑on workshop on practical AI tools for students of Administrative Sciences and Economics.",
-      "fullDescription": "Delivered a hands‑on workshop teaching prompt engineering, AI chatbots, AI‑assisted research, advanced search, and AI presentation tools, enabling immediate real‑world application in academic and professional settings."
-    },
-      {
       "title": "AI Tools Workshop Instructor",
       "subtitle": "University of Isfahan",
       "location": "Isfahan Province, Iran",
@@ -133,15 +124,6 @@
       "icon": "faCode",
       "description": "Developed AI-driven maternal healthcare platform.",
       "fullDescription": "Co-developed a conversational AI assistant for a digital maternal care platform. Responsibilities included: designing a conversational agent, implementing long-term user memory, building frontend components for onboarding, and ensuring ethical AI use in healthcare."
-    },
-    {
-      "title": "Admin & Content Creator",
-      "subtitle": "Dunijet | دانیجت",
-      "location": "",
-      "date": "Jun 2025 – Present",
-      "icon": "faPenNib",
-      "description": "Created educational AI content for broad audiences.",
-      "fullDescription": "Tracked latest developments in LLMs, NLP, and AGI, writing summaries, commentaries, and explainers on cutting-edge tools, and creating educational posts for beginners and practitioners."
     },
     {
       "title": "AI Workshop Mentor",

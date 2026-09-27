@@ -46,17 +46,6 @@
     ]
   },
   {
-    "category": "Frontend & UI",
-    "items": [
-      { "name": "React", "icon": "react" },
-      { "name": "SCSS", "icon": "scss" },
-      { "name": "Tailwind CSS", "icon": "tailwind" },
-      { "name": "HTML (basic proficiency)", "icon": "html" },
-      { "name": "CSS (basic proficiency)", "icon": "css" },
-      { "name": "Streamlit (App UI)", "icon": "stream" }
-    ]
-  },
-  {
     "category": "MLOps & Infra",
     "items": [
       { "name": "Docker", "icon": "docker" },

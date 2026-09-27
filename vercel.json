@@ -1,4 +1,7 @@
 {
+  "headers": [
+    { "source": "/unlisted/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ],
   "rewrites": [
     { "source": "/((?!static/|favicon|manifest.json|robots.txt|sitemap.xml|social-preview.svg).*)", "destination": "/index.html" }
   ]

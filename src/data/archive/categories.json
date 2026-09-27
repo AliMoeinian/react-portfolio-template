@@ -1,0 +1,14 @@
+[
+  {"id":"english-language","title":"English Language","caption":"Learning, improving and navigating the language journey.","color":"#86d9e8","symbol":"conversation"},
+  {"id":"professional-resume","title":"Writing a Professional Résumé","caption":"Presenting experience with clarity and purpose.","color":"#efc799","symbol":"document"},
+  {"id":"academic-cv","title":"Writing an Academic CV","caption":"Documenting research, education and academic work.","color":"#b5b2f1","symbol":"document"},
+  {"id":"study-abroad","title":"Studying Abroad","caption":"Decisions, applications and lessons from the journey.","color":"#a9d9b3","symbol":"globe"},
+  {"id":"international-professors","title":"Connecting with International Professors","caption":"Finding the right people and starting a meaningful conversation.","color":"#9ecfdc","symbol":"mail"},
+  {"id":"iranian-company-interviews","title":"Interview Experiences at Iranian Companies","caption":"What I encountered in technical and professional interviews.","color":"#e7b494","symbol":"conversation"},
+  {"id":"azad-vs-public-university","title":"Azad University vs. Public Universities in Iran","caption":"A personal comparison of two different academic paths.","color":"#d6db94","symbol":"spark"},
+  {"id":"phd-interviews-abroad","title":"PhD Interviews Abroad","caption":"Preparation, conversations and lessons from international interviews.","color":"#89bde8","symbol":"conversation"},
+  {"id":"phd-interviews-iran","title":"PhD Interviews in Iran","caption":"Questions, preparation and personal observations.","color":"#dfb0c3","symbol":"conversation"},
+  {"id":"unpopular-opinions","title":"Unpopular Opinions","caption":"Room for a different point of view.","color":"#b7a4e5","symbol":"spark"},
+  {"id":"writing-sop","title":"Writing a Statement of Purpose","caption":"Turning your story into a clear academic direction.","color":"#e9cf82","symbol":"pen"},
+  {"id":"research-writing","title":"Writing Research Papers","caption":"From the first question to a finished manuscript.","color":"#a4bddf","symbol":"pen"}
+]

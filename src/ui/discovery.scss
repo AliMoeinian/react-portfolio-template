@@ -1,0 +1,24 @@
+.mascot-bubble.archive-unlock-bubble{width:390px;white-space:normal;padding:24px 25px;bottom:calc(100% - 18px);background:linear-gradient(140deg,#f9fdffed,#c8dcffdc);border-color:#fff;box-shadow:0 14px 38px -15px #0e55bb88,inset 0 1px 0 white;text-align:left;color:#193451;z-index:8}
+.archive-unlock-bubble strong{display:block;font:30px/1.12 Georgia,serif;margin:0}.archive-invitation-actions{display:flex;gap:10px;align-items:center;margin-top:19px}.archive-unlock-bubble button{margin:0;background:#235fcb;color:#fff;border-radius:11px;padding:10px 15px;font-size:10px;min-height:40px}.archive-unlock-bubble button.archive-reject{background:#ffffff72;color:#50647d;border:1px solid #7a9abd42}.archive-unlock-bubble button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+[data-theme=dark] .mascot-bubble.archive-unlock-bubble{background:linear-gradient(140deg,#18375df2,#102641f2);border-color:#6ea9ff55;color:#eef6ff}.archive-unlock-bubble:after{background:inherit}
+[data-theme=dark] .archive-unlock-bubble p{color:#c0d3e9}[data-theme=dark] .archive-unlock-bubble>span{color:#8fbfff}[data-theme=dark] .archive-unlock-bubble small{color:#9fb1c5}
+[data-theme=dark] .archive-unlock-bubble button.archive-reject{background:#d8e9ff12;color:#bed1e8;border-color:#80a6d044}
+@media(max-width:580px){.mascot-bubble.archive-unlock-bubble{width:min(310px,88vw);padding:20px;left:50%;bottom:calc(100% - 12px)}.archive-unlock-bubble strong{font-size:25px}}
+
+/* A clean holographic shutdown: scan, compress to light, then disappear. */
+.archive-unlock-bubble.archive-hologram-off{pointer-events:none;transform-origin:50% 50%;animation:archive-hologram-collapse .9s cubic-bezier(.55,0,.2,1) both}
+.archive-unlock-bubble.archive-hologram-off:before{content:'';position:absolute;z-index:20;left:-2%;right:-2%;top:-8%;height:4px;border-radius:50%;background:#efffff;box-shadow:0 0 8px #fff,0 0 20px #4bd5ff,0 0 42px #256dff;animation:archive-scanline .52s ease-in both;pointer-events:none}
+.archive-unlock-bubble.archive-hologram-off:after{animation:archive-tail-collapse .36s ease-in both}
+.archive-unlock-bubble.archive-hologram-off>*:not(.archive-dismiss-flare){animation:archive-copy-shutdown .3s ease-in both}
+.archive-dismiss-flare{position:absolute!important;display:block!important;inset:50% auto auto 50%!important;width:1px;height:1px;margin:0!important;z-index:24;overflow:visible;pointer-events:none;color:transparent!important}
+.archive-dismiss-flare i{position:absolute;left:50%;top:50%;translate:-50% -50%;display:block}
+.archive-dismiss-flare i:first-child{width:360px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 9px #fff,0 0 24px #45d5ff,0 0 55px #2a63ff;animation:archive-light-line .72s .2s ease-in both}
+.archive-dismiss-flare i:last-child{width:18px;height:18px;border:2px solid #dffcff;border-radius:50%;box-shadow:0 0 16px #75ddff,inset 0 0 10px #75ddff;animation:archive-light-ring .62s .28s ease-out both}
+@keyframes archive-hologram-collapse{0%,24%{opacity:1;scale:1;filter:none;clip-path:inset(-12%)}48%{opacity:1;scale:1.025 .8;filter:brightness(1.22) saturate(1.25);clip-path:inset(12% 0)}68%{opacity:1;scale:1.08 .12;filter:brightness(2.4) saturate(1.5);clip-path:inset(44% -5%)}82%{opacity:1;scale:.3 .035;filter:brightness(5);clip-path:inset(48.5% -18%)}100%{opacity:0;scale:.02 .01;filter:brightness(8) blur(2px);clip-path:inset(49.8% 49%)}}
+@keyframes archive-scanline{0%{top:-8%;opacity:0}12%{opacity:1}90%{opacity:1}100%{top:105%;opacity:0}}
+@keyframes archive-copy-shutdown{0%{opacity:1;filter:none}100%{opacity:0;filter:blur(3px);translate:0 5px}}
+@keyframes archive-tail-collapse{to{opacity:0;scale:.1}}
+@keyframes archive-light-line{0%{opacity:0;scale:.05 1}25%{opacity:1;scale:1 1}72%{opacity:1;scale:.35 1.8}100%{opacity:0;scale:0 4}}
+@keyframes archive-light-ring{0%{opacity:0;scale:.1}28%{opacity:1}100%{opacity:0;scale:8}}
+@media(max-width:580px){.archive-dismiss-flare i:first-child{width:285px}}
+@media(prefers-reduced-motion:reduce){.archive-unlock-bubble.archive-hologram-off{animation:archive-hologram-reduced .08s linear both}.archive-unlock-bubble.archive-hologram-off:before,.archive-dismiss-flare{display:none!important}.archive-unlock-bubble.archive-hologram-off>*:not(.archive-dismiss-flare){animation:none}@keyframes archive-hologram-reduced{to{opacity:0}}}

@@ -1,15 +1,40 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import mascot from '../assets/images/ali-voxel-mascot.png';
 import Icon, {GlassIcon} from './Icon';
 import profile from '../data/profile.json';
+import {useRoute} from './router';
+import {saveArchiveProgress} from './archiveAccess';
 
 const greetings = ['Hi! 👋', 'Nice to meet you.', 'Let’s build something!'];
 export default function Mascot() {
+  const {navigate} = useRoute();
+  const [clicks,setClicks] = useState(0);
+  const [discovered,setDiscovered] = useState(false);
+  const [dismissing,setDismissing] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const greet = ()=>{
+    if(discovered) return;
+    const next = clicks+1;
+    setClicks(next);
+    setGreeting(g=>(g+1)%greetings.length);
+    if(next===10) setDiscovered(true);
+  };
+  const enterArchive=()=>{
+    if(dismissing) return;
+    saveArchiveProgress({discovered:true,sequence:0,unlocked:false});
+    navigate('/unlisted/gate');
+  };
+  const dismissTimer = useRef<number>();
+  const dismissDiscovery=useCallback(()=>{
+    if(dismissing) return;
+    setDismissing(true);
+    dismissTimer.current=window.setTimeout(()=>{setDiscovered(false);setClicks(0);setDismissing(false);},reduced?80:920);
+  },[dismissing,reduced]);
   const [greeting, setGreeting] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [reduced, setReduced] = useState(false);
   const [visible, setVisible] = useState(true);
   const stage = useRef<HTMLDivElement>(null);
+  const invitation = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => setReduced(media.matches);
@@ -18,19 +43,26 @@ export default function Mascot() {
     if(stage.current) observer.observe(stage.current);
     return ()=>{media.removeEventListener('change',update);observer.disconnect();};
   }, []);
-  const resting = paused || reduced || !visible;
+  useEffect(()=>{
+    if(!discovered||dismissing)return;
+    const outside=(event:PointerEvent)=>{if(invitation.current&&!invitation.current.contains(event.target as Node))dismissDiscovery();};
+    document.addEventListener('pointerdown',outside);
+    return ()=>document.removeEventListener('pointerdown',outside);
+  },[discovered,dismissing,dismissDiscovery]);
+  useEffect(()=>()=>window.clearTimeout(dismissTimer.current),[]);
+  const resting = paused || reduced || !visible || discovered;
   useEffect(()=>{
     if(resting) return;
     const timer = window.setInterval(()=>setGreeting(g=>(g+1)%greetings.length),6000);
     return ()=>window.clearInterval(timer);
   },[resting]);
   return <div ref={stage} className={`mascot-stage ${resting?'mascot-paused':''}`}>
-    <nav className="social-constellation" aria-label="Find Ali online">{[...profile.socials.map(s=>({...s,icon:s.name==='GitHub'?'github':s.icon})),{name:'Résumé',href:profile.cv,icon:'file'}].map((s,i)=><a key={s.name} className={`social-planet planet-${i}`} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} (opens in a new tab)`}><GlassIcon name={s.icon}/><span className="planet-label">{s.name}</span></a>)}</nav>
+    {!discovered&&<nav className="social-constellation" aria-label="Find Ali online">{[...profile.socials.map(s=>({...s,icon:s.name==='GitHub'?'github':s.icon})),{name:'Résumé',href:profile.cv,icon:'file'}].map((s,i)=><a key={s.name} className={`social-planet planet-${i}`} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} (opens in a new tab)`}><GlassIcon name={s.icon}/><span className="planet-label">{s.name}</span></a>)}</nav>}
     <div className="mascot-halo" aria-hidden="true"/>
     <div className="mascot-platform" aria-hidden="true"/>
     <div className="mascot-traveler">
-      <div className="mascot-bubble glass" key={greeting} aria-hidden="true">{greetings[greeting]}<span className="bubble-dot"/></div>
-      <button className="mascot-character" aria-label="Say hi to Ali’s character" onClick={()=>setGreeting(g=>(g+1)%greetings.length)}>
+      {discovered?<div ref={invitation} className={`mascot-bubble archive-unlock-bubble glass ${dismissing?'archive-hologram-off':''}`} role="dialog" aria-labelledby="archive-invitation-title"><strong id="archive-invitation-title">Curiosity looks good on you.</strong><div className="archive-invitation-actions"><button onClick={enterArchive} disabled={dismissing}>Follow the signal ↗</button><button className="archive-reject" onClick={dismissDiscovery} disabled={dismissing}>Not now</button></div>{dismissing&&<span className="archive-dismiss-flare" aria-hidden="true"><i/><i/></span>}</div>:<div className="mascot-bubble glass" key={greeting} aria-hidden="true">{clicks>=7?'You’re unusually curious…':greetings[greeting]}<span className="bubble-dot"/></div>}
+      <button className="mascot-character" aria-label="Say hi to Ali’s character" onClick={greet} disabled={discovered}>
         <img src={mascot} alt="A smiling voxel character of Ali, with dark hair, beard, sunglasses and a blue hoodie, waving hello." width="1163" height="1352" draggable={false}/>
       </button>
     </div>
