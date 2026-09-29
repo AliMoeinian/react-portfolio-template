@@ -23,6 +23,7 @@ Every published note is a separate JSON file in `posts/`. The Telegram publisher
   "title": "Your English title",
   "excerpt": "A short English introduction for the archive card.",
   "date": "2026-09-27",
+  "publishedAt": "2026-09-27T12:34:56.789Z",
   "blocks": [
     {"type": "paragraph", "text": "Your opening paragraph."},
     {"type": "heading", "text": "A section heading"},
@@ -34,7 +35,7 @@ Every published note is a separate JSON file in `posts/`. The Telegram publisher
 }
 ```
 
-Content is English-only. Raw HTML and unsafe links are rejected. Dates use `YYYY-MM-DD`, reading time is calculated automatically, and the article slug is generated from its title.
+Content is English-only. Raw HTML and unsafe links are rejected. Dates use `YYYY-MM-DD`, the bot records `publishedAt` automatically when **Publish** is pressed, reading time is calculated automatically, and the article slug is generated from its title. Folder notes are displayed from oldest to newest using that timestamp.
 
 Routes: `/unlisted/gate`, `/unlisted`, `/unlisted/{category}`, and `/unlisted/{category}/{note}`.
 

@@ -1,4 +1,4 @@
-import {markdownToBlocks,parseTelegramArticle,slugify,validatePost} from './postSchema';
+import {comparePostsOldestFirst,markdownToBlocks,parseTelegramArticle,slugify,validatePost,type ArchivePost} from './postSchema';
 
 const categories=['phd-interviews-abroad','writing-sop'];
 
@@ -35,4 +35,10 @@ test('rejects malformed Telegram content',()=>{
 
 test('rejects non-English archive content',()=>{
   expect(()=>parseTelegramArticle('Title: A useful title\nExcerpt: A sufficiently long English excerpt.\n---\nاین متن فارسی است.','writing-sop','2026-09-27',categories)).toThrow('written in English');
+});
+
+test('orders archive posts by their exact publication time, oldest first',()=>{
+  const post=(id:string,date:string,publishedAt?:string):ArchivePost=>({id,category:'writing-sop',title:'A valid title',excerpt:'A sufficiently descriptive excerpt.',date,publishedAt,blocks:[{type:'paragraph',text:'Body'}]});
+  const ordered=[post('newer','2026-09-28','2026-09-28T14:08:27.000Z'),post('oldest','2026-09-27','2026-09-27T17:08:55.000Z'),post('older','2026-09-28','2026-09-28T13:34:17.000Z')].sort(comparePostsOldestFirst);
+  expect(ordered.map(item=>item.id)).toEqual(['oldest','older','newer']);
 });

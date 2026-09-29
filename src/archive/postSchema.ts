@@ -1,9 +1,12 @@
 export const blockTypes=['paragraph','heading','quote','callout','list','link'] as const;
 export type BlockType=typeof blockTypes[number];
 export type ArchiveBlock={type:BlockType;text?:string;items?:string[];href?:string};
-export type ArchivePost={id:string;category:string;title:string;excerpt:string;date:string;blocks:ArchiveBlock[]};
+export type ArchivePost={id:string;category:string;title:string;excerpt:string;date:string;publishedAt?:string;blocks:ArchiveBlock[]};
 
 export type ParseResult={post:ArchivePost;wordCount:number};
+
+const publicationTime=(post:ArchivePost)=>Date.parse(post.publishedAt||`${post.date}T00:00:00.000Z`);
+export const comparePostsOldestFirst=(a:ArchivePost,b:ArchivePost)=>publicationTime(a)-publicationTime(b)||a.id.localeCompare(b.id);
 
 const safeLink=(value:string)=>/^https?:\/\/[^\s]+$/i.test(value);
 const clean=(value:string)=>value.replace(/\r/g,'').trim();
@@ -49,6 +52,7 @@ export function validatePost(post:ArchivePost,categoryIds:readonly string[]){
   const authoredText=[post.title,post.excerpt,...post.blocks.flatMap(block=>[block.text||'',...(block.items||[])])].join(' ');
   if(containsNonEnglishScript(authoredText))errors.push('Archive articles must be written in English.');
   if(!/^\d{4}-\d{2}-\d{2}$/.test(post.date))errors.push('Date must use YYYY-MM-DD.');
+  if(post.publishedAt&&!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(post.publishedAt))errors.push('Published timestamp must use ISO 8601 UTC format.');
   if(!post.blocks.length)errors.push('The article body is empty.');
   if(post.blocks.length>120)errors.push('The article contains too many blocks.');
   for(const block of post.blocks){

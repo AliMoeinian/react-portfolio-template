@@ -85,11 +85,12 @@ export async function stagedPost(config:BotConfig,slug:string){
 export async function publishPost(config:BotConfig,slug:string){
   if(await file(config,slug,config.productionBranch))throw new Error('This article has already been published.');
   const post=await stagedPost(config,slug);
-  const payload=`${JSON.stringify([post],null,2)}\n`;
+  const publishedPost={...post,publishedAt:new Date().toISOString()};
+  const payload=`${JSON.stringify([publishedPost],null,2)}\n`;
   const result=await put(config,slug,config.productionBranch,payload,`Add archive post: ${post.title}`);
   if(!result)throw new Error('GitHub did not return a commit.');
   await github(config,`${repo(config)}/git/refs/heads/${encodeURIComponent(config.previewBranch)}`,{method:'PATCH',body:JSON.stringify({sha:result.commit.sha,force:true})});
-  return {post,url:result.content.html_url,commit:result.commit.sha};
+  return {post:publishedPost,url:result.content.html_url,commit:result.commit.sha};
 }
 
 export async function cancelStagedPost(config:BotConfig){await setPreviewToProduction(config);}
