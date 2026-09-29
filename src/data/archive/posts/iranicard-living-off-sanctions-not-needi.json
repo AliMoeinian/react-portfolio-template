@@ -1,0 +1,84 @@
+[
+  {
+    "id": "iranicard-living-off-sanctions-not-needi",
+    "category": "iranian-company-interviews",
+    "title": "IraniCard: Living Off Sanctions, Not Needing AI",
+    "excerpt": "My interview at IraniCard for a data analyst position that turned into AI questions, and why they don't really need a chatbot.",
+    "date": "2026-09-29",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "IraniCard is another famous company in Iran that lives off sanctions. I mean, if our country wasn't sanctioned, this company wouldn't exist by nature. They say sanctions have been very profitable for some people, IraniCard is one of them."
+      },
+      {
+        "type": "paragraph",
+        "text": "I was introduced here through one of my friends, with a resume where most of the work I had done was in the field of LLM and RAG! Here too they brought up a ChatBot! What's going on, dude! I mean, you guys don't need a chatbot, I swear! Again someone was found who wants to force a chatbot somewhere? Let it go, I swear!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Anyway! I gave the resume to my friend and I saw a text message came from the group for me that interview for data analyst position... and I was like WTF?"
+      },
+      {
+        "type": "heading",
+        "text": "The Interview"
+      },
+      {
+        "type": "paragraph",
+        "text": "Anyway, on the interview day I went to the company, first of all finding parking was extremely hard, the metro wasn't near it either and it was really hard. Finding the company itself was also hard for me, they hadn't put a name, there was nothing to understand that this is the company."
+      },
+      {
+        "type": "paragraph",
+        "text": "Anyway, with misery we found its place. It was a multi-story house they had taken and each floor had two units and in these units they had set up some desks and some people were working."
+      },
+      {
+        "type": "paragraph",
+        "text": "A poor guy came and started the technical interview with me (I don't know why I really don't care about these kinds of interviews - this is my bad habit) stupid questions like what's the difference between inner join and left join? He asked the difference between two merges in git, asked about versioning in Docker which I honestly didn't know. In the end, in the middle of the interview he said well your resume is more towards AI, let's talk about that! And I had no mindset or preparation for those discussions at all."
+      },
+      {
+        "type": "paragraph",
+        "text": "Now he asked a few questions about those things and asked about Context limitations and.. and the interview ended. Then they told me to go and they'll text me what the result is."
+      },
+      {
+        "type": "paragraph",
+        "text": "After two days the rejection text came and it was over."
+      },
+      {
+        "type": "heading",
+        "text": "A Few Points"
+      },
+      {
+        "type": "paragraph",
+        "text": "1: In my opinion, when all the developers of a company are using Claude or GPT and these even provide them the ability to push and commit, really some of the interview questions are very meaningless."
+      },
+      {
+        "type": "paragraph",
+        "text": "In my opinion the software development world has reached a point where people must know the basic concepts very well and have a good mindset of the field they are in. Technical details can be learned completely by studying."
+      },
+      {
+        "type": "paragraph",
+        "text": "2: Well I deserved to be rejected in this interview because I really wasn't prepared for it 😕 and I have no objection about this."
+      },
+      {
+        "type": "heading",
+        "text": "Is IraniCard Worth Working At?"
+      },
+      {
+        "type": "quote",
+        "text": "In my opinion with the current job market conditions in Isfahan, yes it does. I don't know about its environment and I just went for one interview there. But in my opinion out of 10, it can have a score of 5.5 for work value."
+      },
+      {
+        "type": "quote",
+        "text": "Compared to Irisa Prime and My Data and Snapp Carfix it definitely has higher work value."
+      },
+      {
+        "type": "quote",
+        "text": "But in the end again in my opinion this group has no need for AI and chatbot :)"
+      },
+      {
+        "type": "link",
+        "text": "IraniCard",
+        "href": "https://www.iranicard.ir/"
+      }
+    ]
+  }
+]
