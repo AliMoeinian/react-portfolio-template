@@ -12,6 +12,7 @@ const Journey = lazy(()=>import('./pages/Journey'));
 const Library = lazy(()=>import('./pages/Library'));
 const Contact = lazy(()=>import('./pages/Contact'));
 const Archive = lazy(()=>import('./archive/Archive'));
+const DigitalResume = lazy(()=>import('./pages/DigitalResume'));
 function Shell() {
   const {path} = useRoute();
   const [menu, setMenu] = useState(false);
@@ -72,6 +73,7 @@ function SiteRoutes(){
     if(previousPath.current.startsWith('/unlisted')&&!path.startsWith('/unlisted')) saveArchiveProgress({discovered:false,sequence:0,unlocked:false});
     previousPath.current=path;
   },[path]);
+  if(path==='/digital-resume')return <Suspense fallback={<div className="loading-state">Opening the resume…</div>}><DigitalResume/></Suspense>;
   return path==='/unlisted'||path.startsWith('/unlisted/')
     ? <Suspense fallback={<div style={{minHeight:'100vh',background:'#101614',color:'#c2d9ca',display:'grid',placeItems:'center'}} role="status">Following the signal…</div>}><Archive/></Suspense>
     : <Shell/>;

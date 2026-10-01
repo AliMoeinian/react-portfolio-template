@@ -1,8 +1,9 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import mascot from '../assets/images/ali-voxel-mascot.png';
+import earth from '../assets/images/realistic-earth.png';
 import Icon, {GlassIcon} from './Icon';
 import profile from '../data/profile.json';
-import {useRoute} from './router';
+import {Link,useRoute} from './router';
 import {saveArchiveProgress} from './archiveAccess';
 
 const greetings = ['Hi! 👋', 'Nice to meet you.', 'Let’s build something!'];
@@ -57,7 +58,7 @@ export default function Mascot() {
     return ()=>window.clearInterval(timer);
   },[resting]);
   return <div ref={stage} className={`mascot-stage ${resting?'mascot-paused':''}`}>
-    {!discovered&&<nav className="social-constellation" aria-label="Find Ali online">{[...profile.socials.map(s=>({...s,icon:s.name==='GitHub'?'github':s.icon})),{name:'Résumé',href:profile.cv,icon:'file'}].map((s,i)=><a key={s.name} className={`social-planet planet-${i}`} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} (opens in a new tab)`}><GlassIcon name={s.icon}/><span className="planet-label">{s.name}</span></a>)}</nav>}
+    {!discovered&&<nav className="social-constellation" aria-label="Find Ali online">{[...profile.socials.map(s=>({...s,icon:s.name==='GitHub'?'github':s.icon})),{name:'Résumé',href:profile.cv,icon:'file'}].map((s,i)=><a key={s.name} className={`social-planet planet-${i}`} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} (opens in a new tab)`}><GlassIcon name={s.icon}/><span className="planet-label">{s.name}</span></a>)}<Link to="/digital-resume" className="social-planet planet-6" aria-label="Open Digital Resume"><span className="glass-icon resume-earth-icon"><img src={earth} alt=""/></span><span className="planet-label">Digital Resume</span></Link></nav>}
     <div className="mascot-halo" aria-hidden="true"/>
     <div className="mascot-platform" aria-hidden="true"/>
     <div className="mascot-traveler">

@@ -11,6 +11,7 @@ export const destinations = [
   {path:'/publications', title:'Books & tutorials', icon:'book', text:'Knowledge, shared openly', tone:'cyan'},
   {path:'/achievements', title:'Achievements', icon:'award', text:'Milestones that mean something', tone:'amber'},
   {path:'/contact', title:'Let’s connect', icon:'mail', text:'Good things start with a conversation', tone:'blue'},
+  {path:'/digital-resume', title:'Digital Resume', icon:'education', text:'An interactive view of my academic work', tone:'amber'},
 ];
 export function PageHeader({eyebrow, title, description}: {eyebrow:string; title:string; description:string}) {
   return <header className="page-heading"><Link to="/" className="back-link"><Icon name="arrow"/> Back to home</Link><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="lead">{description}</p></header>;
