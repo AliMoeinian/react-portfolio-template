@@ -1,0 +1,196 @@
+[
+  {
+    "id": "the-different-sections-of-an-academic-re",
+    "category": "academic-cv",
+    "title": "The Different Sections of an Academic Resume",
+    "excerpt": "A practical breakdown of the sections an academic resume should have, from your name and research interests to publications, projects, and skills.",
+    "date": "2026-10-05",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "The Different Sections of an Academic Resume"
+      },
+      {
+        "type": "paragraph",
+        "text": "In this note we're going to talk about the sections your academic resume should have."
+      },
+      {
+        "type": "paragraph",
+        "text": "Before we start, the reality I have to state is this:"
+      },
+      {
+        "type": "paragraph",
+        "text": "We have no standard rules for this, whatever exists is really based on experience. I mean there's no rule that says your resume must necessarily have certain sections and its order must be in a specific way."
+      },
+      {
+        "type": "paragraph",
+        "text": "The second point you should keep in mind: your resume must change according to the position you're applying for and be dynamic. For example, you might have done different projects in different fields, but for example when you're applying for an AI Engineering position, having front-end sample work is useless."
+      },
+      {
+        "type": "paragraph",
+        "text": "Remember, don't be afraid to remove information from your resume. This is really important. Remove anything you think is extra or irrelevant."
+      },
+      {
+        "type": "paragraph",
+        "text": "But let's get to the main topic of this text and the sections a good academic resume should have:"
+      },
+      {
+        "type": "heading",
+        "text": "Part One: First Name, Last Name, and Title"
+      },
+      {
+        "type": "paragraph",
+        "text": "Your first and last name should be written large and Bold at the top of the resume, and under your name your Title should be written."
+      },
+      {
+        "type": "paragraph",
+        "text": "Your resume title should match the position you're applying for. For example, if you're applying for a PhD position, your resume title should be your current degree and field of study."
+      },
+      {
+        "type": "paragraph",
+        "text": "Informal note: please, if you don't have work or research experience, don't put AI Engineer and ML Engineer and Context Engineer and these things in your resume Title so much."
+      },
+      {
+        "type": "heading",
+        "text": "Part Two: Contact Methods"
+      },
+      {
+        "type": "paragraph",
+        "text": "Personal website, GitHub, LinkedIn, ORCID, Google Scholar, ResearchGate, and email."
+      },
+      {
+        "type": "paragraph",
+        "text": "Put each of these that you have in your resume. The links must definitely be hyperlinked, meaning when the person clicks on LinkedIn from your resume, it opens for them, don't just leave a raw link there."
+      },
+      {
+        "type": "paragraph",
+        "text": "Regarding email too, create a professional work email for yourself: FirstName . LastName . dev | Contact@gmail.com This combination is good and professional. (Preferably have Gmail too, don't go so much for Outlook and Hotmail and these.)"
+      },
+      {
+        "type": "heading",
+        "text": "Part Three: Research Interest or Summary"
+      },
+      {
+        "type": "paragraph",
+        "text": "In different academic resumes these are used in place of each other. It's good to be familiar with both:"
+      },
+      {
+        "type": "paragraph",
+        "text": "1: Research Interest If you want to bring Research Interest in your resume, you should write at most 6 keywords about the academic field you're interested in working and researching in. Naturally these should be consistent with your work or research background."
+      },
+      {
+        "type": "paragraph",
+        "text": "2: Summary This section, unlike Research Interest, should be a 3-4 line text and give general information about you and write about your passion and interest and goals."
+      },
+      {
+        "type": "paragraph",
+        "text": "Remember in this section, you should absolutely not repeat the skills you have in later sections or repeat work experience and so on."
+      },
+      {
+        "type": "paragraph",
+        "text": "Remember that your writing tone in this section should be passive. I mean you shouldn't write one after another that I did that - I am... - I am doing..., passive writing shows your professionalism."
+      },
+      {
+        "type": "paragraph",
+        "text": "And don't write long at all, at most 4 lines! Very important! If you write long, nobody reads it :)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Personal opinion: in my opinion Summary isn't that necessary to write in a resume and Research Interest in an academic resume is a very suitable choice."
+      },
+      {
+        "type": "heading",
+        "text": "Part Four: Education"
+      },
+      {
+        "type": "paragraph",
+        "text": "In this section you should completely write the universities and degrees you've completed: University name - Degree title - Field/Major title - Years of study in that degree - GPA - Achievements of the degree. These are the things that should be stated in this section. Also avoid writing too much and too many explanations."
+      },
+      {
+        "type": "heading",
+        "text": "Part Four: Publication"
+      },
+      {
+        "type": "paragraph",
+        "text": "In this section you should write the papers you have. Paper title - Where the paper was published (journal or conference or...) - Publication year - Paper status (accepted - under review - submitted) - Key Highlights or achievements you had in that paper, at the level of 2-3 bullet points - Link to access the paper."
+      },
+      {
+        "type": "heading",
+        "text": "Part Five: Relevant Work Experience"
+      },
+      {
+        "type": "paragraph",
+        "text": "I wrote a general title for this section but you can divide it into different sections. In general, any work experience, Mentoring, TA, and so on you had, should be mentioned here with correct categorization and title."
+      },
+      {
+        "type": "paragraph",
+        "text": "Try to give a very Straight to the Point bullet point explanation for each item. For work experience where you worked at a company, you can write more explanations."
+      },
+      {
+        "type": "paragraph",
+        "text": "It's very good to state numbers in your explanations. For example, the performance of that system improved by x%, or you worked in a team with n people and... In general, stating numbers and statistics is very attractive in a resume."
+      },
+      {
+        "type": "paragraph",
+        "text": "Again I repeat, don't include extra and useless explanations at all."
+      },
+      {
+        "type": "heading",
+        "text": "Part Six: Projects"
+      },
+      {
+        "type": "paragraph",
+        "text": "In this section, you should put the sample projects you have along with links to access them, and give 2-3 bullet points of explanation about each project related to the position you're applying for. Write about the technology, the approaches you had, and the innovative decisions you made. Don't include simple and obvious explanations that are clear from the project name at all."
+      },
+      {
+        "type": "paragraph",
+        "text": "Again a reminder, the projects you name here as samples must be related to the field you're applying for."
+      },
+      {
+        "type": "paragraph",
+        "text": "If you're applying for a computer PhD, it doesn't matter at all that you have a project where you did full stack yourself! But if you have a proper and real RAG project, definitely write it and mention it."
+      },
+      {
+        "type": "heading",
+        "text": "Part Seven: Skills"
+      },
+      {
+        "type": "paragraph",
+        "text": "Skills mean the technologies you know, have understanding of, and have worked with."
+      },
+      {
+        "type": "paragraph",
+        "text": "Don't think that if you line up 10 programming languages in your resume people will say wow how much this person knows! On the contrary, they understand that you don't get anything."
+      },
+      {
+        "type": "paragraph",
+        "text": "Skills should be written categorized and short."
+      },
+      {
+        "type": "paragraph",
+        "text": "It's good to have a Soft Skill section and name a few of the Soft Skills you have."
+      },
+      {
+        "type": "heading",
+        "text": "Part Eight: Language"
+      },
+      {
+        "type": "paragraph",
+        "text": "Write whatever languages you know 😅 simple and easy."
+      },
+      {
+        "type": "heading",
+        "text": "Part Nine: References"
+      },
+      {
+        "type": "paragraph",
+        "text": "Here you should write the information of the professors you worked with and who refer you or give you a Recommendation letter. That easy :)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Good luck"
+      }
+    ],
+    "publishedAt": "2026-10-04T23:35:08.541Z"
+  }
+]
