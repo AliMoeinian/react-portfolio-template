@@ -54,10 +54,12 @@
         "type": "paragraph",
         "text": "I'll also put some useful links here for you that you can check out and might find good templates:"
       },
-      {
-        "type": "paragraph",
-        "text": "1: https://word.cloud.microsoft/create/en/resume-templates/ 2: https://docs.google.com/document/d/1rK2prBm6ga4EGdlbNZ66NS0_KBLrOCSf/edit 3: https://careered.stanford.edu/sites/g/files/sbiybj22801/files/media/file/resume-and-cover-letter-examples.pdf 4: https://careerservices.fas.harvard.edu/resources/bullet-point-resume-template/ 5: https://www.canva.com/resumes/templates/ 6: https://graduateships.com/4-cv-templates-used-by-harvard-stanford-mckinsey-goldman-sachs/"
-      },
+      {"type":"link","text":"1. Microsoft Word resume templates","href":"https://word.cloud.microsoft/create/en/resume-templates/"},
+      {"type":"link","text":"2. Google Docs resume template","href":"https://docs.google.com/document/d/1rK2prBm6ga4EGdlbNZ66NS0_KBLrOCSf/edit"},
+      {"type":"link","text":"3. Stanford resume and cover letter examples","href":"https://careered.stanford.edu/sites/g/files/sbiybj22801/files/media/file/resume-and-cover-letter-examples.pdf"},
+      {"type":"link","text":"4. Harvard bullet-point resume template","href":"https://careerservices.fas.harvard.edu/resources/bullet-point-resume-template/"},
+      {"type":"link","text":"5. Canva resume templates","href":"https://www.canva.com/resumes/templates/"},
+      {"type":"link","text":"6. CV templates used by leading universities and companies","href":"https://graduateships.com/4-cv-templates-used-by-harvard-stanford-mckinsey-goldman-sachs/"},
       {
         "type": "heading",
         "text": "Sites That Help You Write a Resume"
@@ -70,10 +72,15 @@
         "type": "paragraph",
         "text": "In my opinion they're not bad and they're good, but again I say, nothing is better than opening Word yourself and starting to write + the help of our good friend AI."
       },
-      {
-        "type": "paragraph",
-        "text": "1: https://rxresu.me/ 2: https://www.overleaf.com/ 3: https://resume.io/ 4: https://ohmycv.app/ 5: https://markdownresume.app/ 6: https://www.wresume.ai/ 7: https://free-next-resume-maker.vercel.app/ 8: https://e-resume.vercel.app/ 9: https://www.open-resume.com/"
-      },
+      {"type":"link","text":"1. Reactive Resume","href":"https://rxresu.me/"},
+      {"type":"link","text":"2. Overleaf","href":"https://www.overleaf.com/"},
+      {"type":"link","text":"3. Resume.io","href":"https://resume.io/"},
+      {"type":"link","text":"4. Oh My CV","href":"https://ohmycv.app/"},
+      {"type":"link","text":"5. Markdown Resume","href":"https://markdownresume.app/"},
+      {"type":"link","text":"6. WResume AI","href":"https://www.wresume.ai/"},
+      {"type":"link","text":"7. Free Next Resume Maker","href":"https://free-next-resume-maker.vercel.app/"},
+      {"type":"link","text":"8. E-Resume","href":"https://e-resume.vercel.app/"},
+      {"type":"link","text":"9. OpenResume","href":"https://www.open-resume.com/"},
       {
         "type": "paragraph",
         "text": "By the way, all these sites are free :)"
