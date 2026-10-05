@@ -1,0 +1,295 @@
+[
+  {
+    "id": "resume-vs-cv-they-are-not-the-same",
+    "category": "academic-cv",
+    "title": "Resume vs CV: They Are Not the Same",
+    "excerpt": "A resume is short and targeted. A CV is comprehensive and documents your academic journey. Here is the difference and which one you actually need.",
+    "date": "2026-10-06",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Resume vs CV: They Are Not the Same! 🎓"
+      },
+      {
+        "type": "paragraph",
+        "text": "Before we get into how to write an academic resume, we need to clear up a common misunderstanding. In many places Resume and CV are used in place of each other, but conceptually, especially in Academic Applications, these two are not the same."
+      },
+      {
+        "type": "heading",
+        "text": "What Is a Resume?"
+      },
+      {
+        "type": "paragraph",
+        "text": "A Resume is a short, condensed, and targeted document that is not supposed to display your entire academic and professional background. Its goal is to say in one look:"
+      },
+      {
+        "type": "quote",
+        "text": "\"Who I am, what skills and experience I have, and why I'm suitable for this position.\""
+      },
+      {
+        "type": "paragraph",
+        "text": "So a Resume is usually Position-Oriented or Job-Oriented; meaning it's written and Tailored for a specific position."
+      },
+      {
+        "type": "paragraph",
+        "text": "For example, if you're applying for a Machine Learning Engineer position, you should highlight ML projects, Python experience, and relevant Internships; not everything you did during your studies."
+      },
+      {
+        "type": "paragraph",
+        "text": "So the important principle of a Resume is:"
+      },
+      {
+        "type": "quote",
+        "text": "Relevance over Completeness"
+      },
+      {
+        "type": "paragraph",
+        "text": "A Resume is usually around 1 to 2 pages, but this is not an absolute rule and depends on the position, country, and the person's background."
+      },
+      {
+        "type": "heading",
+        "text": "What Is a CV?"
+      },
+      {
+        "type": "paragraph",
+        "text": "CV stands for Curriculum Vitae and has a different philosophy."
+      },
+      {
+        "type": "paragraph",
+        "text": "A CV is more Comprehensive and its goal is to show your academic and professional path:"
+      },
+      {
+        "type": "quote",
+        "text": "\"What have I done in my academic and research path up to today?\""
+      },
+      {
+        "type": "paragraph",
+        "text": "That's why it becomes more important in Academic Applications."
+      },
+      {
+        "type": "paragraph",
+        "text": "For example, for a PhD Position, a Professor might want to see your Research Experience, Publications, Thesis, Projects, Teaching Experience, Awards, Technical Skills, and Research Interests."
+      },
+      {
+        "type": "paragraph",
+        "text": "Here a short Resume usually can't present a complete picture of your Research Profile; so the Academic CV becomes important."
+      },
+      {
+        "type": "heading",
+        "text": "The Main Difference"
+      },
+      {
+        "type": "paragraph",
+        "text": "If I want to say it very simply:"
+      },
+      {
+        "type": "paragraph",
+        "text": "A Resume is a Selective and Targeted document of your most important experiences."
+      },
+      {
+        "type": "paragraph",
+        "text": "A CV is a Comprehensive document of your academic and professional path."
+      },
+      {
+        "type": "paragraph",
+        "text": "In a Resume the main question is:"
+      },
+      {
+        "type": "quote",
+        "text": "\"What things should I show for this position?\""
+      },
+      {
+        "type": "paragraph",
+        "text": "But in a CV the main question is:"
+      },
+      {
+        "type": "quote",
+        "text": "\"What has my academic and professional path been up to today?\""
+      },
+      {
+        "type": "heading",
+        "text": "Is This Difference the Same in All Countries?"
+      },
+      {
+        "type": "paragraph",
+        "text": "No."
+      },
+      {
+        "type": "paragraph",
+        "text": "The meaning of CV and Resume can differ in different countries."
+      },
+      {
+        "type": "paragraph",
+        "text": "For example in America usually: Resume → shorter and more targeted CV → more comprehensive and more for Academic / Research Positions"
+      },
+      {
+        "type": "paragraph",
+        "text": "But in many European countries, the word CV might be used for a short employment document too."
+      },
+      {
+        "type": "paragraph",
+        "text": "So don't just pay attention to the name CV or Resume; always check the Context and Application Instructions."
+      },
+      {
+        "type": "heading",
+        "text": "Which One Do We Want for a PhD?"
+      },
+      {
+        "type": "paragraph",
+        "text": "If you're applying for positions like:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "PhD",
+          "Research Assistant",
+          "Research Internship",
+          "Postdoc",
+          "Academic Position",
+          "Scholarship"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Usually an Academic CV is more suitable."
+      },
+      {
+        "type": "paragraph",
+        "text": "Because a Professor doesn't just want to know:"
+      },
+      {
+        "type": "quote",
+        "text": "\"What Skills does this person have?\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Rather they want to understand:"
+      },
+      {
+        "type": "quote",
+        "text": "\"What academic path has this person taken and what Research Potential do they have?\""
+      },
+      {
+        "type": "heading",
+        "text": "An Academic CV Is Not Just a List"
+      },
+      {
+        "type": "paragraph",
+        "text": "A common mistake is thinking:"
+      },
+      {
+        "type": "quote",
+        "text": "\"I dump everything I have into Word, so I have a CV.\""
+      },
+      {
+        "type": "paragraph",
+        "text": "No!"
+      },
+      {
+        "type": "paragraph",
+        "text": "A good Academic CV must have an Academic Narrative; meaning when the Professor reads it, they can follow your path: Education → Research Experience → Publications → Projects → Teaching → Awards → Skills"
+      },
+      {
+        "type": "paragraph",
+        "text": "So a CV is not just a list; it's a Structured Representation of Your Academic Journey."
+      },
+      {
+        "type": "heading",
+        "text": "A CV Is a Living Document"
+      },
+      {
+        "type": "paragraph",
+        "text": "A Resume is usually re-Tailored for each Position. But an Academic CV is more like a Master Document that grows over time."
+      },
+      {
+        "type": "paragraph",
+        "text": "New paper → added. Conference → added. Research Project → added. Teaching Experience → added. Award → added."
+      },
+      {
+        "type": "paragraph",
+        "text": "So an Academic CV is a Living Document. Of course a longer CV is not necessarily better. Its length should be a function of the amount of Relevant Academic Content, not a specific number."
+      },
+      {
+        "type": "heading",
+        "text": "A Simple Mental Model"
+      },
+      {
+        "type": "paragraph",
+        "text": "If I want to keep these two very simple in your mind:"
+      },
+      {
+        "type": "heading",
+        "text": "Resume"
+      },
+      {
+        "type": "quote",
+        "text": "\"Why am I a good fit for this specific opportunity?\""
+      },
+      {
+        "type": "heading",
+        "text": "Academic CV"
+      },
+      {
+        "type": "quote",
+        "text": "\"What have I done throughout my academic and research journey?\""
+      },
+      {
+        "type": "heading",
+        "text": "An Important Mistake in PhD Applications"
+      },
+      {
+        "type": "paragraph",
+        "text": "A person might have an excellent two-page Resume for a company and send the exact same file to a Professor."
+      },
+      {
+        "type": "paragraph",
+        "text": "In a company Resume the main focus might be on: Python, SQL, Docker, Git, FastAPI, Machine Learning"
+      },
+      {
+        "type": "paragraph",
+        "text": "But for a PhD, if Research Experience, Publications, Thesis, Research Interests, and Academic Projects don't exist, you're practically introducing yourself with the wrong criteria."
+      },
+      {
+        "type": "heading",
+        "text": "Golden Rule 🎯"
+      },
+      {
+        "type": "paragraph",
+        "text": "Before you write a CV or Resume, first ask this question:"
+      },
+      {
+        "type": "quote",
+        "text": "Who is going to read this document, and what decision do they need to make?"
+      },
+      {
+        "type": "paragraph",
+        "text": "If a Recruiter is going to read it, focus more on: Skills → Experience → Impact"
+      },
+      {
+        "type": "paragraph",
+        "text": "If a Professor is going to read it, the focus should be more on: Research → Publications → Academic Experience → Technical Depth → Research Potential"
+      },
+      {
+        "type": "paragraph",
+        "text": "So building a CV doesn't start with choosing a font and color!"
+      },
+      {
+        "type": "paragraph",
+        "text": "It starts with this question:"
+      },
+      {
+        "type": "quote",
+        "text": "What is the goal of this document and who is going to read it?"
+      },
+      {
+        "type": "paragraph",
+        "text": "And in the end:"
+      },
+      {
+        "type": "quote",
+        "text": "A good CV is not necessarily a long CV; it is a CV that presents the right information, with the right structure, to the right reader. 🎯"
+      }
+    ],
+    "publishedAt": "2026-10-05T20:34:45.917Z"
+  }
+]
