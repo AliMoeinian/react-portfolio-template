@@ -1,0 +1,245 @@
+[
+  {
+    "id": "how-to-structure-a-professional-resume-a",
+    "category": "professional-resume",
+    "title": "How to Structure a Professional Resume: A Simple Guide",
+    "excerpt": "A strong resume isn't about filling a page. Here are the essential sections every job seeker should know, from contact info to projects and skills.",
+    "date": "2026-10-08",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "How to Structure a Professional Resume: A Simple Guide"
+      },
+      {
+        "type": "paragraph",
+        "text": "Your resume is often the first impression you make on a recruiter. But a strong resume isn't about filling a page with information. It's about presenting the right information in the right way."
+      },
+      {
+        "type": "paragraph",
+        "text": "Here are the essential sections every job seeker should know about!"
+      },
+      {
+        "type": "heading",
+        "text": "1. Contact Information"
+      },
+      {
+        "type": "paragraph",
+        "text": "Keep this section simple and professional. Include:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Full name",
+          "Professional email address",
+          "Phone number (with country code if applying internationally)",
+          "LinkedIn profile",
+          "GitHub or portfolio website (especially for technical roles)",
+          "City and country (your full home address is usually unnecessary)"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Tip: Make sure your LinkedIn and GitHub profiles are updated before adding them to your resume."
+      },
+      {
+        "type": "heading",
+        "text": "2. Professional Summary (Optional)"
+      },
+      {
+        "type": "paragraph",
+        "text": "This is a short introduction, usually 2-3 sentences, highlighting your background, strongest skills, and career direction."
+      },
+      {
+        "type": "paragraph",
+        "text": "Avoid generic statements like \"I'm a hardworking and passionate person.\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Instead, be specific:"
+      },
+      {
+        "type": "quote",
+        "text": "\"Software Engineering graduate with experience developing Python applications and machine learning projects. Skilled in data analysis, SQL, and collaborative software development.\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Tip: If your summary doesn't add meaningful information, it's perfectly fine to skip it!"
+      },
+      {
+        "type": "heading",
+        "text": "3. Work Experience"
+      },
+      {
+        "type": "paragraph",
+        "text": "This section describes your professional background, including jobs, internships, and relevant freelance work."
+      },
+      {
+        "type": "paragraph",
+        "text": "For each position, include:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Job title and company name",
+          "Employment dates",
+          "2-4 bullet points describing your contributions and achievements"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Use this simple formula:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Action Verb + What You Did + Tools/Methods + Measurable Result"
+      },
+      {
+        "type": "paragraph",
+        "text": "For example:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Instead of: \"Responsible for managing databases.\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Write: \"Optimized SQL queries and improved reporting performance by 30%.\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Only include metrics you can genuinely support."
+      },
+      {
+        "type": "heading",
+        "text": "4. Education"
+      },
+      {
+        "type": "paragraph",
+        "text": "Especially important for students and fresh graduates!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Include your degree, field of study, university, and graduation date (or expected graduation date)."
+      },
+      {
+        "type": "paragraph",
+        "text": "You can also mention relevant coursework, academic honors, or your thesis topic if they strengthen your application."
+      },
+      {
+        "type": "paragraph",
+        "text": "Tip: If you have limited professional experience, placing Education before Work Experience is completely acceptable."
+      },
+      {
+        "type": "heading",
+        "text": "5. Technical Skills"
+      },
+      {
+        "type": "paragraph",
+        "text": "List the tools and technologies you can actually use."
+      },
+      {
+        "type": "paragraph",
+        "text": "Organize them into categories to improve readability."
+      },
+      {
+        "type": "paragraph",
+        "text": "For example:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Programming: Python, Java, SQL",
+          "Frameworks: PyTorch, FastAPI, Spring Boot",
+          "Databases: PostgreSQL, MongoDB",
+          "Tools: Git, Docker, Linux"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Avoid adding every technology you've encountered. Quality and relevance matter more than quantity."
+      },
+      {
+        "type": "heading",
+        "text": "6. Projects"
+      },
+      {
+        "type": "paragraph",
+        "text": "If you don't have much work experience, this section can become one of your biggest strengths!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Include personal projects, university assignments, research implementations, or open-source contributions."
+      },
+      {
+        "type": "paragraph",
+        "text": "For each project, briefly explain:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "What problem you solved",
+          "Which technologies you used",
+          "What you implemented or achieved",
+          "A GitHub repository or live demo link"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Tip: A project with clean code, proper documentation, and measurable results is much more convincing than a long list of project titles."
+      },
+      {
+        "type": "heading",
+        "text": "7. Certifications, Publications & Achievements (Optional)"
+      },
+      {
+        "type": "paragraph",
+        "text": "This section is useful when you have additional accomplishments relevant to the position."
+      },
+      {
+        "type": "paragraph",
+        "text": "You can include recognized certifications, published research papers, hackathon awards, scholarships, or competition results."
+      },
+      {
+        "type": "paragraph",
+        "text": "Always prioritize relevance over quantity."
+      },
+      {
+        "type": "paragraph",
+        "text": "For research publications, provide the title, publication venue, year, and a link or DOI when available."
+      },
+      {
+        "type": "heading",
+        "text": "Final Tips"
+      },
+      {
+        "type": "paragraph",
+        "text": "A few simple rules can make a huge difference:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Keep your resume to one page when possible, especially early in your career.",
+          "Use consistent formatting, readable fonts, and clear section headings.",
+          "Tailor your resume to each job description.",
+          "Use strong action verbs instead of vague responsibilities.",
+          "Make sure every claim is accurate and defensible.",
+          "Use AI to improve wording and clarity, but never to invent experience.",
+          "Save your resume as a PDF unless the employer requests another format."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Remember: You don't need every possible section in your resume. Choose the ones that best demonstrate your qualifications."
+      },
+      {
+        "type": "paragraph",
+        "text": "A great resume isn't necessarily the longest or most visually impressive one."
+      },
+      {
+        "type": "quote",
+        "text": "It's the one that makes your value clear in just a few seconds."
+      }
+    ],
+    "publishedAt": "2026-10-08T19:29:16.152Z"
+  }
+]
